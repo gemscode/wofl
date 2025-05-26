@@ -1,0 +1,13 @@
+{
+  "displayName": "R&W v1",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [{
+        "id": "rw-sidebar",
+        "title": "R&W Tools",
+        "icon": "images/icon.svg"
+      }]
+    }
+  }
+}
+
