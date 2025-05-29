@@ -1,16 +1,28 @@
+# pages/login.py
 import streamlit as st
 from st_cookies_manager import EncryptedCookieManager
 import requests
 import os
+import jwt
+from datetime import datetime
 
 cookies = EncryptedCookieManager(
     password=os.environ.get("COOKIE_PASSWORD", "default-secret-key"),
-    prefix="rw_auth/"
+    prefix="rw_auth/",
 )
+
 if not cookies.ready():
     st.stop()
 
-BASE_URL = "http://localhost:5001"
+BASE_URL = "https://wolfx0.com/rw"  # Production API
+
+def is_token_valid(token: str) -> bool:
+    try:
+        payload = jwt.decode(token, options={"verify_signature": False})
+        exp = payload.get('exp')
+        return exp and datetime.utcnow() < datetime.fromtimestamp(exp)
+    except jwt.PyJWTError:
+        return False
 
 def auth_form(is_login=False):
     with st.form(key='auth_form'):
@@ -20,33 +32,35 @@ def auth_form(is_login=False):
         return {"email": email, "password": password} if submitted else None
 
 def main():
-    st.title("R&W Login/Register")
+    st.title("R&W Authentication")
+    
+    # Existing valid session check
+    token = cookies.get('token')
+    if token and is_token_valid(token):
+        st.switch_page("pages/prompt.py")
+
     auth_type = st.radio("Action:", ["Register", "Login"], horizontal=True)
     data = auth_form(is_login=(auth_type == "Login"))
+    
     if data:
         endpoint = "/login" if auth_type == "Login" else "/register"
         try:
             response = requests.post(
                 f"{BASE_URL}{endpoint}",
                 json=data,
+                headers={"Content-Type": "application/json"},
                 timeout=5
             )
+
             if response.status_code in [200, 201]:
                 cookies['token'] = response.json().get('token')
                 cookies.save()
-                st.success("Login successful! Redirecting...")
                 st.rerun()
             else:
-                try:
-                    error_msg = response.json().get('error', 'Unknown error')
-                except Exception:
-                    error_msg = f"Non-JSON response: {response.text[:200]}..."
-                st.error(f"Error: {error_msg}")
+                st.error(f"Server Response: {response.text}")
+                
         except requests.exceptions.RequestException as e:
-            st.error(f"Connection error: {str(e)}")
-    # If already logged in, redirect to prompt page
-    if cookies.get('token'):
-        st.switch_page("pages/prompt.py")
+            st.error(f"Connection Error: {str(e)}")
 
 if __name__ == '__main__':
     main()

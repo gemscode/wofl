@@ -14,9 +14,11 @@ load_dotenv()
 class AuthService:
     def __init__(self, session):
         self.session = session
-        self.JWT_SECRET = os.getenv("JWT_SECRET")
-        self.JWT_ALGORITHM = "HS256"
+        # RSA Configuration
+        self.JWT_ALGORITHM = "RS256"
         self.JWT_EXPIRATION = timedelta(days=90)
+        self.JWT_PRIVATE_KEY_PATH = "/etc/ssl/jwt/private.pem"  # Updated secure path
+        self.JWT_PUBLIC_KEY_PATH = "/etc/ssl/jwt/public.pem"    # Updated secure path
 
         # Initialize Cassandra schema
         self._initialize_schema()
@@ -96,23 +98,39 @@ class AuthService:
             return {"error": str(e)}, 500
 
     def _generate_jwt(self, email: str) -> str:
-        """Generate JWT token for authenticated user"""
-        payload = {
-            "sub": email,
-            "exp": datetime.utcnow() + self.JWT_EXPIRATION
-        }
-        return jwt.encode(payload, self.JWT_SECRET, algorithm=self.JWT_ALGORITHM)
+        """Generate JWT token using RSA private key"""
+        try:
+            with open(self.JWT_PRIVATE_KEY_PATH, "r") as f:
+                private_key = f.read()
+            
+            payload = {
+                "sub": email,
+                "exp": datetime.utcnow() + self.JWT_EXPIRATION
+            }
+            return jwt.encode(payload, private_key, algorithm=self.JWT_ALGORITHM)
+        
+        except FileNotFoundError:
+            raise RuntimeError("JWT private key not found at specified path")
+        except IOError as e:
+            raise RuntimeError(f"Error reading private key: {str(e)}")
 
     def verify_jwt(self, token: str) -> Optional[Dict]:
-        """Verify JWT token and return payload if valid"""
+        """Verify JWT token using RSA public key"""
         try:
-            payload = jwt.decode(
+            with open(self.JWT_PUBLIC_KEY_PATH, "r") as f:
+                public_key = f.read()
+            
+            return jwt.decode(
                 token,
-                self.JWT_SECRET,
+                public_key,
                 algorithms=[self.JWT_ALGORITHM],
-                options={"verify_aud": False}  # Optional: Disable audience check
+                options={"verify_aud": False}
             )
-            return payload
+        
+        except FileNotFoundError:
+            raise RuntimeError("JWT public key not found at specified path")
+        except IOError as e:
+            raise RuntimeError(f"Error reading public key: {str(e)}")
         except jwt.ExpiredSignatureError:
             return None
         except jwt.InvalidTokenError:
