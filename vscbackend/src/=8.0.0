@@ -1,7 +1,0 @@
-Requirement already satisfied: elasticsearch in /home/alphax0/wolfvenv/lib/python3.9/site-packages (9.0.1)
-Requirement already satisfied: elastic-transport<9,>=8.15.1 in /home/alphax0/wolfvenv/lib/python3.9/site-packages (from elasticsearch) (8.17.1)
-Requirement already satisfied: python-dateutil in /home/alphax0/wolfvenv/lib/python3.9/site-packages (from elasticsearch) (2.9.0.post0)
-Requirement already satisfied: typing-extensions in /home/alphax0/wolfvenv/lib/python3.9/site-packages (from elasticsearch) (4.13.2)
-Requirement already satisfied: urllib3<3,>=1.26.2 in /home/alphax0/wolfvenv/lib/python3.9/site-packages (from elastic-transport<9,>=8.15.1->elasticsearch) (1.26.20)
-Requirement already satisfied: certifi in /home/alphax0/wolfvenv/lib/python3.9/site-packages (from elastic-transport<9,>=8.15.1->elasticsearch) (2025.4.26)
-Requirement already satisfied: six>=1.5 in /home/alphax0/wolfvenv/lib/python3.9/site-packages (from python-dateutil->elasticsearch) (1.17.0)
