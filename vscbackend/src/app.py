@@ -6,6 +6,7 @@ from services.llm_service import GroqService
 from werkzeug.serving import run_simple
 import os
 import logging
+from services.llm_middleware import LLMMiddleware
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -72,16 +73,17 @@ def login():
         logger.error(f"Login error: {str(e)}")
         return jsonify(error="Internal server error"), 500
 
+# app.py - Updated handle_prompt() function
 @rw_bp.route('/prompt', methods=['POST'])
 def handle_prompt():
-    """Process LLM prompts with enhanced security"""
+    """Process LLM prompts with conversation context"""
     try:
         # JWT Verification
         auth_header = request.headers.get('Authorization', '')
         if not auth_header.startswith('Bearer '):
             logger.warning("Missing or invalid Authorization header")
             return jsonify(error="Unauthorized"), 401
-            
+
         token = auth_header.split(' ')[1]
         payload = auth_service.verify_jwt(token)
         if not payload:
@@ -92,17 +94,29 @@ def handle_prompt():
         data = request.get_json()
         if not data or 'prompt' not in data:
             return jsonify(error="Prompt required"), 400
-            
+
         if len(data['prompt']) > 2000:
             return jsonify(error="Prompt too long"), 413
 
-        # Process request
-        response = GroqService().generate_response(
-            data['prompt'],
-            data.get('model', 'llama3-70b-8192')
+        # Extract thread parameters
+        thread_id = data.get('thread_id')
+        new_thread = data.get('new_thread', False)  
+
+        # Process request with middleware
+        middleware = LLMMiddleware()
+        response, new_thread_id = middleware.generate_response(
+            prompt=data['prompt'],
+            model=data.get('model', 'llama3-70b-8192'),
+            thread_id=thread_id,
+            new_thread=new_thread
         )
-        return jsonify(response=response)
-        
+
+        return jsonify({
+            "response": response,
+            "thread_id": new_thread_id,
+            "new_thread": new_thread
+        })
+
     except Exception as e:
         logger.error(f"Prompt processing error: {str(e)}")
         return jsonify(error="Internal server error"), 500

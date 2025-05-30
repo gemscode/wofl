@@ -7,10 +7,14 @@ interface AuthResponse {
 
 interface PromptResponse {
     response?: string;
+    thread_id?: string;
     error?: string;
+    new_thread?: boolean;
 }
 
 let isAuthenticated = false;
+let currentThreadId: string | null = null;
+let newThreadFlag = true;
 
 export function activate(context: vscode.ExtensionContext) {
     checkAuthenticationState(context);
@@ -25,7 +29,13 @@ export function activate(context: vscode.ExtensionContext) {
             vscode.commands.executeCommand('workbench.view.extension.rw-sidebar')),
         vscode.commands.registerCommand('rw-v1.optimize', () => handleCodeAction(context, 'optimize')),
         vscode.commands.registerCommand('rw-v1.explain', () => handleCodeAction(context, 'explain')),
-        vscode.commands.registerCommand('rw-v1.debug', () => handleCodeAction(context, 'debug'))
+        vscode.commands.registerCommand('rw-v1.debug', () => handleCodeAction(context, 'debug')),
+        vscode.commands.registerCommand('rw-v1.newThread', () => {
+            currentThreadId = null;
+            newThreadFlag = true;
+            mainProvider.updateView();
+            vscode.window.showInformationMessage('New thread started');
+        })
     );
 }
 
@@ -37,7 +47,9 @@ async function checkAuthenticationState(context: vscode.ExtensionContext) {
 
 async function handleCodeAction(context: vscode.ExtensionContext, action: string) {
     const editor = vscode.window.activeTextEditor;
-    if (!editor) return;
+    if (!editor) {
+        return;
+    }
 
     const selection = editor.selection;
     const text = editor.document.getText(selection);
@@ -75,8 +87,10 @@ class MainProvider implements vscode.WebviewViewProvider {
         );
     }
 
-    private async updateView() {
-        if (!this.webviewView) return;
+    public async updateView() {
+        if (!this.webviewView) {
+            return;
+        }
 
         const token = await this.context.secrets.get('rw-jwt');
         if (token) {
@@ -101,15 +115,23 @@ class MainProvider implements vscode.WebviewViewProvider {
             case 'copy-code':
                 await this.handleCopyCode(message.code);
                 break;
+            case 'new-thread':
+                currentThreadId = null;
+                newThreadFlag = true;
+                this.webviewView?.webview.postMessage({ type: 'thread-reset' });
+                break;
         }
     }
 
     private async handleAuth(action: string, email: string, password: string) {
         try {
-            const endpoint = action === 'login' ? '/login' : '/register';
-            const response = await fetch(`http://localhost:5001${endpoint}`, {
+            const endpoint = action === 'login' ? '/rw/login' : '/rw/register';
+            const response = await fetch(`https://wolfx0.com${endpoint}`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Origin': 'vscode-webview://' 
+                },
                 body: JSON.stringify({ email, password })
             });
 
@@ -146,23 +168,31 @@ class MainProvider implements vscode.WebviewViewProvider {
         }
 
         this.webviewView?.webview.postMessage({ type: 'prompt-start' });
-
         try {
-            const response = await fetch('http://localhost:5001/api/prompt', {
+            const response = await fetch('https://wolfx0.com/rw/prompt', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`,
+                    'Origin': 'vscode-webview://'
                 },
-                body: JSON.stringify({ prompt })
+                body: JSON.stringify({
+                    prompt,
+                    thread_id: currentThreadId,
+                    new_thread: newThreadFlag
+                })
             });
 
             const data = await response.json() as PromptResponse;
 
             if (response.ok && data.response) {
+                currentThreadId = data.thread_id || null;
+                newThreadFlag = false;
                 this.webviewView?.webview.postMessage({
                     type: 'prompt-response',
-                    code: data.response
+                    code: data.response,
+                    threadId: data.thread_id,
+                    isNewThread: data.new_thread
                 });
             } else if (response.status === 401) {
                 await this.handleLogout();
@@ -183,6 +213,8 @@ class MainProvider implements vscode.WebviewViewProvider {
     private async handleLogout() {
         await this.context.secrets.delete('rw-jwt');
         isAuthenticated = false;
+        currentThreadId = null;
+        newThreadFlag = true;
         vscode.commands.executeCommand('setContext', 'rw.authenticated', false);
         this.updateView();
         vscode.window.showInformationMessage('Session expired. Please login again.');
@@ -286,7 +318,6 @@ class MainProvider implements vscode.WebviewViewProvider {
                         : 'Already have an account? Login';
                     document.getElementById('error').textContent = '';
                 }
-
                 function handleAuth() {
                     const email = document.getElementById('email').value;
                     const password = document.getElementById('password').value;
@@ -435,6 +466,18 @@ class MainProvider implements vscode.WebviewViewProvider {
                     cursor: pointer;
                     font-size: 11px;
                 }
+                .thread-controls {
+                    display: flex;
+                    gap: 8px;
+                    margin-bottom: 16px;
+                }
+                .new-thread-btn {
+                    background: var(--vscode-button-secondaryBackground);
+                    color: var(--vscode-button-secondaryForeground);
+                    padding: 6px 12px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
             </style>
         </head>
         <body>
@@ -442,13 +485,13 @@ class MainProvider implements vscode.WebviewViewProvider {
                 <span>🤖 AI Assistant</span>
                 <button class="logout-btn" onclick="logout()">Logout</button>
             </div>
-            
+            <div class="thread-controls">
+                <button class="new-thread-btn" onclick="startNewThread()">🧵 New Thread</button>
+            </div>
             <div id="monaco-container"></div>
-            
             <div class="button-bar">
                 <button class="copy-btn" onclick="copyCode()">📋 Copy</button>
             </div>
-            
             <div class="input-container">
                 <div class="quick-actions">
                     <button class="quick-action" onclick="setPrompt('Optimize this code')">🚀 Optimize</button>
@@ -456,7 +499,6 @@ class MainProvider implements vscode.WebviewViewProvider {
                     <button class="quick-action" onclick="setPrompt('Debug this code')">🐛 Debug</button>
                     <button class="quick-action" onclick="setPrompt('Add comments')">📝 Comment</button>
                 </div>
-                
                 <div class="input-row">
                     <input
                         id="promptInput"
@@ -469,7 +511,6 @@ class MainProvider implements vscode.WebviewViewProvider {
                     <button id="sendBtn" class="send-btn" onclick="sendPrompt()">Submit</button>
                 </div>
             </div>
-
             <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
             <script>
                 const vscode = acquireVsCodeApi();
@@ -535,6 +576,11 @@ class MainProvider implements vscode.WebviewViewProvider {
                     vscode.postMessage({ command: 'logout' });
                 }
 
+                function startNewThread() {
+                    vscode.postMessage({ command: 'new-thread' });
+                    if (monacoEditor) monacoEditor.setValue('# New thread started...');
+                }
+
                 window.addEventListener('message', event => {
                     const message = event.data;
                     switch (message.type) {
@@ -551,6 +597,9 @@ class MainProvider implements vscode.WebviewViewProvider {
                         case 'prompt-error':
                             if (monacoEditor) monacoEditor.setValue('❌ Error: ' + message.error);
                             finishProcessing();
+                            break;
+                        case 'thread-reset':
+                            if (monacoEditor) monacoEditor.setValue('# New thread started...');
                             break;
                     }
                 });
@@ -569,3 +618,4 @@ class MainProvider implements vscode.WebviewViewProvider {
 }
 
 export function deactivate() {}
+
