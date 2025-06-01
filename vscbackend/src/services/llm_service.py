@@ -31,7 +31,7 @@ class GroqService(LLMProvider):
             )
             response = completion.choices[0].message.content.strip()
 
-            print(response)
+            #print(response)
             # Fallback: If the response is empty or not Python code, return the fallback message
             if not response or not any(keyword in response for keyword in ['def ', 'import ', 'print(', 'class ']):
                 return "# I do not understand the request please provide information to generate python code"

@@ -9,7 +9,7 @@
   },
   "categories": ["Other"],
   "activationEvents": [
-    "onView:rw-main"
+    "*"
   ],
   "main": "./dist/extension.js",
   "contributes": {
