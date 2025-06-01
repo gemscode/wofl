@@ -1,6 +1,5 @@
 # services/llm_middleware.py
 from abc import ABC, abstractmethod
-from groq import Groq
 import os
 import uuid
 import logging
@@ -8,13 +7,20 @@ from elasticsearch import Elasticsearch, BadRequestError
 from datetime import datetime
 from langchain.memory import ConversationBufferMemory
 from langchain_community.chat_message_histories import ElasticsearchChatMessageHistory
+from langchain_anthropic import ChatAnthropic
+from langchain_core.prompts import ChatPromptTemplate
 
 # Configure logging
 logger = logging.getLogger(__name__)
 
 class LLMMiddleware:
     def __init__(self):
-        self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+        self.client = ChatAnthropic(
+            model="claude-3-5-sonnet-20240620",
+            temperature=0.0,
+            max_tokens=4000,
+            anthropic_api_key=os.getenv("ANTHROPIC_API_KEY")
+        )
         self.es = Elasticsearch(os.getenv("ELASTICSEARCH_URL"))
         self.index_name = "chat_history"
         self._initialize_elasticsearch()
@@ -54,7 +60,7 @@ class LLMMiddleware:
             logger.error(f"Message history error: {str(e)}")
             raise
 
-    def generate_response(self, prompt: str, model: str = "llama3-70b-8192", **kwargs) -> tuple:
+    def generate_response(self, prompt: str, model: str = "claude-3-5-sonnet-20240620", **kwargs) -> tuple:
         try:
             # Thread management
             thread_id = kwargs.get("thread_id")
@@ -82,7 +88,7 @@ class LLMMiddleware:
             augmented_prompt = f"Context:\n{context}\n\nNew Query: {prompt}" if context else prompt
             
             # Generate response
-            response = self._call_groq(augmented_prompt, model)
+            response = self._call_anthropic(augmented_prompt)
             
             # Store interaction
             message_history.add_user_message(prompt)
@@ -94,34 +100,31 @@ class LLMMiddleware:
             logger.error(f"Request failed: {str(e)}", exc_info=True)
             return "# Error processing request", "error"
 
-    def _call_groq(self, prompt: str, model: str) -> str:
-        """Execute Groq API call with strict code-only output"""
+    def _call_anthropic(self, prompt: str) -> str:
+        """Execute Anthropic API call with strict code-only output"""
         try:
-            completion = self.client.chat.completions.create(
-                messages=[{
-                    "role": "system",
-                    "content": (
-                        "You are a Python code generator. Return ONLY valid Python code.\n"
-                        "DO NOT include:\n"
-                        "- Markdown formatting (no ``````)\n"
-                        "- Comments or explanations\n"
-                        "- Example usage\n"
-                        "If unclear, return exactly:\n"
-                        "# I do not understand the request please provide information to generate python code"
-                    )
-                }, {
-                    "role": "user",
-                    "content": prompt
-                }],
-                model=model,
-                temperature=0.0  # Fully deterministic
-            )
-            response = completion.choices[0].message.content.strip()
+            prompt_template = ChatPromptTemplate.from_messages([
+                ("system", """
+                You are a Python code generator. Return ONLY valid Python code.
+                DO NOT include:
+                - Markdown formatting (no ``````)
+                - Comments or explanations
+                - Example usage
+                If unclear, return exactly:
+                # I do not understand the request please provide information to generate python code
+                """),
+                ("human", "{input}")
+            ])
+            
+            chain = prompt_template | self.client
+            result = chain.invoke({"input": prompt})
+            
+            response = result.content.strip()
             
             # Remove any accidental markdown
             response = response.replace('``````', '').strip()
             return response
         except Exception as e:
-            logger.error(f"Groq API failure: {str(e)}")
+            logger.error(f"Anthropic API failure: {str(e)}")
             return "# Error generating response"
 

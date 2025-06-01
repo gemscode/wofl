@@ -7,6 +7,11 @@ from werkzeug.serving import run_simple
 import os
 import logging
 from services.llm_middleware import LLMMiddleware
+from services.llm_middleware_v2 import LLMMiddlewareV2
+
+middleware_v2 = LLMMiddlewareV2()
+middleware = LLMMiddleware()
+
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -103,13 +108,27 @@ def handle_prompt():
         new_thread = data.get('new_thread', False)  
 
         # Process request with middleware
-        middleware = LLMMiddleware()
+        #middleware = LLMMiddleware()
         response, new_thread_id = middleware.generate_response(
             prompt=data['prompt'],
             model=data.get('model', 'llama3-70b-8192'),
             thread_id=thread_id,
             new_thread=new_thread
         )
+
+        # Get thread/session parameters
+        #session_id = data.get('thread_id')  # Rename to match middleware
+        #new_thread = data.get('new_thread', False)
+
+        # Reset session if new_thread requested
+        #if new_thread:
+        #    session_id = None
+
+        # Process with middleware (single instance)
+        #response, new_thread_id = middleware_v2.generate_response(
+        #    prompt=data['prompt'],
+        #    session_id=session_id
+        #)
 
         return jsonify({
             "response": response,

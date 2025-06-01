@@ -1,0 +1,191 @@
+body {
+    padding: 20px;
+    background: var(--vscode-editor-background);
+    color: var(--vscode-editor-foreground);
+    font-family: var(--vscode-font-family);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Login Styles */
+.login-container {
+    max-width: 300px;
+    margin: auto;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    background: var(--vscode-input-background);
+    color: var(--vscode-input-foreground);
+    border: 1px solid var(--vscode-input-border);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: var(--vscode-button-background);
+    color: var(--vscode-button-foreground);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background: var(--vscode-button-hoverBackground);
+}
+
+.toggle-mode {
+    margin-top: 15px;
+    text-align: center;
+    color: var(--vscode-textLink-foreground);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.error {
+    color: var(--vscode-errorForeground);
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Chat Styles */
+.header {
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--vscode-panel-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--vscode-sideBar-background);
+}
+
+.header-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.file-dropdown {
+    background: var(--vscode-dropdown-background);
+    color: var(--vscode-dropdown-foreground);
+    border: 1px solid var(--vscode-dropdown-border);
+    border-radius: 4px;
+    padding: 5px 10px;
+    width: 200px;
+}
+
+.new-thread-btn {
+    background: var(--vscode-button-secondaryBackground);
+    color: var(--vscode-button-secondaryForeground);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    width: auto;
+}
+
+.logout-btn {
+    background: var(--vscode-button-secondaryBackground);
+    color: var(--vscode-button-secondaryForeground);
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    width: auto;
+}
+
+#monaco-container {
+    flex: 1;
+    min-height: 200px;
+}
+
+.button-bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: var(--vscode-editor-background);
+    padding: 8px 15px;
+    border-bottom: 1px solid var(--vscode-panel-border);
+}
+
+.copy-btn {
+    background: var(--vscode-button-background);
+    color: var(--vscode-button-foreground);
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-weight: 500;
+    width: auto;
+}
+
+.input-container {
+    padding: 15px;
+    background: var(--vscode-sideBar-background);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.prompt-input {
+    background: var(--vscode-input-background);
+    color: var(--vscode-input-foreground);
+    border: 1px solid var(--vscode-input-border);
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    box-sizing: border-box;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.send-btn {
+    background: var(--vscode-button-background);
+    color: var(--vscode-button-foreground);
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 14px;
+    width: auto;
+}
+
+.quick-actions {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.quick-action {
+    background: var(--vscode-button-secondaryBackground);
+    color: var(--vscode-button-secondaryForeground);
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 11px;
+    width: auto;
+}
+
