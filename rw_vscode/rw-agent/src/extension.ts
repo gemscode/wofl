@@ -116,7 +116,9 @@ class MainProvider implements vscode.WebviewViewProvider {
 
     private async getProjectFiles(): Promise<ProjectFile[]> {
         const workspaceFolders = vscode.workspace.workspaceFolders;
-        if (!workspaceFolders) return [];
+        if (!workspaceFolders) {
+            return [];
+        }
         
         const files: ProjectFile[] = [];
         
@@ -210,7 +212,7 @@ class MainProvider implements vscode.WebviewViewProvider {
     private async handleAuth(action: string, email: string, password: string) {
         try {
             const endpoint = action === 'login' ? '/rw/login' : '/rw/register';
-            const response = await fetch(`https://wolfx0.com${endpoint}`, {
+            const response = await fetch(`https://www.wolfx0.com${endpoint}`, {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
