@@ -1,0 +1,29 @@
+{
+  "project_id": "12dd4e38-2189-4dca-b95d-04be91fcebfb",
+  "name": "R&W AI Companion",
+  "version": "1.0.0",
+  "agents": [
+    "agent_core",
+    "agent_security",
+    "agent_storage",
+    "agent_ai",
+    "agent_deployment",
+    "agent_docker",
+    "agent_kafka",
+    "agent_kubernetes",
+    "agent_redis",
+    "agent_ui"
+  ],
+  "storage": {
+    "cassandra": { "enabled": true },
+    "elasticsearch": { "enabled": true }
+  },
+  "vscode": {
+    "extensions": [
+      "ms-python.python",
+      "ms-rwagent",
+      "ms-agent.python"
+    ]
+  }
+}
+

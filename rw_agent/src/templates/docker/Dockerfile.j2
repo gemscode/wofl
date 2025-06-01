@@ -1,0 +1,26 @@
+# Auto-generated Dockerfile for {{ project_id }}
+FROM python:{{ python_version }}-slim
+
+WORKDIR /app
+
+# Install base dependencies
+RUN pip install --no-cache-dir \
+    cassandra-driver \
+    gitpython \
+    jinja2 \
+    crewai
+
+{% if 'agent_kafka' in agents %}
+# Kafka dependencies
+RUN pip install confluent-kafka
+{% endif %}
+
+{% if 'agent_redis' in agents %}
+# Redis dependencies
+RUN pip install redis
+{% endif %}
+
+# Copy project files
+COPY . .
+
+CMD ["python", "main.py"]

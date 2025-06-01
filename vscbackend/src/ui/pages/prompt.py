@@ -1,66 +1,69 @@
+# pages/prompt.py
 import streamlit as st
 from st_cookies_manager import EncryptedCookieManager
 import requests
 import os
+import jwt
+from datetime import datetime
 
-# Initialize cookies
 cookies = EncryptedCookieManager(
-    password=os.environ.get("COOKIE_PASSWORD", "default-secret-key"),  # Static secret from .env
-    prefix="rw_auth/"
+    password=os.environ.get("COOKIE_PASSWORD", "default-secret-key"),
+    prefix="rw_auth/",
 )
 
 if not cookies.ready():
     st.stop()
 
-BASE_URL = "http://localhost:5001"
-MODELS = {
-    "Llama3 70B": "llama3-70b-8192",
-    "Llama3 8B": "llama3-8b-8192",
-    "Mixtral": "mixtral-8x7b-32768"
-}
+BASE_URL = "https://wolfx0.com/rw"  # Production API
+
+def is_token_valid(token: str) -> bool:
+    try:
+        payload = jwt.decode(token, options={"verify_signature": False})
+        exp = payload.get('exp')
+        return exp and datetime.utcnow() < datetime.fromtimestamp(exp)
+    except jwt.PyJWTError:
+        return False
 
 def main():
-    # Redirect to login if not authenticated
-    if not cookies.get('token'):
+    st.title("R&W Prompt Interface")
+    
+    # Authentication check
+    token = cookies.get('token')
+    if not token or not is_token_valid(token):
+        st.error("Session Expired - Please Reauthenticate")
+        cookies['token'] = ""
+        cookies.save()
         st.switch_page("pages/login.py")
+        return
 
-    st.title("R&W Prompt Tester")
-    
-    # Logout button at top-right
-    col1, col2 = st.columns([4, 1])
-    with col2:
-        if st.button("Logout", type="primary"):
-            cookies['token'] = ""
-            cookies.save()
-            st.switch_page("login.py")
+    # Logout control
+    if st.button("🚪 Logout", type="primary"):
+        cookies['token'] = ""
+        cookies.save()
+        st.rerun()
 
-    # Prompt interface
-    model = st.selectbox("Select Model", options=list(MODELS.keys()))
-    prompt = st.text_area("Enter your prompt:", height=150)
-    
-    if st.button("Submit"):
-        headers = {"Authorization": f"Bearer {cookies.get('token')}"}
-        payload = {
-            "prompt": prompt,
-            "model": MODELS[model]
-        }
-        
+    # API interaction
+    prompt = st.text_area("Enter Your Prompt:", height=150)
+    if st.button("🚀 Submit"):
         try:
             response = requests.post(
-                f"{BASE_URL}/api/prompt",
-                json=payload,
-                headers=headers,
+                f"{BASE_URL}/prompt",
+                json={"prompt": prompt},
+                headers={
+                    "Content-Type": "application/json",
+                    "Authorization": f"Bearer {token}"
+                },
                 timeout=30
             )
             
             if response.status_code == 200:
-                st.subheader("Response:")
+                st.write("### Response")
                 st.write(response.json()['response'])
             else:
-                st.error(f"Error {response.status_code}: {response.text}")
+                st.error(f"API Error: {response.status_code}")
                 
         except requests.exceptions.RequestException as e:
-            st.error(f"Connection error: {str(e)}")
+            st.error(f"Connection Error: {str(e)}")
 
 if __name__ == '__main__':
     main()

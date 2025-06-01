@@ -1,18 +1,19 @@
+# auth_flow.py
 import streamlit as st
 from st_cookies_manager import EncryptedCookieManager
 import requests
 import os
 
-# Initialize cookies
+# Initialize encrypted cookies
 cookies = EncryptedCookieManager(
     password=os.environ.get("COOKIE_PASSWORD", "default-secret-key"),
-    prefix="rw_auth/"
+    prefix="rw_auth/",
 )
 
 if not cookies.ready():
     st.stop()
 
-BASE_URL = "http://localhost:5001"
+BASE_URL = "https://wolfx0.com/rw"  # Production API endpoint
 
 def auth_form(is_login=False):
     with st.form(key='auth_form'):
@@ -22,46 +23,41 @@ def auth_form(is_login=False):
         return {"email": email, "password": password} if submitted else None
 
 def main():
-    st.title("R&W Auth Demo")
+    st.title("R&W Authentication Gateway")
     
     # Check existing session
     if cookies.get('token'):
-        st.success("✅ Logged in")
+        st.success("✅ Authenticated Session Detected")
         if st.button("Logout"):
             cookies['token'] = ""
             cookies.save()
             st.rerun()
+        st.switch_page("pages/prompt.py")
         return
 
-    # Auth flow
+    # Auth workflow
     auth_type = st.radio("Action:", ["Register", "Login"], horizontal=True)
     data = auth_form(is_login=(auth_type == "Login"))
     
     if data:
         endpoint = "/login" if auth_type == "Login" else "/register"
-        
         try:
             response = requests.post(
                 f"{BASE_URL}{endpoint}",
                 json=data,
+                headers={"Content-Type": "application/json"},
                 timeout=5
             )
             
-            # Debugging output
-            st.write(f"**Debug Info**  \nStatus Code: {response.status_code}  \nResponse: {response.text}")
-            
             if response.status_code in [200, 201]:
                 cookies['token'] = response.json().get('token')
+                cookies.save()
                 st.rerun()
             else:
-                try:
-                    error_msg = response.json().get('error', 'Unknown error')
-                except requests.exceptions.JSONDecodeError:
-                    error_msg = f"Non-JSON response: {response.text[:200]}..."
-                st.error(f"**Error:** {error_msg}")
+                st.error(f"Authentication Failed: {response.text}")
                 
         except requests.exceptions.RequestException as e:
-            st.error(f"**Connection Error:** {str(e)}")
+            st.error(f"Connection Error: {str(e)}")
 
 if __name__ == '__main__':
     main()
