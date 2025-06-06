@@ -92,7 +92,7 @@ protobuf==3.20.3
 pyarrow==20.0.0
 pyarrow-hotfix==0.7
 pycparser==2.22
-pydantic==2.11.5
+pydantic>=2.5.0,<3.0.0
 pydantic-settings==2.9.1
 pydantic_core==2.33.2
 pydeck==0.9.1
@@ -110,7 +110,6 @@ requests==2.32.3
 requests-toolbelt==1.0.0
 rich==14.0.0
 rpds-py==0.25.1
--e git+ssh://git@github.com/gemscode/wofl.git@96244aac201e470143e418d22c60bc17279c71e1#egg=rwagent&subdirectory=rw_agent
 semver==3.0.4
 six==1.17.0
 smmap==5.0.2
