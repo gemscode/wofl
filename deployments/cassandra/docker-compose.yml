@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  cassandra:
+    image: cassandra:4.0
+    container_name: wolfx0-cassandra
+    ports:
+      - "${CASSANDRA_PORT:-9042}:9042"
+    volumes:
+      - wolfx0_cassandra_data:/var/lib/cassandra
+      - ./create_tables.cql:/docker-entrypoint-initdb.d/create_tables.cql:ro
+    environment:
+      - CASSANDRA_CLUSTER_NAME=${CASSANDRA_CLUSTER_NAME:-rw_agent_cluster}
+      - CASSANDRA_START_RPC=true
+    networks:
+      - default
+
+volumes:
+  wolfx0_cassandra_data:
+

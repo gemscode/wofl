@@ -22,11 +22,13 @@ A comprehensive framework for building AI-driven enterprise applications through
 
 ```
 wofl/
-├── rw_agent/          # Core framework and CLI
-├── rw_vscode/         # VS Code extension
-├── vscbackend/        # Extension backend services
-├── requirements.txt   # Python dependencies
-└── init_rw_agent.sh   # Bootstrap script
+├── deployments/         # Service deployment configurations (Cassandra, Elasticsearch, etc.)
+├── framework/           # Framework initialization and virtual environment and CLI
+├── rw_agent/            # Core agent framework 
+├── rw_vscode/           # VS Code extension
+├── vscbackend/          # Extension backend services
+├── core_requirements.in # Python dependencies
+└── install.sh           # Main installation script
 ```
 
 ---
@@ -50,12 +52,9 @@ wofl/
     python3 -m venv ~/venvs/rwagent
     source ~/venvs/rwagent/bin/activate
 
-    # Install core requirements
-    pip install -r requirements.txt
+    # Install core requirements for framework and cli rwagent
+    ./install.sh (you might need to chmod +x ./install.sh) 
 
-    # Install framework in development mode
-    cd rw_agent
-    pip install -e .
     ```
 
 2. **Initialize Sample Project**

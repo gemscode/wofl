@@ -176,3 +176,7 @@ cython_debug/
 **/.env
 node_modules/
 .DS_Store
+core_env/
+rwagent.egg-infoi/
+rwagent.json
+
