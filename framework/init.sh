@@ -35,7 +35,9 @@ init_env() {
             fi
         done < "$ROOT_DIR/.env_sample"
     fi
-    export $(grep -v '^#' "$ROOT_DIR/.env" | xargs)
+    set -a
+    source "$ROOT_DIR/.env"
+    set +a
 }
 
 # -------------------------------
