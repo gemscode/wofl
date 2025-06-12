@@ -8,6 +8,7 @@ from datetime import datetime
 from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
 from cassandra.policies import DCAwareRoundRobinPolicy
+from cassandra.io.libevreactor import LibevConnection 
 from elasticsearch import Elasticsearch
 from pathlib import Path
 from dotenv import load_dotenv
@@ -47,7 +48,8 @@ class FirstRunRegistrar:
                 port=int(os.getenv("CASSANDRA_PORT", "9042")),
                 auth_provider=auth_provider,
                 load_balancing_policy=DCAwareRoundRobinPolicy(),
-                protocol_version=4
+                protocol_version=4,
+                connection_class=LibevConnection 
             )
 
             keyspace = os.getenv("CASSANDRA_KEYSPACE", "rw_agent")

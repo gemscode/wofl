@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/bin/zsh
 set -eo pipefail
 
 # -------------------------------
 # Find project root
 # -------------------------------
 find_root() {
-    if command -v git &>/dev/null && git rev-parse --show-toplevel &>/dev/null; then
+    if command -v git >/dev/null && git rev-parse --show-toplevel >/dev/null; then
         git rev-parse --show-toplevel
     else
         cd "$(dirname "$0")/.." && pwd
@@ -29,43 +29,57 @@ init_env() {
         fi
     else
         while IFS= read -r line; do
-            if [[ "$line" =~ ^[A-Z_] && ! "$line" =~ ^# ]]; then
+            if [[ "$line" =~ ^[A-Z_]+=.* && "$line" != \#* ]]; then
                 var_name="${line%%=*}"
                 grep -q "^${var_name}=" "$ROOT_DIR/.env" || echo "$line" >> "$ROOT_DIR/.env"
             fi
         done < "$ROOT_DIR/.env_sample"
     fi
+
     set -a
     source "$ROOT_DIR/.env"
     set +a
 }
 
 # -------------------------------
-# Virtualenv setup (with activation)
+# Virtualenv setup
 # -------------------------------
 setup_core_venv() {
-    local req_in="$ROOT_DIR/core_requirements.in"
-    local req_txt="$ROOT_DIR/core_requirements.txt"
-    local checksum_file="$ROOT_DIR/.core_requirements.sha256"
+    local req_in="$ROOT_DIR/requirements.in"
+    local req_txt="$ROOT_DIR/requirements.txt"
+    local checksum_file="$ROOT_DIR/.requirements.sha256"
 
+    # Check if core_env exists, if not create it
     if [ ! -d "$ROOT_DIR/framework/core_env" ]; then
         echo "Creating core virtual environment (core_env)..."
         python3 -m venv "$ROOT_DIR/framework/core_env"
     fi
 
+    # Activate the virtual environment
     source "$ROOT_DIR/framework/core_env/bin/activate"
 
+    # Check if cassandra-driver is installed in the venv
+    if ! pip show cassandra-driver &>/dev/null; then
+        echo "🔄 cassandra-driver not found, running install_libev.sh..."
+        (cd "$ROOT_DIR" && ./install_libev.sh)
+    else
+        echo "✅ cassandra-driver already installed in core_env, skipping install_libev.sh."
+    fi
+
+    # Ensure pip-tools is installed
     if ! pip show pip-tools &>/dev/null; then
         pip install pip-tools
     fi
 
+    # Check that the requirements input file exists
     if [ ! -f "$req_in" ]; then
         echo "❌ $req_in not found."
         exit 1
     fi
 
+    # Compute and compare checksums
     local current_checksum
-    current_checksum=$(sha256sum "$req_in" | awk '{print $1}')
+    current_checksum=$(shasum -a 256 "$req_in" | awk '{print $1}')
 
     local stored_checksum=""
     [ -f "$checksum_file" ] && stored_checksum=$(cat "$checksum_file")
@@ -86,7 +100,7 @@ setup_core_venv() {
 }
 
 # -------------------------------
-# Initialize each service
+# Initialize services
 # -------------------------------
 init_services() {
     for service in cassandra elasticsearch kafka redis k3s; do
@@ -100,7 +114,7 @@ init_services() {
 }
 
 # -------------------------------
-# Cassandra schema creation
+# Cassandra + Elasticsearch schema
 # -------------------------------
 init_schemas() {
     if [ -f "$ROOT_DIR/deployments/cassandra/create_tables.cql" ]; then
@@ -114,7 +128,7 @@ init_schemas() {
             sed -i.bak "s/^INSTALLED_CASSANDRA=.*/INSTALLED_CASSANDRA=true/" "$ROOT_DIR/.env"
             rm -f "$ROOT_DIR/.env.bak"
         else
-            echo "⚠️  Could not find Cassandra container to load schema."
+            echo "⚠️  Cassandra container not found."
         fi
     fi
 
@@ -140,23 +154,27 @@ init_schemas() {
 # -------------------------------
 register_framework() {
     echo "📦 Registering framework..."
-
     echo "🚀 Running register_agent.py..."
+
+    # Explicitly source venv and environment variables
+    source "$ROOT_DIR/framework/core_env/bin/activate"
+    export DYLD_FALLBACK_LIBRARY_PATH="$ROOT_DIR/lib/libev-install/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+    export C_INCLUDE_PATH="$ROOT_DIR/lib/libev-install/include:$C_INCLUDE_PATH"
+
     if ! python "$ROOT_DIR/framework/rw_agent/bin/register_agent.py"; then
         echo "❌ Failed to register framework agent"
         exit 1
     fi
-
     echo "✅ Framework agent registered successfully"
 }
 
+
 # -------------------------------
-# Install RW CLI globally (editable mode)
+# Install CLI in editable mode
 # -------------------------------
 install_cli() {
     echo "🛠 Checking rwagent CLI installation..."
-
-    if ! which rwagent &>/dev/null; then
+    if ! command -v rwagent &>/dev/null; then
         echo "📦 Installing rwagent CLI in editable mode..."
         pip install -e "$ROOT_DIR/framework"
         pip install questionary
@@ -164,35 +182,35 @@ install_cli() {
         echo "✅ rwagent CLI already available in PATH. Skipping reinstall."
     fi
 
-    echo "🔍 Verifying rwagent CLI availability..."
+    echo "🔍 Verifying rwagent CLI..."
     if ! command -v rwagent &>/dev/null; then
-        echo "❌ 'rwagent' not found in PATH. Try running 'source framework/core_env/bin/activate' manually."
+        echo "❌ 'rwagent' not in PATH. Try running 'source framework/core_env/bin/activate'."
     else
-        echo "✅ 'rwagent' is now available."
+        echo "✅ 'rwagent' CLI is available."
     fi
 }
 
 # -------------------------------
-# Ensure metadata exists
+# Ensure metadata file exists
 # -------------------------------
 ensure_metadata_json() {
     echo "📁 Ensuring rwagent.json exists in framework..."
     local FRAMEWORK_JSON="$ROOT_DIR/framework/rwagent.json"
 
     if [ ! -f "$FRAMEWORK_JSON" ]; then
-        echo "🔧 rwagent.json not found. Generating from Cassandra metadata..."
+        echo "🔧 rwagent.json not found. Generating..."
         if ! python "$ROOT_DIR/framework/utils/create_metadata.py"; then
             echo "❌ Failed to generate rwagent.json"
             exit 1
         fi
-        echo "✅ Created rwagent.json at $FRAMEWORK_JSON"
+        echo "✅ Created rwagent.json"
     else
         echo "✅ rwagent.json already exists."
     fi
 }
 
 # -------------------------------
-# Entry point
+# Entry Point
 # -------------------------------
 main() {
     init_env
@@ -204,14 +222,14 @@ main() {
     ensure_metadata_json
 
     echo "✅ Framework initialization complete"
-    echo "➡️  You can now use the CLI to manage the framework (inside core_env):"
-    echo "   • rwagent init-project <dir>         # Create a new agent-based project"
-    echo "   • rwagent deploy-service <name>      # Deploy or update a service"
-    echo "   • rwagent config <key> <value>       # Update CLI configuration"
-    echo "   • rwagent integrity                  # Run integrity checks"
-    echo "   • rwagent list-agents                # Show all available agents"
-    echo "   • rwagent status <project_dir>       # Show status of a specific project"
-    echo "   • rwagent --help                     # View all available commands"
+    echo "➡️  You can now use the CLI:"
+    echo "   • rwagent init-project <dir>"
+    echo "   • rwagent deploy-service <name>"
+    echo "   • rwagent config <key> <value>"
+    echo "   • rwagent integrity"
+    echo "   • rwagent list-agents"
+    echo "   • rwagent status <project_dir>"
+    echo "   • rwagent --help"
 }
 
 main "$@"

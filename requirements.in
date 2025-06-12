@@ -1,0 +1,17 @@
+crewai
+dash
+dash-ace
+dash-ag-grid
+dash-bootstrap-components
+dash-core-components
+dash-html-components
+dash-monaco-editor
+dash-table
+diskcache
+docker
+elasticsearch<9.0.0 
+flask
+gitpython
+kafka-python
+dotenv
+
