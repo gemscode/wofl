@@ -386,5 +386,5 @@ def handle_logout(n_clicks):
     return dash.no_update
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8050)
+    app.run(debug=True, port=8050)
 
