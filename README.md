@@ -1,7 +1,4 @@
-```markdown
 # WolfX: R&W AI Companion Mac Executable
-
----
 
 ## Complete Setup & Build Steps
 
@@ -16,8 +13,6 @@
 7. Test the executable in a new directory
 8. Clean and rebuild (if needed)
 
----
-
 ## Step-by-Step Breakdown
 
 ### 1. Create and Activate a Clean Python 3.12 Virtual Environment
@@ -28,16 +23,12 @@ python3.12 -m venv core_env
 source core_env/bin/activate
 ```
 
----
-
 ### 2. Install Required Build Tools
 
 ```
 pip install pip-tools
 pip install pyinstaller
 ```
-
----
 
 ### 3. Ensure PyInstaller is in Your PATH (if not using a virtualenv)
 
@@ -47,16 +38,12 @@ export PATH="$HOME/.local/bin:$PATH"
 ```
 Add it to your `~/.zshrc` for persistence.
 
----
-
 ### 4. Verify PyInstaller Installation
 
 ```
 pyinstaller --version
 # Should show a version number (e.g., 6.14.1)
 ```
-
----
 
 ### 5. Install All Python Dependencies
 
@@ -65,15 +52,11 @@ pip-compile requirements.in
 pip install -r requirements.txt
 ```
 
----
-
 ### 6. Build the WolfX Executable
 
 ```
 pyinstaller packaging.spec --clean
 ```
-
----
 
 ### 7. Test the Executable in a New Directory
 
@@ -86,8 +69,6 @@ chmod +x WolfX
 ./WolfX
 ```
 
----
-
 ### 8. Clean and Rebuild (if needed)
 
 ```
@@ -96,16 +77,11 @@ pyinstaller packaging.spec --clean
 cd dist && ./WolfX
 ```
 
----
-
 ## Usage Notes
 
 - The executable will create a `.env` file in your working directory if one does not exist.
 - All required Docker services (Cassandra, Elasticsearch, Kafka, Redis, k3s) will be initialized automatically.
 - You can upload the `WolfX` executable to a GitHub release for easy sharing.
-- For more details, see the [Releases](./releases) page.
-
----
 
 ## Troubleshooting
 
@@ -116,12 +92,8 @@ cd dist && ./WolfX
 - **Missing `core_env`:**  
   Ensure your virtual environment exists in the project root as `core_env`.
 
----
-
 ## License
 
 MIT License  
 Copyright (c) 2025 R&W WolfX
 
-See [LICENSE](./LICENSE) for more information.
-```
