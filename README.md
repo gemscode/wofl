@@ -1,152 +1,127 @@
-# R&amp;W AI Companion Framework
-
-**Enterprise-Grade AI-Driven Application Development Platform**
-
----
-
-## Overview
-
-[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-brightgreen)](https://github.com/gemscode/wofl.git)
-
-A comprehensive framework for building AI-driven enterprise applications through modular agents and integrated tooling:
-
-- **Core Agents:** Kafka, Redis, Kubernetes, Security, Storage (Cassandra/Elasticsearch), Docker
-- **AI Middleware:** LangChain + DSPy integration with reinforcement learning workflows
-- **VS Code Ecosystem:** Extension (`rw_vscode`) + backend services (`vscbackend`) for seamless development
-- **CLI Power:** Create/test/deploy full-stack applications with single commands
+```markdown
+# WolfX: R&W AI Companion Mac Executable
 
 ---
 
-## System Architecture
+## Complete Setup & Build Steps
+
+**Here is the full list of steps to set up your environment, build, and test WolfX:**
+
+1. Create and activate a clean Python 3.12 virtual environment
+2. Install required build tools (`pip-tools`, `pyinstaller`)
+3. Ensure PyInstaller is in your PATH (if not using a virtualenv)
+4. Verify PyInstaller installation
+5. Install all Python dependencies
+6. Build the WolfX executable
+7. Test the executable in a new directory
+8. Clean and rebuild (if needed)
+
+---
+
+## Step-by-Step Breakdown
+
+### 1. Create and Activate a Clean Python 3.12 Virtual Environment
 
 ```
-wofl/
-├── deployments/         # Service deployment configurations (Cassandra, Elasticsearch, etc.)
-├── framework/           # Framework initialization and virtual environment and CLI
-├── rw_agent/            # Core agent framework
-├── rw_vscode/           # VS Code extension
-├── vscbackend/          # Extension backend services
-├── core_requirements.in # Python dependencies
-└── install.sh           # Main installation script
+cd /path/to/your/project/root
+python3.12 -m venv core_env
+source core_env/bin/activate
 ```
 
 ---
 
-## Getting Started
+### 2. Install Required Build Tools
 
-### Requirements
-
-- Python 3.9+
-- Node.js 16+ (for VS Code extension)
-- Docker (recommended)
-
-### Installation
-
-1. **Clone repository and setup environment**
-    ```
-    git clone https://github.com/gemscode/wofl.git
-    cd wofl
-
-    # Create and activate virtual environment (outside project dir recommended)
-    python3 -m venv ~/venvs/rwagent
-    source ~/venvs/rwagent/bin/activate
-
-    # Install core requirements for framework and cli rwagent
-    ./install.sh  # (you might need to chmod +x ./install.sh)
-    ```
-
-2. **Initialize Sample Project**
-    ```
-    rwagent init-project --name my_enterprise_app
-    cd my_enterprise_app
-    ```
+```
+pip install pip-tools
+pip install pyinstaller
+```
 
 ---
 
-## Configuration
+### 3. Ensure PyInstaller is in Your PATH (if not using a virtualenv)
 
-### Essential `.env` Setup
-
-After project initialization, create a `.env` file in your project root:
-
+If you installed PyInstaller with `--user` (not in a venv), add this to your shell:
 ```
-# Required for core services
-CASSANDRA_HOST=localhost
-ELASTICSEARCH_URL=http://localhost:9200
-REDIS_URL=redis://localhost:6379
-
-# Optional (handled by VS Code extension if using integrated services)
-# CLAUDE_API_KEY=your_key_here
-# LLAMA_API_KEY=your_key_here
+export PATH="$HOME/.local/bin:$PATH"
 ```
-
-**Never commit `.env` to version control!**
+Add it to your `~/.zshrc` for persistence.
 
 ---
 
-## VS Code Integration
+### 4. Verify PyInstaller Installation
 
-1. **Install Extension**
-    ```
-    cd wofl/rw_vscode
-    npm install
-    npm run package
-    code --install-extension rw-vscode-0.1.0.vsix
-    ```
-
-2. **Key Features**
-    - AI-assisted code generation (no external API keys needed for core features)
-    - Real-time infrastructure monitoring
-    - One-click deployment pipelines
-    - Integrated agent debugging
+```
+pyinstaller --version
+# Should show a version number (e.g., 6.14.1)
+```
 
 ---
 
-## Core Workflows
-
-### CLI Operations
+### 5. Install All Python Dependencies
 
 ```
-# From project root
-rwagent check-integrity    # Validate project structure
-rwagent fix-integrity      # Repair configuration issues
-rwagent deploy-service     # Deploy to configured environment
+pip-compile requirements.in
+pip install -r requirements.txt
 ```
-
-### Extension Usage
-
-1. Open project in VS Code
-2. Use the Command Palette (`Ctrl+Shift+P`):
-    - `RW: New AI Feature`
-    - `RW: Validate Deployment`
-    - `RW: Monitor Agents`
 
 ---
 
-## Development Notes
+### 6. Build the WolfX Executable
 
-### Virtual Environments
+```
+pyinstaller packaging.spec --clean
+```
 
-- Keep venv **outside** project directory
-- Recreate using:
-    ```
-    python3 -m venv /path/to/venv
-    source /path/to/venv/bin/activate
-    pip install -r wofl/requirements.txt
-    ```
+---
 
-### Contributing
+### 7. Test the Executable in a New Directory
 
-1. Fork repository
-2. Branch structure:
-    - `rw_agent/`: Core framework changes
-    - `rw_vscode/`: VS Code extension updates
-    - `vscbackend/`: Extension backend services
-3. Submit PR with clear component labeling
+```
+# Copy the executable to a clean directory for testing
+cp dist/WolfX ~/test_wolfx/
+cd ~/test_wolfx
+
+chmod +x WolfX
+./WolfX
+```
+
+---
+
+### 8. Clean and Rebuild (if needed)
+
+```
+rm -rf build dist
+pyinstaller packaging.spec --clean
+cd dist && ./WolfX
+```
+
+---
+
+## Usage Notes
+
+- The executable will create a `.env` file in your working directory if one does not exist.
+- All required Docker services (Cassandra, Elasticsearch, Kafka, Redis, k3s) will be initialized automatically.
+- You can upload the `WolfX` executable to a GitHub release for easy sharing.
+- For more details, see the [Releases](./releases) page.
+
+---
+
+## Troubleshooting
+
+- **PyInstaller not found:**  
+  Make sure you installed it in the right environment and your `PATH` includes the correct `bin` directory.
+- **NumPy/Elasticsearch errors:**  
+  Pin `numpy<2.0` in your requirements if you see compatibility issues.
+- **Missing `core_env`:**  
+  Ensure your virtual environment exists in the project root as `core_env`.
 
 ---
 
 ## License
 
-Apache 2.0 - See [LICENSE](LICENSE)
+MIT License  
+Copyright (c) 2025 R&W WolfX
+
+See [LICENSE](./LICENSE) for more information.
 ```

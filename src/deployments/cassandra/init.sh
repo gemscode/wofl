@@ -4,22 +4,30 @@ set -eo pipefail
 # --------------------------------------------
 # Configuration
 # --------------------------------------------
+if [ -n "$MEIPASS" ]; then
+    ROOT_DIR="$MEIPASS"  # PyInstaller packaged mode
+else 
+    ROOT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"  # Development mode
+fi
+
 PORT_RANGE_START=9042
 PORT_RANGE_END=9100
 CASSANDRA_CONTAINER="wolfx0-cassandra"
 VOLUME_NAME="cassandra_data"
-ROOT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
 ENV_FILE="$ROOT_DIR/.env"
-COMPOSE_FILE="$(dirname "$0")/docker-compose.yml"
-CQL_FILE="$(dirname "$0")/create_tables.cql"
+COMPOSE_FILE="$ROOT_DIR/src/deployments/cassandra/docker-compose.yml"
+CQL_FILE="$ROOT_DIR/src/deployments/cassandra/create_tables.cql"
 
 # --------------------------------------------
-# Load .env or initialize it
+# Load environment
 # --------------------------------------------
 load_env() {
-    [ -f "$ENV_FILE" ] || cp "$ROOT_DIR/.env_sample" "$ENV_FILE"
+    if [ ! -f "$ENV_FILE" ]; then
+        echo "📄 Creating .env from packaged template..."
+        cp "$ROOT_DIR/.env_sample" "$ENV_FILE"
+    fi
     source "$ENV_FILE"
-
+    
     : ${CASSANDRA_HOST:=localhost}
     : ${CASSANDRA_PORT:=9042}
     : ${INSTALLED_CASSANDRA:=false}
@@ -27,7 +35,7 @@ load_env() {
 }
 
 # --------------------------------------------
-# Find available port in range
+# Find available port
 # --------------------------------------------
 find_available_port() {
     local base_port=$1
@@ -43,7 +51,7 @@ find_available_port() {
 }
 
 # --------------------------------------------
-# Update .env and docker-compose.yml
+# Update configurations
 # --------------------------------------------
 update_configs() {
     local new_port=$1
@@ -60,7 +68,7 @@ update_configs() {
 }
 
 # --------------------------------------------
-# Start Cassandra container
+# Start container
 # --------------------------------------------
 start_container() {
     echo "Removing old Cassandra container (if any)..."
@@ -72,7 +80,7 @@ start_container() {
 }
 
 # --------------------------------------------
-# Wait for Cassandra readiness
+# Wait for Cassandra
 # --------------------------------------------
 wait_for_cassandra() {
     echo "Waiting for Cassandra to initialize..."
@@ -84,22 +92,31 @@ wait_for_cassandra() {
         sleep $delay
         ((attempts++))
         if [ $attempts -ge $max_attempts ]; then
-            echo "❌ Cassandra did not initialize in time"
+            echo "❌ Cassandra initialization timeout"
             docker logs "$CASSANDRA_CONTAINER"
             exit 1
         fi
     done
-    echo "✅ Cassandra is ready."
+    echo "✅ Cassandra ready"
 }
 
 # --------------------------------------------
-# Main
+# Apply schema
+# --------------------------------------------
+apply_schema() {
+    echo "Applying Cassandra schema..."
+    docker cp "$CQL_FILE" "$CASSANDRA_CONTAINER:/create_tables.cql"
+    docker exec "$CASSANDRA_CONTAINER" cqlsh -f /create_tables.cql || true
+}
+
+# --------------------------------------------
+# Main execution
 # --------------------------------------------
 main() {
     load_env
 
     if [ "$INSTALLED_CASSANDRA" = "true" ]; then
-        echo "✅ Cassandra already installed on port $CASSANDRA_PORT"
+        echo "✅ Cassandra already installed"
         return
     fi
 
@@ -112,13 +129,13 @@ main() {
 
     start_container
     wait_for_cassandra
+    apply_schema
 
-    # Mark installation complete
     sed -i.bak "s/^INSTALLED_CASSANDRA=.*/INSTALLED_CASSANDRA=true/" "$ENV_FILE"
     rm -f "$ENV_FILE.bak"
 
-    echo "✅ Success! Cassandra running on port $CASSANDRA_PORT"
+    echo "✅ Cassandra operational on port $CASSANDRA_PORT"
 }
 
-main
+main "$@"
 

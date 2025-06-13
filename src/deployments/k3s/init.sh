@@ -2,39 +2,37 @@
 set -eo pipefail
 
 # --------------------------------------------------
-# Configuration
+# Configuration (packaging-compatible paths)
 # --------------------------------------------------
+if [ -n "$MEIPASS" ]; then
+    # Packaged mode (PyInstaller)
+    ROOT_DIR="$MEIPASS"
+else 
+    # Development mode
+    ROOT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
+fi
+
 K3S_CONTAINER="k3s-server"
 K3S_NETWORK="k3s-net"
 K3S_VOLUME="k3s-data"
 K3S_IMAGE="rancher/k3s:v1.29.5-k3s1"
-
-# Find project root
-find_root() {
-    local dir="$(cd "$(dirname "$0")/../.." && pwd)"
-    while [ ! -f "$dir/.env" ] && [ "$dir" != "/" ]; do
-        dir="$(dirname "$dir")"
-    done
-    echo "$dir"
-}
-
-ROOT_DIR="$(find_root)"
-ENV_FILE="$ROOT_DIR/.env"
-KUBECONFIG_PATH="$ROOT_DIR/k3s.yaml"
-MAX_WAIT=300  # 5 minutes timeout
+ENV_FILE="$(pwd)/.env"
+KUBECONFIG_PATH="$(pwd)/k3s.yaml"
+MAX_WAIT=300
 DEFAULT_PORT=6443
 
 # --------------------------------------------------
 # Environment Setup
 # --------------------------------------------------
 load_env() {
-    # Create .env if missing
+    # Create .env in current directory if missing
     if [ ! -f "$ENV_FILE" ]; then
-        echo "Creating .env from sample..."
+        echo "📄 Creating .env from packaged template..."
         cp "$ROOT_DIR/.env_sample" "$ENV_FILE"
     fi
 
-    # Set defaults
+    # Source and set defaults
+    source "$ENV_FILE"
     export K3S_HOST=${K3S_HOST:-$(detect_ip)}
     export K3S_PORT=${K3S_PORT:-$DEFAULT_PORT}
     export KUBECONFIG=${KUBECONFIG:-$KUBECONFIG_PATH}
@@ -80,14 +78,14 @@ update_port_config() {
 # --------------------------------------------------
 create_network() {
     if ! docker network inspect "$K3S_NETWORK" &>/dev/null; then
-        echo "Creating Docker network: $K3S_NETWORK"
+        echo "🐳 Creating Docker network: $K3S_NETWORK"
         docker network create "$K3S_NETWORK"
     fi
 }
 
 create_volume() {
     if ! docker volume inspect "$K3S_VOLUME" &>/dev/null; then
-        echo "Creating Docker volume: $K3S_VOLUME"
+        echo "💾 Creating Docker volume: $K3S_VOLUME"
         docker volume create "$K3S_VOLUME"
     fi
 }
@@ -96,35 +94,35 @@ create_volume() {
 # Cluster Management
 # --------------------------------------------------
 manage_cluster() {
-    # Check port conflict
+    # Handle port conflicts
     if nc -z "$K3S_HOST" "$K3S_PORT"; then
-        echo "Port $K3S_PORT in use, finding alternative..."
+        echo "🚨 Port $K3S_PORT in use, finding alternative..."
         NEW_PORT=$(find_available_port $K3S_PORT)
         update_port_config "$NEW_PORT"
         export K3S_PORT=$NEW_PORT
     fi
 
-    # Remove old cluster if IP changed
+    # Clean stale configuration
     if [ -f "$KUBECONFIG_PATH" ]; then
         local current_ip=$(grep 'server:' "$KUBECONFIG_PATH" | awk -F'//' '{print $2}' | cut -d: -f1)
         if [ "$current_ip" != "$K3S_HOST" ]; then
-            echo "IP changed from $current_ip to $K3S_HOST - recreating cluster..."
+            echo "🔄 IP changed from $current_ip to $K3S_HOST - resetting cluster..."
             docker rm -f "$K3S_CONTAINER" 2>/dev/null || true
             docker volume rm "$K3S_VOLUME" 2>/dev/null || true
             rm -f "$KUBECONFIG_PATH"
         fi
     fi
 
-    # Start/recreate container
+    # Manage container state
     if docker ps -a --format '{{.Names}}' | grep -q "^${K3S_CONTAINER}$"; then
         if [ "$(docker inspect -f '{{.State.Running}}' "$K3S_CONTAINER")" = "false" ]; then
-            echo "Starting existing k3s server..."
+            echo "🚀 Starting existing k3s server..."
             docker start "$K3S_CONTAINER"
         else
-            echo "k3s server already running"
+            echo "✅ k3s server already running"
         fi
     else
-        echo "Creating new k3s server..."
+        echo "🌟 Creating new k3s server..."
         docker run -d \
             --name "$K3S_CONTAINER" \
             --privileged \
@@ -145,7 +143,7 @@ manage_cluster() {
 # Health Checks
 # --------------------------------------------------
 wait_for_cluster() {
-    echo "Waiting for k3s cluster readiness..."
+    echo "⏳ Waiting for k3s cluster readiness..."
     local counter=0
     until docker exec "$K3S_CONTAINER" kubectl get nodes &>/dev/null; do
         sleep 5
@@ -161,10 +159,10 @@ wait_for_cluster() {
 # Kubeconfig Management
 # --------------------------------------------------
 generate_kubeconfig() {
-    echo "Generating kubeconfig..."
+    echo "🔧 Generating kubeconfig..."
     docker cp "${K3S_CONTAINER}:/etc/rancher/k3s/k3s.yaml" "$KUBECONFIG_PATH"
 
-    # Update server address
+    # Update server address using cross-platform sed
     if sed --version 2>/dev/null | grep -q GNU; then
         sed -i "s|server:.*|server: https://${K3S_HOST}:${K3S_PORT}|g" "$KUBECONFIG_PATH"
     else
@@ -180,23 +178,20 @@ generate_kubeconfig() {
 # Main Execution
 # --------------------------------------------------
 main() {
-    # Load environment
+    echo "🚀 Starting k3s cluster initialization..."
     load_env
-
-    # Create required resources
     create_network
     create_volume
-
-    # Manage cluster
     manage_cluster
     wait_for_cluster
     generate_kubeconfig
 
-    echo "✅ Kubernetes cluster initialized successfully"
-    echo "    API Server: https://${K3S_HOST}:${K3S_PORT}"
-    echo "    Kubeconfig: ${KUBECONFIG_PATH}"
+    echo ""
+    echo "🎉 Kubernetes cluster initialized successfully!"
+    echo "   API Server: https://${K3S_HOST}:${K3S_PORT}"
+    echo "   Kubeconfig: ${KUBECONFIG_PATH}"
+    echo "   Try: kubectl --kubeconfig=${KUBECONFIG_PATH} get nodes"
 }
 
-# Start initialization
-main
+main "$@"
 

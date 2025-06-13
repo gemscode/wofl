@@ -2,13 +2,21 @@
 set -eo pipefail
 
 # --------------------------------------------------
-# Configuration
+# Configuration (packaging-compatible paths)
 # --------------------------------------------------
+if [ -n "$MEIPASS" ]; then
+    # Packaged mode (PyInstaller)
+    ROOT_DIR="$MEIPASS"
+else 
+    # Development mode
+    ROOT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
+fi
+
 KAFKA_CONTAINER="wolfx0-kafka"
 SETUP_CONTAINER="wolfx0-kafka-setup"
-COMPOSE_FILE="$(dirname "$0")/docker-compose.yml"
-ENV_FILE="$(dirname "$0")/../../.env"
-MAX_WAIT=300  # 5 minutes timeout
+COMPOSE_FILE="$ROOT_DIR/src/deployments/kafka/docker-compose.yml"
+ENV_FILE="$(pwd)/.env"
+MAX_WAIT=300
 DEFAULT_CLIENT_PORT=9092
 DEFAULT_CONTROLLER_PORT=9093
 
@@ -16,13 +24,14 @@ DEFAULT_CONTROLLER_PORT=9093
 # Environment Setup
 # --------------------------------------------------
 load_env() {
-    # Create .env if missing
+    # Create .env in current directory if missing
     if [ ! -f "$ENV_FILE" ]; then
-        echo "Creating .env from sample..."
-        cp "$(dirname "$0")/../../.env_sample" "$ENV_FILE"
+        echo "📄 Creating .env from packaged template..."
+        cp "$ROOT_DIR/.env_sample" "$ENV_FILE"
     fi
 
-    # Set defaults
+    # Source environment with defaults
+    source "$ENV_FILE"
     export KAFKA_HOST=${KAFKA_HOST:-localhost}
     export KAFKA_CLIENT_PORT=${KAFKA_CLIENT_PORT:-$DEFAULT_CLIENT_PORT}
     export KAFKA_CONTROLLER_PORT=${KAFKA_CONTROLLER_PORT:-$DEFAULT_CONTROLLER_PORT}
@@ -50,11 +59,13 @@ update_port_config() {
     local new_client_port=$1
     local new_controller_port=$2
     
-    # Update .env
-    sed -i.bak "s/^KAFKA_CLIENT_PORT=.*/KAFKA_CLIENT_PORT=$new_client_port/" "$ENV_FILE"
-    sed -i.bak "s/^KAFKA_CONTROLLER_PORT=.*/KAFKA_CONTROLLER_PORT=$new_controller_port/" "$ENV_FILE"
+    # Update .env in current directory
+    sed -i.bak \
+        -e "s/^KAFKA_CLIENT_PORT=.*/KAFKA_CLIENT_PORT=$new_client_port/" \
+        -e "s/^KAFKA_CONTROLLER_PORT=.*/KAFKA_CONTROLLER_PORT=$new_controller_port/" \
+        "$ENV_FILE"
     
-    # Update docker-compose.yml
+    # Update packaged compose file reference
     sed -i.bak \
         -e "s/- \"[0-9]\+:9092\"/- \"${new_client_port}:9092\"/" \
         -e "s/- \"[0-9]\+:9093\"/- \"${new_controller_port}:9093\"/" \
@@ -78,7 +89,7 @@ manage_container() {
         export KAFKA_CONTROLLER_PORT=$NEW_CONTROLLER_PORT
     fi
 
-    # Start/recreate container
+    # Start/recreate container using packaged compose file
     if docker ps -a --format '{{.Names}}' | grep -q "^${KAFKA_CONTAINER}$"; then
         if [ "$(docker inspect -f '{{.State.Running}}' "$KAFKA_CONTAINER")" != "true" ]; then
             echo "Starting existing Kafka container..."
@@ -99,7 +110,7 @@ wait_for_kafka() {
     echo "Waiting for Kafka to initialize..."
     local counter=0
     until docker exec "$KAFKA_CONTAINER" kafka-topics.sh --bootstrap-server localhost:9092 --list &>/dev/null; do
-	docker logs "$SETUP_CONTAINER" 2>&1 | tail -n 100
+        docker logs "$SETUP_CONTAINER" 2>&1 | tail -n 100 || true
         sleep 10
         counter=$((counter + 10))
         if [ $counter -ge $MAX_WAIT ]; then
@@ -117,9 +128,8 @@ run_setup() {
     docker-compose -f "$COMPOSE_FILE" up -d setup
 
     echo "Waiting for setup completion..."
-    local SETUP_CONTAINER="wolfx0-kafka-setup"
     local counter=0
-    local max_wait=60  # 60s max wait
+    local max_wait=60
     local interval=3
 
     while true; do
@@ -130,7 +140,6 @@ run_setup() {
             return
         fi
 
-        # Check if container exited unexpectedly *before* success
         if ! docker ps -a --format '{{.Names}}' | grep -q "^$SETUP_CONTAINER$"; then
             echo "❌ Kafka setup container vanished unexpectedly"
             echo "$logs"
@@ -148,15 +157,11 @@ run_setup() {
     done
 }
 
-
 # --------------------------------------------------
 # Main Execution
 # --------------------------------------------------
 main() {
-    # Load environment with fallbacks
     load_env
-
-    # Manage container with port handling
     manage_container
     wait_for_kafka
     run_setup
@@ -166,6 +171,5 @@ main() {
     echo "    Controller: ${KAFKA_HOST}:${KAFKA_CONTROLLER_PORT}"
 }
 
-# Start initialization
-main
+main "$@"
 

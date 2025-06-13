@@ -9,7 +9,7 @@ dash-monaco-editor
 dash-table
 diskcache
 docker
-elasticsearch<9.0.0 
+elasticsearch<8.0.0 
 flask
 gitpython
 kafka-python
