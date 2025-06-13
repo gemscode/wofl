@@ -180,3 +180,5 @@ core_env/
 rwagent.egg-info/
 rwagent.json
 
+k3s.yaml
+requirements.txt

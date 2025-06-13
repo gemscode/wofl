@@ -8,7 +8,6 @@ from flask import Flask, session
 import os
 
 # --------- FILE SYSTEM CONFIGURATION ---------
-# Calculate the root directory relative to this file
 current_file_path = os.path.abspath(__file__)
 root_dir = os.path.abspath(os.path.join(os.path.dirname(current_file_path), '..', '..'))
 AGENT_DIR = os.path.join(root_dir, 'framework', 'rw_agent', 'src', 'agents')
@@ -55,12 +54,8 @@ def handle_authentication(action, email, password):
         return False
 
 def get_agent_files():
-    """Get files from local filesystem instead of API"""
     files = []
-    
-    # Add "New File" option at the top
     files.append("new_file")
-    
     try:
         if os.path.exists(AGENT_DIR):
             for root, dirs, file_list in os.walk(AGENT_DIR):
@@ -72,11 +67,9 @@ def get_agent_files():
         print(f"Found {len(files)} files in {AGENT_DIR}")
     except Exception as e:
         print(f"Error reading agent directory: {e}")
-    
     return files
 
 def read_file_content(file_path):
-    """Read content from a local file"""
     try:
         full_path = os.path.join(AGENT_DIR, file_path)
         if os.path.exists(full_path) and file_path.endswith('.py'):
@@ -87,7 +80,6 @@ def read_file_content(file_path):
     return ""
 
 def save_file_content(file_path, content):
-    """Save content to a local file"""
     try:
         full_path = os.path.join(AGENT_DIR, file_path)
         os.makedirs(os.path.dirname(full_path), exist_ok=True)
@@ -268,9 +260,9 @@ def render_auth_content(active_tab):
 def handle_login(n_clicks, email, password):
     if n_clicks and email and password:
         if handle_authentication("login", email, password):
-            return dbc.Alert("Login successful!", color="success", dismissible=True), "/"
+            return dbc.Alert("Login successful!", color="success", dismissable=True), "/"
         else:
-            return dbc.Alert("Invalid credentials", color="danger", dismissible=True), dash.no_update
+            return dbc.Alert("Invalid credentials", color="danger", dismissable=True), dash.no_update
     return "", dash.no_update
 
 @app.callback(
@@ -285,11 +277,11 @@ def handle_login(n_clicks, email, password):
 def handle_register(n_clicks, email, password, confirm):
     if n_clicks and email and password and confirm:
         if password != confirm:
-            return dbc.Alert("Passwords do not match", color="danger", dismissible=True), dash.no_update
+            return dbc.Alert("Passwords do not match", color="danger", dismissable=True), dash.no_update
         if handle_authentication("register", email, password):
-            return dbc.Alert("Registration successful! Please login", color="success", dismissible=True), "/"
+            return dbc.Alert("Registration successful! Please login", color="success", dismissable=True), "/"
         else:
-            return dbc.Alert("Registration failed", color="danger", dismissible=True), dash.no_update
+            return dbc.Alert("Registration failed", color="danger", dismissable=True), dash.no_update
     return "", dash.no_update
 
 @app.callback(
@@ -304,7 +296,6 @@ def update_file_dropdown(_):
             if file == "new_file":
                 options.append({'label': '➕ New File', 'value': 'new_file'})
             else:
-                # Show directory structure in label
                 label = file.replace('/', ' / ') if '/' in file else file
                 options.append({'label': label, 'value': file})
         return options
