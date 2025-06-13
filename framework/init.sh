@@ -52,7 +52,7 @@ setup_core_venv() {
     # Check if core_env exists, if not create it
     if [ ! -d "$ROOT_DIR/framework/core_env" ]; then
         echo "Creating core virtual environment (core_env)..."
-        python3 -m venv "$ROOT_DIR/framework/core_env"
+        python3.12 -m venv "$ROOT_DIR/framework/core_env"
     fi
 
     # Activate the virtual environment

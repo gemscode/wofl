@@ -3,6 +3,7 @@
 
 # Absolute paths (resolves symlinks for macOS)
 PROJECT_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+LIB_DIR="${PROJECT_ROOT}/lib"
 LIBEV_SRC="${PROJECT_ROOT}/lib/libev-4.33"
 INSTALL_DIR="${PROJECT_ROOT}/lib/libev-install"
 
@@ -10,8 +11,11 @@ INSTALL_DIR="${PROJECT_ROOT}/lib/libev-install"
 rm -rf "${INSTALL_DIR}"
 mkdir -p "${INSTALL_DIR}"
 
-# 1. Uninstall existing cassandra-driver first (globally and in venv)
+# 1. Uninstall existing cassandra-driver first (globally and in venv) and download libenv
 pip uninstall -y cassandra-driver &>/dev/null || true
+pip cache remove cassandra_driver &>/dev/null || true
+mkdir -p ${LIB_DIR}
+wget -qO- https://dist.schmorp.de/libev/libev-4.33.tar.gz | tar xvz -C ${LIB_DIR}
 
 # 2. Compile libev with absolute paths
 cd "${LIBEV_SRC}" || { echo "❌ libev source missing at ${LIBEV_SRC}"; exit 1; }
