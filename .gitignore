@@ -181,6 +181,5 @@ rwagent.egg-info/
 rwagent.json
 
 k3s.yaml
-requirements.txt
 build/
 WolfX
