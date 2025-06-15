@@ -7,16 +7,9 @@ setup(
     package_dir={"": "src"},
     entry_points={
         'console_scripts': [
-            'rwagent=agents.agent_core.cli.main:cli',
+            'rwagent=rw_agent.cli.main:cli',
         ],
     },
-    install_requires=[
-        'click>=8.0',
-        'python-dotenv>=0.19',
-        'cassandra-driver>=3.28',
-        'elasticsearch>=8.5',
-        'tabulate>=0.9'
-    ],
     include_package_data=True,
 )
 

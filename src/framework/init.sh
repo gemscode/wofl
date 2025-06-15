@@ -48,22 +48,29 @@ init_env() {
 # Core environment activation
 # -------------------------------
 activate_core_env() {
-    local venv_path="$ROOT_DIR/core_env"
-    
-    echo "⚙️  Activating core environment..."
-    if [ -f "$venv_path/bin/activate" ]; then
-        source "$venv_path/bin/activate"
-        
-        # Set library paths for Cassandra
-        export DYLD_FALLBACK_LIBRARY_PATH="$ROOT_DIR/lib/libev-install/lib:$DYLD_FALLBACK_LIBRARY_PATH"
-        export C_INCLUDE_PATH="$ROOT_DIR/lib/libev-install/include:$C_INCLUDE_PATH"
-        
-        echo "✅ Environment ready"
-    else
-        echo "❌ Critical: Missing core environment"
-        exit 1
+    if [ -z "$MEIPASS" ]; then  # Development mode
+        local venv_path="$ROOT_DIR/core_env"
+
+        echo "⚙️  Activating core environment..."
+        if [ -f "$venv_path/bin/activate" ]; then
+            source "$venv_path/bin/activate"
+
+            # Set library paths for Cassandra
+            export DYLD_FALLBACK_LIBRARY_PATH="$ROOT_DIR/lib/libev-install/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+            export C_INCLUDE_PATH="$ROOT_DIR/lib/libev-install/include:$C_INCLUDE_PATH"
+
+            echo "✅ Environment ready"
+        else
+            echo "❌ Critical: Missing core environment"
+            exit 1
+        fi
+    else  # Packaged mode
+        echo "📦 Packaged mode: Using embedded Python"
+        # Add packaged Python to PATH
+        export PATH="$ROOT_DIR/bin:$PATH"
     fi
 }
+
 
 # -------------------------------
 # Service management
@@ -168,4 +175,3 @@ main() {
 }
 
 main "$@"
-

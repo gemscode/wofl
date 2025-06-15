@@ -47,6 +47,10 @@ data_files = [
     ('src/tools', 'src/tools'),
     ('src/projects', 'src/projects'),
 
+    # CLI
+    ('src/rw_agent', 'src/rw_agent'),
+
+
     # System dependencies
     ('lib/libev-4.33', 'lib/libev-4.33'),
     ('lib/libev-install', 'lib/libev-install'),
@@ -55,7 +59,7 @@ data_files = [
     ('core_env', 'core_env')
 ]
 
-hiddenimports = collect_submodules('cassandra') + collect_submodules('elasticsearch')
+hiddenimports = collect_submodules('cassandra') + collect_submodules('elasticsearch') + ['rw_agent', 'rw_agent.cli', 'rw_agent.cli.commands']
 
 a = Analysis(
     ['launcher.py'],

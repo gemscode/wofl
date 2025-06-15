@@ -5,34 +5,43 @@ set -eo pipefail
 # Configuration
 # --------------------------------------------
 if [ -n "$MEIPASS" ]; then
-    ROOT_DIR="$MEIPASS"  # PyInstaller packaged mode
-else 
-    ROOT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"  # Development mode
+    ROOT_DIR="$MEIPASS"  # Packaged mode
+else
+    ROOT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"  # Dev mode
 fi
 
 PORT_RANGE_START=9042
 PORT_RANGE_END=9100
 CASSANDRA_CONTAINER="wolfx0-cassandra"
 VOLUME_NAME="cassandra_data"
-ENV_FILE="$ROOT_DIR/.env"
-COMPOSE_FILE="$ROOT_DIR/src/deployments/cassandra/docker-compose.yml"
-CQL_FILE="$ROOT_DIR/src/deployments/cassandra/create_tables.cql"
+ENV_FILE="$(pwd)/.env"  # Current directory
+COMPOSE_FILE="$(pwd)/docker-compose-cassandra.yml"  # Local copy
+CQL_FILE="$ROOT_DIR/src/deployments/cassandra/create_tables.cql"  # Packaged schema
 
 # --------------------------------------------
 # Load environment
 # --------------------------------------------
 load_env() {
+    # Create .env if missing
     if [ ! -f "$ENV_FILE" ]; then
         echo "📄 Creating .env from packaged template..."
         cp "$ROOT_DIR/.env_sample" "$ENV_FILE"
     fi
+
+    # Create local compose file if missing
+    if [ ! -f "$COMPOSE_FILE" ]; then
+        echo "📄 Creating local docker-compose.yml..."
+        cp "$ROOT_DIR/src/deployments/cassandra/docker-compose.yml" "$COMPOSE_FILE"
+    fi
+
     source "$ENV_FILE"
-    
+
     : ${CASSANDRA_HOST:=localhost}
     : ${CASSANDRA_PORT:=9042}
     : ${INSTALLED_CASSANDRA:=false}
     : ${INSTALLED_CASSANDRA_PORT:=$CASSANDRA_PORT}
 }
+
 
 # --------------------------------------------
 # Find available port

@@ -4,7 +4,7 @@ R&W AI Companion Initial Registration (First-Run Setup)
 """
 import os
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from cassandra.cluster import Cluster
 from cassandra.auth import PlainTextAuthProvider
 from cassandra.policies import DCAwareRoundRobinPolicy
@@ -86,11 +86,15 @@ class FirstRunRegistrar:
 
     def _init_elasticsearch(self):
         """Initialize Elasticsearch connection"""
+        host = os.getenv("ELASTICSEARCH_HOST", "127.0.0.1")
+        port = os.getenv("ELASTICSEARCH_HTTP_PORT", "9200")
+        es_url = f"http://{host}:{port}"
+        
         self.elastic = Elasticsearch(
-            [os.getenv("ELASTICSEARCH_URL", "http://10.4.96.3:9200")],
+            [es_url],
             verify_certs=False
         )
-        logger.info("Elasticsearch connection established")
+        logger.info(f"Elasticsearch connection established at {es_url}")
 
     def _create_elastic_indices(self):
         """Create Elasticsearch indices with mappings"""
@@ -118,7 +122,7 @@ class FirstRunRegistrar:
             "description": "AI Code Generator with Enterprise capabilities",
             "version": "1.0.0",
             "status": "active",
-            "created_at": datetime.utcnow()
+            "created_at": datetime.now(timezone.utc)  # Timezone-aware
         }
 
         # Insert into Cassandra

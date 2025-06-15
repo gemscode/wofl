@@ -2,7 +2,7 @@
 import click
 from pathlib import Path
 from importlib.metadata import version, PackageNotFoundError
-from .commands import init, deploy, config, integrity
+from rw_agent.cli.commands import init, deploy, config, integrity
 
 def get_version():
     """Get package version safely"""
