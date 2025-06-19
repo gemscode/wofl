@@ -94,7 +94,9 @@ def save_file_content(file_path, content):
 
 def handle_prompt_submission(prompt):
     try:
-        resp = requests.post(
+        s = requests.Session()
+        s.trust_env = False
+        resp = s.post(
             "https://wolfx0.com/rw/prompt",
             headers={
                 "Content-Type": "application/json",
