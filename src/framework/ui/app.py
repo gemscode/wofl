@@ -6,6 +6,7 @@ import requests
 import uuid
 from flask import Flask, session
 import os
+from flask_cors import CORS
 
 # --------- FILE SYSTEM CONFIGURATION ---------
 current_file_path = os.path.abspath(__file__)
@@ -14,6 +15,7 @@ AGENT_DIR = os.path.join(root_dir, 'framework', 'rw_agent', 'src', 'agents')
 
 server = Flask(__name__)
 server.secret_key = os.environ.get('SECRET_KEY', 'your-secret-key-here')
+CORS(server)
 
 app = dash.Dash(
     __name__,
@@ -211,7 +213,6 @@ def create_main_layout():
                         disabled=True
                     )
                 ], style={'display': 'flex', 'alignItems': 'center'}),
-                # DEBUG LOG CONSOLE
                 html.Div(
                     dcc.Textarea(
                         id='log-console',
@@ -249,7 +250,7 @@ def create_main_layout():
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
     dcc.Store(id='current-file-store'),
-    dcc.Store(id='log-store', data=[]),  # Store for log messages
+    dcc.Store(id='log-store', data=[]),
     html.Div(id='page-content')
 ])
 
@@ -338,7 +339,7 @@ def update_submit_button_state(prompt_value):
      Output('prompt-input', 'value'),
      Output('current-file-store', 'data'),
      Output('save-btn', 'disabled'),
-     Output('log-store', 'data')],  # Added output for log store
+     Output('log-store', 'data')],
     [Input('submit-btn', 'n_clicks'),
      Input('new-thread-btn', 'n_clicks'),
      Input('build-btn', 'n_clicks'),
@@ -349,7 +350,7 @@ def update_submit_button_state(prompt_value):
     [State('prompt-input', 'value'),
      State('code-editor', 'value'),
      State('current-file-store', 'data'),
-     State('log-store', 'data')],  # Added state for log store
+     State('log-store', 'data')],
     prevent_initial_call=True
 )
 def handle_actions(submit_clicks, new_thread_clicks, build_clicks, run_clicks, deploy_clicks, 
@@ -371,12 +372,10 @@ def handle_actions(submit_clicks, new_thread_clicks, build_clicks, run_clicks, d
         
     elif triggered == 'submit-btn' and prompt:
         success, response = handle_prompt_submission(prompt)
-        # Add log entry with connection info
         status = "200 OK" if success else "Error"
         log_line = f"[Prompt] Status: {status} | Response: {str(response)[:60]}"
         logs.append(log_line)
-        logs = logs[-5:]  # Keep only last 5 lines
-        
+        logs = logs[-5:]
         if success:
             return response, '', dash.no_update, current_file != 'new_file' and current_file is not None, logs
         else:
@@ -399,7 +398,6 @@ def handle_actions(submit_clicks, new_thread_clicks, build_clicks, run_clicks, d
     
     return dash.no_update, dash.no_update, dash.no_update, dash.no_update, logs
 
-# New callback to update log console display
 @app.callback(
     Output('log-console', 'value'),
     Input('log-store', 'data')
