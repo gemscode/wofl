@@ -210,31 +210,7 @@ def create_main_layout():
                         style={'width': '120px', 'height': '38px'},
                         disabled=True
                     )
-                ], style={'display': 'flex', 'alignItems': 'center'}),
-                # DEBUG LOG CONSOLE
-                html.Div(
-                    dcc.Textarea(
-                        id='log-console',
-                        value='',
-                        readOnly=True,
-                        style={
-                            'width': '100%',
-                            'height': '110px',
-                            'resize': 'none',
-                            'overflowY': 'scroll',
-                            'fontFamily': 'monospace',
-                            'fontSize': '13px',
-                            'background': '#222',
-                            'color': '#eee',
-                            'marginTop': '18px',
-                            'borderRadius': '6px',
-                            'border': '1px solid #444'
-                        },
-                        rows=5,
-                        maxLength=1000
-                    ),
-                    style={'marginTop': '0px'}
-                ),
+                ], style={'display': 'flex', 'alignItems': 'center'})
             ])
         ], style={'marginBottom': '40px'})
     ], fluid=True, style={
@@ -249,7 +225,6 @@ def create_main_layout():
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
     dcc.Store(id='current-file-store'),
-    dcc.Store(id='log-store', data=[]),  # Store for log messages
     html.Div(id='page-content')
 ])
 
@@ -337,8 +312,7 @@ def update_submit_button_state(prompt_value):
     [Output('code-editor', 'value'),
      Output('prompt-input', 'value'),
      Output('current-file-store', 'data'),
-     Output('save-btn', 'disabled'),
-     Output('log-store', 'data')],  # Added output for log store
+     Output('save-btn', 'disabled')],
     [Input('submit-btn', 'n_clicks'),
      Input('new-thread-btn', 'n_clicks'),
      Input('build-btn', 'n_clicks'),
@@ -348,39 +322,31 @@ def update_submit_button_state(prompt_value):
      Input('save-btn', 'n_clicks')],
     [State('prompt-input', 'value'),
      State('code-editor', 'value'),
-     State('current-file-store', 'data'),
-     State('log-store', 'data')],  # Added state for log store
+     State('current-file-store', 'data')],
     prevent_initial_call=True
 )
 def handle_actions(submit_clicks, new_thread_clicks, build_clicks, run_clicks, deploy_clicks, 
-                   file_selected, save_clicks, prompt, current_code, current_file, log_data):
+                   file_selected, save_clicks, prompt, current_code, current_file):
     triggered = ctx.triggered_id
-    logs = log_data or []
-
+    
     if triggered == 'file-dropdown':
         if file_selected == 'new_file':
-            return "", "", "new_file", True, logs
+            return "", "", "new_file", True
         elif file_selected:
             content = read_file_content(file_selected)
-            return content, dash.no_update, file_selected, False, logs
+            return content, dash.no_update, file_selected, False
     
     elif triggered == 'save-btn' and current_file and current_file != 'new_file':
         success = save_file_content(current_file, current_code)
         if success:
-            return dash.no_update, dash.no_update, dash.no_update, True, logs
+            return dash.no_update, dash.no_update, dash.no_update, True
         
     elif triggered == 'submit-btn' and prompt:
         success, response = handle_prompt_submission(prompt)
-        # Add log entry with connection info
-        status = "200 OK" if success else "Error"
-        log_line = f"[Prompt] Status: {status} | Response: {str(response)[:60]}"
-        logs.append(log_line)
-        logs = logs[-5:]  # Keep only last 5 lines
-        
         if success:
-            return response, '', dash.no_update, current_file != 'new_file' and current_file is not None, logs
+            return response, '', dash.no_update, current_file != 'new_file' and current_file is not None
         else:
-            return current_code, prompt, dash.no_update, dash.no_update, logs
+            return current_code, prompt, dash.no_update, dash.no_update
             
     elif triggered == 'new-thread-btn':
         session.update({
@@ -388,26 +354,16 @@ def handle_actions(submit_clicks, new_thread_clicks, build_clicks, run_clicks, d
             'new_thread_flag': True,
             'code_output': "# New thread started...\n"
         })
-        return "# New thread started...\n", dash.no_update, dash.no_update, True, logs
+        return "# New thread started...\n", dash.no_update, dash.no_update, True
         
     elif triggered == 'build-btn':
-        return current_code + "\n# Build process initiated...", dash.no_update, dash.no_update, dash.no_update, logs
+        return current_code + "\n# Build process initiated...", dash.no_update, dash.no_update, dash.no_update
     elif triggered == 'run-btn':
-        return current_code + "\n# Application running...", dash.no_update, dash.no_update, dash.no_update, logs
+        return current_code + "\n# Application running...", dash.no_update, dash.no_update, dash.no_update
     elif triggered == 'deploy-btn':
-        return current_code + "\n# Deployment started...", dash.no_update, dash.no_update, dash.no_update, logs
+        return current_code + "\n# Deployment started...", dash.no_update, dash.no_update, dash.no_update
     
-    return dash.no_update, dash.no_update, dash.no_update, dash.no_update, logs
-
-# New callback to update log console display
-@app.callback(
-    Output('log-console', 'value'),
-    Input('log-store', 'data')
-)
-def update_log_console(log_data):
-    if not log_data:
-        return ""
-    return "\n".join(log_data)
+    return dash.no_update, dash.no_update, dash.no_update, dash.no_update
 
 @app.callback(
     Output('url', 'pathname', allow_duplicate=True),
