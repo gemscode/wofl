@@ -9,11 +9,10 @@ dash-monaco-editor
 dash-table
 diskcache
 docker
-elasticsearch<8.0.0 
+elasticsearch>8.0.0
 flask
 gitpython
 kafka-python
 dotenv
-numpy<2.0
 click>=8.0
 tabulate>=0.9
