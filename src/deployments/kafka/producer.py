@@ -2,7 +2,7 @@ from kafka import KafkaProducer
 import os
 import time
 
-bootstrap_servers = os.environ.get("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092")
+bootstrap_servers = os.environ.get("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092,wolfx0-kafka:9092")
 topic = os.environ.get("SETUP_TOPIC", "videos-views")
 
 producer = KafkaProducer(bootstrap_servers=bootstrap_servers)
