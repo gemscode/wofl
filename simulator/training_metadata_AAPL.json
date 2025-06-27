@@ -1,0 +1,12 @@
+{
+  "symbol": "AAPL",
+  "training_completed": "2025-06-26T19:10:27.923466",
+  "data_points": 15205,
+  "training_days": 15205,
+  "trained_on": "simulator_with_realtime_analysis",
+  "model_version": "2.1_simulator",
+  "strategy_type": "enhanced_momentum_with_window_optimization",
+  "long_term_trained": true,
+  "intraday_trained": true,
+  "risk_management": "balanced"
+}
