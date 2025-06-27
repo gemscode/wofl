@@ -183,3 +183,9 @@ rwagent.json
 k3s.yaml
 build/
 WolfX
+
+wolfxe_env/
+venv/
+env/
+
+.redis_passwd

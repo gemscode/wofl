@@ -1,0 +1,12 @@
+{
+  "symbol": "AAPL",
+  "training_completed": "2025-06-26T14:01:03.710117",
+  "data_points": 15205,
+  "training_days": 39,
+  "trained_on": "simulation",
+  "model_version": "2.1_corrected",
+  "long_term_trained": true,
+  "intraday_trained": false,
+  "aggressive_mode": true,
+  "risk_management": "corrected"
+}

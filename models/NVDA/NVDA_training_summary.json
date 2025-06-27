@@ -1,0 +1,19 @@
+{
+  "stock_symbol": "NVDA",
+  "training_date": "2025-06-24T12:35:10.996874",
+  "initial_balance": 10000,
+  "config": {
+    "training_days": 252,
+    "min_hold_hours": 4,
+    "max_hold_hours": 192,
+    "retrain_interval": 300,
+    "decision_interval": 5,
+    "data_update_interval": 1,
+    "learning_timesteps_a1": 100000,
+    "learning_timesteps_a2": 200000
+  },
+  "agent_a1_path": "models/NVDA/agents/agent_a1_NVDA.zip",
+  "agent_a2_path": "models/NVDA/agents/agent_a2_NVDA.zip",
+  "model_version": "1.0",
+  "algorithm": "PPO"
+}
