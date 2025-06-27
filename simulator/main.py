@@ -6,7 +6,7 @@ RW WolfXE Simulator - Main Entry Point
 import sys
 from pathlib import Path
 
-# Import from local modules (not rw_wolfxe.simulator.*)
+# Import from local modules
 from core.simulator_engine import SimulatorEngine
 from core.data_manager import DataManager
 from core.trading_executor import TradingExecutor
@@ -27,6 +27,8 @@ def main():
     parser.add_argument('--position', type=int, help='Current stock position in shares')
     parser.add_argument('--speed', type=float, default=10.0, help='Simulation speed multiplier')
     parser.add_argument('--aggressive', action='store_true', help='Start in aggressive mode')
+    parser.add_argument('--trading-mode', choices=['LONG_ONLY', 'SHORT_ONLY', 'LONG_SHORT'], 
+                       default='LONG_SHORT', help='Trading mode (default: LONG_SHORT)')
     parser.add_argument('--redis-password', help='Redis authentication password')
     parser.add_argument('--redis-port', type=int, default=6379, help='Redis server port')
     parser.add_argument('--redis-host', default='trader.wolfx0.com', help='Redis server hostname')
@@ -48,6 +50,7 @@ def main():
         config = {
             'simulation_speed': args.speed,
             'aggressive_mode': args.aggressive,
+            'trading_mode': args.trading_mode,
             'redis_host': args.redis_host,
             'redis_port': args.redis_port,
             'redis_password': args.redis_password
@@ -78,11 +81,15 @@ def main():
             stock_symbol = ui_manager.configure_trading_symbol(None, available_tickers)
             position_size = ui_manager.configure_trading_position(args.position, stock_symbol)
         
+        # Configure trading strategy
+        trading_mode = ui_manager.configure_trading_strategy(args.trading_mode)
+        
         # Update config with final parameters
         config.update({
             'stock_symbol': stock_symbol,
             'initial_budget': initial_budget,
-            'position_size': position_size
+            'position_size': position_size,
+            'trading_mode': trading_mode
         })
         
         print("INITIALIZING: Data manager...")
@@ -90,7 +97,7 @@ def main():
         
         print("INITIALIZING: Trading executor...")
         base_symbol = stock_symbol[2:] if stock_symbol.startswith('S_') else stock_symbol
-        trading_executor = TradingExecutor(base_symbol, initial_budget, position_size)
+        trading_executor = TradingExecutor(base_symbol, initial_budget, position_size, trading_mode)
         
         print("INITIALIZING: Report generator...")
         report_generator = ReportGenerator(data_manager)
@@ -113,4 +120,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 

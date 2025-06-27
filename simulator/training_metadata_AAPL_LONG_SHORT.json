@@ -1,0 +1,14 @@
+{
+  "symbol": "AAPL",
+  "training_completed": "2025-06-27T11:40:58.617594",
+  "data_points": 15205,
+  "training_days": 15205,
+  "trading_mode": "LONG_SHORT",
+  "trained_on": "long_short_strategy",
+  "model_version": "2.1_with_shorting",
+  "strategy_type": "long_short_momentum",
+  "long_term_trained": true,
+  "intraday_trained": true,
+  "risk_management": "balanced",
+  "supports_shorting": true
+}

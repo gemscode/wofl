@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-User Interface Manager - Enterprise Clean Implementation with Window Configuration
+User Interface Manager - Enterprise Clean Implementation with Strategy Selection
 """
 
 import sys
 
 class UserInterface:
-    """Professional user interface with window configuration options"""
+    """Professional user interface with strategy configuration options"""
     
     def discover_available_tickers(self, redis_client):
         """Professional ticker discovery"""
@@ -170,8 +170,46 @@ class UserInterface:
             except KeyboardInterrupt:
                 sys.exit(0)
     
+    def configure_trading_strategy(self, provided_strategy):
+        """Configure trading strategy"""
+        if provided_strategy:
+            print(f"TRADING STRATEGY: {provided_strategy}")
+            return provided_strategy
+        
+        print("\nTRADING STRATEGY SELECTION:")
+        print("=" * 40)
+        print("Available trading strategies:")
+        print("  1. LONG_SHORT  - Buy and short sell (recommended)")
+        print("  2. LONG_ONLY   - Traditional buy/sell only")
+        print("  3. SHORT_ONLY  - Short selling only")
+        print("")
+        print("LONG_SHORT is recommended as it can profit in both")
+        print("rising and falling markets.")
+        
+        while True:
+            try:
+                strategy_input = input("Select strategy (1-3 or strategy name, default: LONG_SHORT): ").strip()
+                
+                if not strategy_input or strategy_input == '1':
+                    strategy = 'LONG_SHORT'
+                elif strategy_input == '2':
+                    strategy = 'LONG_ONLY'
+                elif strategy_input == '3':
+                    strategy = 'SHORT_ONLY'
+                elif strategy_input.upper() in ['LONG_SHORT', 'LONG_ONLY', 'SHORT_ONLY']:
+                    strategy = strategy_input.upper()
+                else:
+                    print("Invalid selection. Please choose 1, 2, 3, or strategy name.")
+                    continue
+                
+                print(f"TRADING STRATEGY SET: {strategy}")
+                return strategy
+                
+            except KeyboardInterrupt:
+                sys.exit(0)
+    
     def offer_post_simulation_options(self, simulator):
-        """Professional post-simulation options with window configuration"""
+        """Professional post-simulation options with strategy change"""
         if hasattr(simulator, 'aggressive_mode') and simulator.aggressive_mode:
             return
         
@@ -183,11 +221,12 @@ class UserInterface:
         print("  2. Retrain with aggressive approach")
         print("  3. View detailed trade log")
         print("  4. Configure window range and rerun simulation")
+        print("  5. Change trading strategy and rerun simulation")
         print("")
         
         while True:
             try:
-                choice = input("Select option (1-4): ").strip()
+                choice = input("Select option (1-5): ").strip()
                 
                 if choice == '1':
                     print("\nSIMULATION COMPLETE: System ready for live trading.")
@@ -205,12 +244,102 @@ class UserInterface:
                     self.configure_window_range_and_rerun(simulator)
                     return
                 
+                elif choice == '5':
+                    self.configure_strategy_and_rerun(simulator)
+                    return
+                
                 else:
-                    print("Invalid option. Please select 1, 2, 3, or 4.")
+                    print("Invalid option. Please select 1, 2, 3, 4, or 5.")
                     
             except KeyboardInterrupt:
                 print("\nExiting simulation.")
                 return
+    
+    def configure_strategy_and_rerun(self, simulator):
+        """Configure trading strategy and rerun simulation"""
+        print("\nTRADING STRATEGY CONFIGURATION")
+        print("=" * 40)
+        
+        # Get current strategy
+        current_strategy = simulator.config.get('trading_mode', 'LONG_SHORT')
+        
+        print(f"Current strategy: {current_strategy}")
+        print("")
+        print("Available strategies:")
+        print("  1. LONG_SHORT  - Buy and short sell (profits in both directions)")
+        print("  2. LONG_ONLY   - Traditional buy/sell only")
+        print("  3. SHORT_ONLY  - Short selling only (profits from declines)")
+        print("")
+        
+        # Strategy performance hints
+        if hasattr(simulator, 'daily_results') and simulator.daily_results:
+            final_value = simulator.daily_results[-1]['end_value']
+            initial_budget = simulator.config.get('initial_budget', 25000)
+            current_return = ((final_value - initial_budget) / initial_budget) * 100
+            
+            if current_return < -2:
+                print("HINT: Current strategy shows negative returns.")
+                print("      Consider SHORT_ONLY if market is declining")
+                print("      or LONG_SHORT for more flexibility.")
+            elif current_return > 5:
+                print("HINT: Current strategy is performing well.")
+                print("      You may want to keep the same strategy.")
+            print("")
+        
+        # Get new strategy
+        while True:
+            try:
+                strategy_input = input(f"Select new strategy (1-3, current: {current_strategy}): ").strip()
+                
+                if strategy_input == '1':
+                    new_strategy = 'LONG_SHORT'
+                elif strategy_input == '2':
+                    new_strategy = 'LONG_ONLY'
+                elif strategy_input == '3':
+                    new_strategy = 'SHORT_ONLY'
+                else:
+                    print("Invalid selection. Please choose 1, 2, or 3.")
+                    continue
+                
+                break
+                
+            except KeyboardInterrupt:
+                print("\nCancelling strategy configuration")
+                return
+        
+        if new_strategy == current_strategy:
+            print(f"Strategy unchanged: {new_strategy}")
+            confirm = input("Rerun simulation anyway? (y/N): ").strip().lower()
+            if confirm != 'y':
+                return
+        else:
+            print(f"Strategy change: {current_strategy} → {new_strategy}")
+            confirm = input("Proceed with new strategy? (y/N): ").strip().lower()
+            if confirm != 'y':
+                return
+        
+        # Update strategy and rerun
+        print(f"\nRESTARTING SIMULATION WITH {new_strategy} STRATEGY")
+        print("=" * 60)
+        
+        # Update config and trading executor
+        simulator.config['trading_mode'] = new_strategy
+        simulator.trading_executor.trading_mode = new_strategy
+        
+        # Reset simulator state
+        simulator.trading_executor.executed_trades = []
+        simulator.daily_results = []
+        simulator.trading_executor.current_budget = simulator.trading_executor.initial_budget
+        simulator.trading_executor.current_position = 0
+        simulator.trading_executor.position_entry_price = None
+        simulator.trading_executor.intervals_since_last_trade = 0
+        simulator.data_manager.price_history.clear()
+        
+        # Run simulation with new strategy
+        simulator.run_complete_simulation()
+        
+        print(f"\nSIMULATION WITH {new_strategy} STRATEGY COMPLETE")
+        print("Compare results above with previous strategy")
     
     def configure_window_range_and_rerun(self, simulator):
         """Configure window range and rerun simulation"""
@@ -289,7 +418,7 @@ class UserInterface:
             # Reset simulator state
             simulator.trading_executor.executed_trades = []
             simulator.daily_results = []
-            simulator.trading_executor.current_budget = simulator.initial_budget
+            simulator.trading_executor.current_budget = simulator.trading_executor.initial_budget
             simulator.trading_executor.current_position = 0
             simulator.trading_executor.position_entry_price = None
             simulator.trading_executor.intervals_since_last_trade = 0
@@ -342,7 +471,7 @@ class UserInterface:
             simulator.aggressive_mode = True
             simulator.trading_executor.executed_trades = []
             simulator.daily_results = []
-            simulator.trading_executor.current_budget = simulator.initial_budget
+            simulator.trading_executor.current_budget = simulator.trading_executor.initial_budget
             simulator.trading_executor.current_position = 0
             simulator.trading_executor.position_entry_price = None
             simulator.trading_executor.intervals_since_last_trade = 0
@@ -372,14 +501,24 @@ class UserInterface:
             print(f"  Shares:   {trade['shares']}")
             print(f"  Price:    ${trade['price']:.2f}")
             
-            if trade['action'] == 'BUY':
-                print(f"  Cost:     ${trade['cost']:.2f}")
+            if trade['action'] in ['BUY', 'SELL_SHORT']:
+                if 'cost' in trade:
+                    print(f"  Cost:     ${trade['cost']:.2f}")
+                if 'proceeds' in trade:
+                    print(f"  Proceeds: ${trade['proceeds']:.2f}")
+                if 'margin_required' in trade:
+                    print(f"  Margin:   ${trade['margin_required']:.2f}")
             else:
-                print(f"  Proceeds: ${trade['proceeds']:.2f}")
-                print(f"  P&L:      ${trade['pnl']:+.2f}")
+                if 'proceeds' in trade:
+                    print(f"  Proceeds: ${trade['proceeds']:.2f}")
+                if 'cost' in trade:
+                    print(f"  Cost:     ${trade['cost']:.2f}")
+                if 'pnl' in trade:
+                    print(f"  P&L:      ${trade['pnl']:+.2f}")
             
             print(f"  Reason:   {trade['reasoning']}")
             print("")
         
         input("Press Enter to continue...")
+
 
