@@ -4,6 +4,8 @@ User Interface Manager
 """
 
 import sys
+import json
+from pathlib import Path
 
 class UserInterface:
     
@@ -202,38 +204,203 @@ class UserInterface:
         print("  3. View detailed trade log")
         print("  4. Configure window range and rerun simulation")
         print("  5. Change trading strategy and rerun simulation")
+        print("  6. Use optimized strategy (if available)")
+        print("  7. Run optimization for this symbol")
         print("")
         
         while True:
             try:
-                choice = input("Select option (1-5): ").strip()
+                choice = input("Select option (1-7): ").strip()
                 
                 if choice == '1':
                     print("\nSIMULATION COMPLETE: System ready for live trading.")
                     return
-                
                 elif choice == '2':
                     self.run_aggressive_retrain(simulator)
                     return
-                
                 elif choice == '3':
                     self.show_detailed_trade_log(simulator)
                     continue
-                
                 elif choice == '4':
                     self.configure_window_range_and_rerun(simulator)
                     return
-                
                 elif choice == '5':
                     self.configure_strategy_and_rerun(simulator)
                     return
-                
+                elif choice == '6':
+                    self.use_optimized_strategy(simulator)
+                    return
+                elif choice == '7':
+                    self.run_optimization(simulator)
+                    return
                 else:
-                    print("Invalid option. Please select 1, 2, 3, 4, or 5.")
+                    print("Invalid option. Please select 1-7.")
                     
             except KeyboardInterrupt:
                 print("\nExiting simulation.")
                 return
+    
+    def use_optimized_strategy(self, simulator):
+        """Use pre-optimized strategy for the symbol"""
+        try:
+            with open('optimization_results.json', 'r') as f:
+                results = json.load(f)
+            
+            symbol = simulator.config.get('stock_symbol', '')
+            
+            if symbol in results:
+                optimal = results[symbol]
+                best_strategy = optimal['best_strategy']
+                best_params = optimal['strategies'][best_strategy]['parameters']
+                
+                print(f"\nUSING OPTIMIZED STRATEGY FOR {symbol}")
+                print(f"Strategy: {best_strategy}")
+                print(f"Parameters: {best_params}")
+                
+                # Apply optimized strategy
+                simulator.config['trading_mode'] = best_strategy
+                simulator.trading_executor.trading_mode = best_strategy
+                simulator.trading_executor.apply_optimized_parameters(best_params)
+                
+                # Reset and rerun
+                self.reset_simulator_state(simulator)
+                simulator.run_complete_simulation()
+                
+                print(f"\nOPTIMIZED {best_strategy} SIMULATION COMPLETE")
+            else:
+                print(f"\nNo optimization results found for {symbol}")
+                print("Run option 7 to optimize this symbol first")
+        
+        except FileNotFoundError:
+            print("\nNo optimization results file found")
+            print("Run option 7 to optimize symbols first")
+        except Exception as e:
+            print(f"\nError loading optimization results: {e}")
+    
+    def run_optimization(self, simulator):
+        """Run optimization for current symbol"""
+        symbol = simulator.config.get('stock_symbol', '')
+        
+        print(f"\nRUNNING OPTIMIZATION FOR {symbol}")
+        print("This will test multiple parameter combinations to find the best strategy.")
+        print("This process may take 5-10 minutes...")
+        
+        confirm = input("Proceed with optimization? (y/N): ").strip().lower()
+        if confirm == 'y':
+            try:
+                # Create optimization directory if it doesn't exist
+                Path('optimization').mkdir(exist_ok=True)
+                
+                # Run optimization inline (simplified version)
+                print("OPTIMIZATION: Starting parameter search...")
+                
+                # Get current trading executor for optimization
+                base_symbol = symbol[2:] if symbol.startswith('S_') else symbol
+                
+                # Load training data from data manager
+                training_data = self.get_training_data(simulator.data_manager)
+                
+                if training_data is not None and len(training_data) > 100:
+                    # Test all three strategies
+                    best_results = {}
+                    for mode in ['LONG_ONLY', 'SHORT_ONLY', 'LONG_SHORT']:
+                        print(f"Optimizing {mode}...")
+                        
+                        from core.trading_executor import TradingExecutor
+                        executor = TradingExecutor(base_symbol, 25000, 0, mode)
+                        best_params = executor.optimize_strategy_parameters(training_data)
+                        score = executor.backtest_parameters(training_data, best_params)
+                        
+                        best_results[mode] = {
+                            'parameters': best_params,
+                            'score': score
+                        }
+                        print(f"{mode} optimization complete - Score: {score:.3f}")
+                    
+                    # Find best strategy
+                    best_strategy = max(best_results.keys(), key=lambda k: best_results[k]['score'])
+                    
+                    # Save results
+                    optimization_data = {
+                        symbol: {
+                            'best_strategy': best_strategy,
+                            'strategies': best_results,
+                            'optimization_date': datetime.now().isoformat()
+                        }
+                    }
+                    
+                    # Load existing results and update
+                    try:
+                        with open('optimization_results.json', 'r') as f:
+                            existing_results = json.load(f)
+                    except FileNotFoundError:
+                        existing_results = {}
+                    
+                    existing_results.update(optimization_data)
+                    
+                    with open('optimization_results.json', 'w') as f:
+                        json.dump(existing_results, f, indent=2)
+                    
+                    print(f"\nOptimization completed successfully!")
+                    print(f"Best strategy for {symbol}: {best_strategy}")
+                    print(f"Score: {best_results[best_strategy]['score']:.3f}")
+                    print("You can now use option 6 to run the optimized strategy")
+                else:
+                    print("Insufficient training data for optimization")
+                    
+            except Exception as e:
+                print(f"Optimization failed: {e}")
+                import traceback
+                traceback.print_exc()
+    
+    def get_training_data(self, data_manager):
+        """Extract training data from data manager"""
+        try:
+            # Get available days
+            data_manager.discover_available_days()
+            
+            if len(data_manager.available_days) < 20:
+                return None
+            
+            # Use first 70% for training
+            train_days = data_manager.available_days[:int(len(data_manager.available_days) * 0.7)]
+            
+            # Load and combine data
+            all_data = []
+            for day in train_days:
+                day_data = data_manager.load_day_data(day)
+                if day_data:
+                    for entry in day_data:
+                        all_data.append({
+                            'timestamp': datetime.fromtimestamp(int(entry['date']) / 1000),
+                            'Open': float(entry['last']),
+                            'High': float(entry['ask']),
+                            'Low': float(entry['bid']),
+                            'Close': float(entry['last']),
+                            'Volume': int(entry['size'])
+                        })
+            
+            if not all_data:
+                return None
+            
+            import pandas as pd
+            df = pd.DataFrame(all_data)
+            df.set_index('timestamp', inplace=True)
+            return df.dropna()
+            
+        except Exception as e:
+            print(f"Error loading training data: {e}")
+            return None
+    
+    def reset_simulator_state(self, simulator):
+        """Reset simulator state for rerun"""
+        simulator.trading_executor.executed_trades = []
+        simulator.daily_results = []
+        simulator.trading_executor.current_budget = simulator.trading_executor.initial_budget
+        simulator.trading_executor.current_position = 0
+        simulator.trading_executor.position_entry_price = None
+        simulator.trading_executor.intervals_since_last_trade = 0
+        simulator.data_manager.price_history.clear()
     
     def configure_strategy_and_rerun(self, simulator):
         print("\nTRADING STRATEGY CONFIGURATION")
@@ -301,13 +468,7 @@ class UserInterface:
         # Reset simulator state and update strategy
         simulator.config['trading_mode'] = new_strategy
         simulator.trading_executor.trading_mode = new_strategy
-        simulator.trading_executor.executed_trades = []
-        simulator.daily_results = []
-        simulator.trading_executor.current_budget = simulator.trading_executor.initial_budget
-        simulator.trading_executor.current_position = 0
-        simulator.trading_executor.position_entry_price = None
-        simulator.trading_executor.intervals_since_last_trade = 0
-        simulator.data_manager.price_history.clear()
+        self.reset_simulator_state(simulator)
         
         simulator.run_complete_simulation()
         
@@ -381,15 +542,7 @@ class UserInterface:
             print(f"\nRESTARTING SIMULATION WITH {min_window}-{max_window} DAY WINDOWS")
             print("=" * 60)
             
-            # Reset simulator state
-            simulator.trading_executor.executed_trades = []
-            simulator.daily_results = []
-            simulator.trading_executor.current_budget = simulator.trading_executor.initial_budget
-            simulator.trading_executor.current_position = 0
-            simulator.trading_executor.position_entry_price = None
-            simulator.trading_executor.intervals_since_last_trade = 0
-            simulator.data_manager.price_history.clear()
-            
+            self.reset_simulator_state(simulator)
             simulator.run_complete_simulation()
             
             print(f"\nSIMULATION WITH {min_window}-{max_window} DAY WINDOWS COMPLETE")
@@ -428,13 +581,7 @@ class UserInterface:
         confirm = input("Proceed with aggressive retraining? (y/N): ").strip().lower()
         if confirm == 'y':
             simulator.aggressive_mode = True
-            simulator.trading_executor.executed_trades = []
-            simulator.daily_results = []
-            simulator.trading_executor.current_budget = simulator.trading_executor.initial_budget
-            simulator.trading_executor.current_position = 0
-            simulator.trading_executor.position_entry_price = None
-            simulator.trading_executor.intervals_since_last_trade = 0
-            simulator.data_manager.price_history.clear()
+            self.reset_simulator_state(simulator)
             
             print("\nAGGRESSIVE MODE ACTIVATED")
             simulator.run_complete_simulation()

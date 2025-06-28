@@ -1,0 +1,122 @@
+{
+  "S_CRNC": {
+    "best_strategy": "LONG_ONLY",
+    "strategies": {
+      "LONG_ONLY": {
+        "parameters": {
+          "momentum_threshold": 0.02,
+          "sma_periods": [
+            5,
+            10,
+            20
+          ],
+          "profit_target": 0.03,
+          "stop_loss": 0.015,
+          "position_size": 0.5
+        },
+        "train_score": 0.0024142228698730466,
+        "test_score": 0.034146835365295405,
+        "optimized_date": "2025-06-27T20:49:06.781656"
+      },
+      "SHORT_ONLY": {
+        "parameters": {
+          "momentum_threshold": 0.005,
+          "sma_periods": [
+            7,
+            14,
+            28
+          ],
+          "profit_target": 0.03,
+          "stop_loss": 0.015,
+          "position_size": 0.8
+        },
+        "train_score": -0.006248505371570587,
+        "test_score": -0.03508023000884474,
+        "optimized_date": "2025-06-27T20:49:19.249143"
+      },
+      "LONG_SHORT": {
+        "parameters": {
+          "momentum_threshold": 0.005,
+          "sma_periods": [
+            7,
+            14,
+            28
+          ],
+          "profit_target": 0.03,
+          "stop_loss": 0.015,
+          "position_size": 0.8
+        },
+        "train_score": -0.002881207663401403,
+        "test_score": -0.02438797794993331,
+        "optimized_date": "2025-06-27T20:49:31.411515"
+      }
+    },
+    "optimization_date": "2025-06-27T20:49:31.411550"
+  },
+  "S_AAPL": {
+    "best_strategy": "LONG_ONLY",
+    "strategies": {
+      "LONG_ONLY": {
+        "parameters": {
+          "momentum_threshold": 0.01,
+          "sma_periods": [
+            2,
+            4,
+            6
+          ],
+          "profit_target": 0.03,
+          "stop_loss": 0.02,
+          "position_size": 0.6,
+          "min_hold_periods": 2,
+          "volatility_filter": 0.01,
+          "volume_filter": 1.0
+        },
+        "train_score": 0.05,
+        "test_score": 0.0,
+        "optimized_date": "2025-06-28T07:38:42.493098",
+        "data_reduction_used": false
+      },
+      "SHORT_ONLY": {
+        "parameters": {
+          "momentum_threshold": 0.01,
+          "sma_periods": [
+            2,
+            4,
+            6
+          ],
+          "profit_target": 0.03,
+          "stop_loss": 0.02,
+          "position_size": 0.6,
+          "min_hold_periods": 2,
+          "volatility_filter": 0.01,
+          "volume_filter": 1.0
+        },
+        "train_score": 0.0,
+        "test_score": 0.0,
+        "optimized_date": "2025-06-28T07:38:53.628643",
+        "data_reduction_used": false
+      },
+      "LONG_SHORT": {
+        "parameters": {
+          "momentum_threshold": 0.01,
+          "sma_periods": [
+            5,
+            10,
+            20
+          ],
+          "profit_target": 0.05,
+          "stop_loss": 0.025,
+          "position_size": 0.6,
+          "min_hold_periods": 2,
+          "volatility_filter": 0.01,
+          "volume_filter": 1.0
+        },
+        "train_score": -999,
+        "test_score": -999,
+        "optimized_date": "2025-06-28T07:38:59.722615",
+        "data_reduction_used": false
+      }
+    },
+    "optimization_date": "2025-06-28T07:38:59.722654"
+  }
+}

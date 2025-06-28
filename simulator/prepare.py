@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-RW WolfXE Simulation Preparation Tool - 40 Days Training, 20 Days Testing
+WolfXE Simulation Preparation Tool - 40 Days Training, 20 Days Testing
 Automates data preparation, training, and testing for any ticker
 """
 
@@ -14,9 +14,9 @@ from datetime import datetime, timedelta
 from pathlib import Path
 import time
 
-# Add path for imports
-sys.path.append(str(Path(__file__).parent.parent))
-from rw_wolfxe.production.trader_wolfxe import WolfXEnhancedTradingSystem
+# FIXED: Remove the incorrect import path
+# The simulator is self-contained and doesn't need the production trader
+# from rw_wolfxe.production.trader_wolfxe import WolfXEnhancedTradingSystem
 
 class SimulationPreparator:
     """Automates complete simulation preparation process with 40/20 split"""
@@ -42,11 +42,11 @@ class SimulationPreparator:
             )
             
             pong = self.redis_client.ping()
-            print(f"✅ Redis connection successful: {pong}")
+            print(f"Redis connection successful: {pong}")
             return True
             
         except Exception as e:
-            print(f"❌ Redis connection failed: {e}")
+            print(f"Redis connection failed: {e}")
             return False
     
     def check_existing_simulation(self, symbol):
@@ -58,7 +58,7 @@ class SimulationPreparator:
             keys = self.redis_client.keys(pattern)
             
             if keys:
-                print(f"📊 SIMULATION DATA EXISTS FOR {sim_symbol}")
+                print(f"SIMULATION DATA EXISTS FOR {sim_symbol}")
                 print(f"   Found {len(keys)} days of data")
                 
                 dates = []
@@ -73,16 +73,16 @@ class SimulationPreparator:
                 
                 return True, len(keys)
             else:
-                print(f"📊 NO SIMULATION DATA FOUND FOR {sim_symbol}")
+                print(f"NO SIMULATION DATA FOUND FOR {sim_symbol}")
                 return False, 0
                 
         except Exception as e:
-            print(f"❌ Error checking existing data: {e}")
+            print(f"Error checking existing data: {e}")
             return False, 0
     
     def validate_ticker(self, symbol):
         """Validate if ticker exists and has recent data"""
-        print(f"🔍 VALIDATING TICKER {symbol}")
+        print(f"VALIDATING TICKER {symbol}")
         
         try:
             ticker = yf.Ticker(symbol)
@@ -91,29 +91,29 @@ class SimulationPreparator:
             daily_data = ticker.history(period="5d", interval="1d")
             
             if daily_data.empty:
-                print(f"❌ No recent daily data found for {symbol}")
+                print(f"No recent daily data found for {symbol}")
                 return False
             
             # Check if 5-minute data is available
             try:
                 intraday_data = ticker.history(period="7d", interval="5m")
                 if intraday_data.empty:
-                    print(f"⚠️  No 5-minute intraday data available for {symbol}")
+                    print(f"No 5-minute intraday data available for {symbol}")
                     return "daily_only"
                 else:
-                    print(f"✅ Ticker {symbol} validated - intraday data available")
+                    print(f"Ticker {symbol} validated - intraday data available")
                     return True
             except:
-                print(f"⚠️  5-minute data not available for {symbol}")
+                print(f"5-minute data not available for {symbol}")
                 return "daily_only"
                 
         except Exception as e:
-            print(f"❌ Ticker validation failed: {e}")
+            print(f"Ticker validation failed: {e}")
             return False
     
     def download_ticker_data(self, symbol, days=60):
         """Download ticker data with Yahoo Finance limitations handled"""
-        print(f"📥 DOWNLOADING {days} DAYS OF DATA FOR {symbol}")
+        print(f"DOWNLOADING {days} DAYS OF DATA FOR {symbol}")
         print("=" * 60)
         
         validation = self.validate_ticker(symbol)
@@ -128,7 +128,7 @@ class SimulationPreparator:
                 df = ticker.history(period=f"{days}d", interval="1d")
                 
                 if df.empty:
-                    print("❌ No daily data available")
+                    print("No daily data available")
                     return None
                 
                 # Convert daily to simulated 5-minute data
@@ -142,27 +142,27 @@ class SimulationPreparator:
                 df = ticker.history(period=f"{max_days}d", interval="5m")
                 
                 if df.empty:
-                    print("❌ No 5-minute data available")
+                    print("No 5-minute data available")
                     return None
             
             df = df.dropna()
             
             if len(df) < 100:
-                print(f"❌ Insufficient data: only {len(df)} points")
+                print(f"Insufficient data: only {len(df)} points")
                 return None
             
-            print(f"✅ Downloaded {len(df)} data points")
+            print(f"Downloaded {len(df)} data points")
             print(f"   Date range: {df.index[0]} to {df.index[-1]}")
             
             return df
             
         except Exception as e:
-            print(f"❌ Download failed: {e}")
+            print(f"Download failed: {e}")
             return None
     
     def simulate_intraday_from_daily(self, daily_df):
         """Convert daily data to simulated 5-minute intervals"""
-        print("🔄 Simulating 5-minute data from daily data...")
+        print("Simulating 5-minute data from daily data...")
         
         intraday_data = []
         
@@ -205,33 +205,33 @@ class SimulationPreparator:
         df = pd.DataFrame(intraday_data)
         df.set_index('timestamp', inplace=True)
         
-        print(f"✅ Generated {len(df)} simulated 5-minute intervals")
+        print(f"Generated {len(df)} simulated 5-minute intervals")
         return df
     
     def convert_to_timesale_format(self, df, symbol):
         """Convert data to timesale format"""
-        print("🔄 Converting to timesale format...")
+        print("Converting to timesale format...")
         
         timesale_data = []
         
         for timestamp, row in df.iterrows():
             entry = {
-                'type': 'timesale',
-                'symbol': symbol.upper(),
-                'last': str(row['Close']),
-                'size': str(int(row['Volume'])),
-                'bid': str(row['Low']),
-                'ask': str(row['High']),
-                'date': str(int(timestamp.timestamp() * 1000))
+                'timestamp': timestamp,
+                'price': row['Close'],
+                'volume': int(row['Volume']),
+                'bid': row['Low'],
+                'ask': row['High'],
+                'symbol': f"S_{symbol.upper()}",
+                'trading_date': timestamp.strftime('%Y-%m-%d')
             }
             timesale_data.append(entry)
         
-        print(f"✅ Converted {len(timesale_data)} entries to timesale format")
+        print(f"Converted {len(timesale_data)} entries to timesale format")
         return timesale_data
     
     def upload_to_redis(self, timesale_data, symbol):
-        """Upload timesale data to Redis with MAXIMUM speed"""
-        print(f"📤 FAST UPLOADING DATA TO REDIS FOR S_{symbol}")
+        """Upload timesale data to Redis streams"""
+        print(f"UPLOADING DATA TO REDIS FOR S_{symbol}")
         print("=" * 60)
         
         sim_symbol = f"S_{symbol.upper()}"
@@ -239,8 +239,7 @@ class SimulationPreparator:
         # Group data by trading day
         daily_data = {}
         for entry in timesale_data:
-            timestamp = datetime.fromtimestamp(int(entry['date']) / 1000)
-            trading_date = timestamp.strftime('%Y-%m-%d')
+            trading_date = entry['trading_date']
             
             if trading_date not in daily_data:
                 daily_data[trading_date] = []
@@ -248,7 +247,7 @@ class SimulationPreparator:
         
         print(f"   Grouped into {len(daily_data)} trading days")
         
-        # FASTEST: Upload all entries for each day in one pipeline
+        # Upload data day by day
         uploaded_days = 0
         total_messages = 0
         
@@ -260,7 +259,17 @@ class SimulationPreparator:
                 pipe = self.redis_client.pipeline()
                 
                 for entry in day_entries:
-                    pipe.xadd(stream_name, entry)
+                    # Convert to Redis stream format
+                    stream_entry = {
+                        'timestamp': entry['timestamp'].isoformat(),
+                        'price': str(entry['price']),
+                        'volume': str(entry['volume']),
+                        'bid': str(entry['bid']),
+                        'ask': str(entry['ask']),
+                        'symbol': entry['symbol'],
+                        'trading_date': entry['trading_date']
+                    }
+                    pipe.xadd(stream_name, stream_entry)
                 
                 # Execute all at once
                 pipe.execute()
@@ -268,157 +277,19 @@ class SimulationPreparator:
                 total_messages += len(day_entries)
                 uploaded_days += 1
                 
-                print(f"   ⚡ Day {uploaded_days}: {len(day_entries)} messages uploaded")
+                print(f"   Day {uploaded_days}: {len(day_entries)} messages uploaded")
                 
             except Exception as e:
                 print(f"   Error uploading {trading_date}: {e}")
         
-        print(f"✅ FAST upload complete: {uploaded_days} days, {total_messages} messages")
+        print(f"Upload complete: {uploaded_days} days, {total_messages} messages")
         return uploaded_days
-    
-    def train_agents(self, symbol, training_days=40):
-        """Train both agents on first 40 days - NO SEPARATION"""
-        print(f"🤖 TRAINING ALL AGENTS FOR {symbol} ({training_days} DAYS)")
-        print("=" * 60)
-        
-        sim_symbol = f"S_{symbol.upper()}"
-        
-        # Get available days
-        pattern = f"sim:{sim_symbol}:*"
-        keys = self.redis_client.keys(pattern)
-        
-        if len(keys) < training_days:
-            print(f"❌ Insufficient data: {len(keys)} days available, need {training_days}")
-            return False
-        
-        # Sort days and take first N for training
-        days = []
-        for key in keys:
-            parts = key.split(':')
-            if len(parts) >= 3:
-                days.append(parts[2])
-        
-        days.sort()
-        training_days_list = days[:training_days]
-        
-        print(f"   Training on {len(training_days_list)} days: {training_days_list[0]} to {training_days_list[-1]}")
-        print(f"   Reserving {len(days) - len(training_days_list)} days for testing")
-        
-        # Load training data
-        all_data = []
-        
-        for i, day in enumerate(training_days_list):
-            if i % 5 == 0:
-                print(f"   Loading day {i+1}/{len(training_days_list)}: {day}")
-            
-            stream_name = f"sim:{sim_symbol}:{day}"
-            messages = self.redis_client.xrange(stream_name)
-            
-            for message_id, fields in messages:
-                if fields.get('type') == 'timesale':
-                    timestamp_ms = int(fields.get('date', message_id.split('-')[0]))
-                    timestamp = datetime.fromtimestamp(timestamp_ms / 1000)
-                    
-                    all_data.append({
-                        'timestamp': timestamp,
-                        'Open': float(fields.get('last', 0)),
-                        'High': float(fields.get('ask', 0)),
-                        'Low': float(fields.get('bid', 0)),
-                        'Close': float(fields.get('last', 0)),
-                        'Volume': int(fields.get('size', 0))
-                    })
-        
-        if len(all_data) < 500:
-            print(f"❌ Insufficient training data: {len(all_data)} points")
-            return False
-        
-        # Convert to DataFrame
-        df = pd.DataFrame(all_data)
-        df.set_index('timestamp', inplace=True)
-        df = df.dropna()
-        
-        print(f"   Training dataset: {len(df)} data points")
-        
-        # Initialize and train WolfXE system - ALL AGENTS TOGETHER
-        try:
-            print("   Initializing WolfXE Enhanced Trading System...")
-            wolfxe_system = WolfXEnhancedTradingSystem(symbol.upper(), 25000)
-            
-            print("   Training ALL agents together on complete dataset...")
-            success = wolfxe_system.load_or_train_all_agents(df)
-            
-            if success:
-                # Save training metadata
-                training_info = {
-                    'symbol': symbol.upper(),
-                    'training_completed': datetime.now().isoformat(),
-                    'data_points': len(df),
-                    'training_days': len(training_days_list),
-                    'total_available_days': len(days),
-                    'trained_on': 'automated_preparation_unified',
-                    'model_version': '2.1_automated_unified',
-                    'long_term_trained': True,
-                    'intraday_trained': True,
-                    'risk_management': 'corrected',
-                    'training_method': 'unified_all_agents'
-                }
-                
-                training_file = f"training_metadata_{symbol.upper()}.json"
-                with open(training_file, 'w') as f:
-                    json.dump(training_info, f, indent=2)
-                
-                print(f"✅ ALL agents training completed successfully")
-                print(f"   Metadata saved to {training_file}")
-                return True
-            else:
-                print("❌ Training failed")
-                return False
-                
-        except Exception as e:
-            print(f"❌ Training error: {e}")
-            return False
-    
-    def test_simulation(self, symbol):
-        """Test the trained system on remaining days - FIXED LOGIC"""
-        print(f"🧪 TESTING SIMULATION FOR {symbol} (REMAINING DAYS)")
-        print("=" * 60)
-        
-        sim_symbol = f"S_{symbol.upper()}"
-        pattern = f"sim:{sim_symbol}:*"
-        keys = self.redis_client.keys(pattern)
-        
-        days = []
-        for key in keys:
-            parts = key.split(':')
-            if len(parts) >= 3:
-                days.append(parts[2])
-        
-        days.sort()
-        total_days = len(days)
-        
-        print(f"   Total available days: {total_days}")
-        print(f"   Used for training: 40 days")
-        print(f"   Available for testing: {total_days - 40} days")
-        
-        # FIXED: Use whatever days are available for testing
-        if total_days <= 40:
-            print(f"❌ No days available for testing (need more than 40 days total)")
-            return False
-        
-        test_days_available = total_days - 40
-        test_days_list = days[40:]  # Use all remaining days
-        
-        print(f"   Test period: {test_days_list[0]} to {test_days_list[-1]}")
-        print(f"   Test days count: {len(test_days_list)}")
-        print("   ✅ Ready for simulation testing with main.py")
-        
-        return True
     
     def prepare_ticker(self, symbol, force_download=False):
         """Complete preparation process for a ticker"""
         symbol = symbol.upper()
         
-        print(f"🚀 PREPARING SIMULATION FOR {symbol} (UNIFIED TRAINING)")
+        print(f"PREPARING SIMULATION FOR {symbol}")
         print("=" * 80)
         
         # Step 1: Check existing data
@@ -426,12 +297,8 @@ class SimulationPreparator:
         
         if exists and not force_download:
             print(f"   Simulation data already exists ({day_count} days)")
-            response = input("   Proceed with training anyway? (y/N): ").strip().lower()
-            if response == 'y':
-                if self.train_agents(symbol):
-                    return self.test_simulation(symbol)
-                return False
-            else:
+            response = input("   Proceed anyway? (y/N): ").strip().lower()
+            if response != 'y':
                 print("   Skipping preparation")
                 return False
         
@@ -448,26 +315,16 @@ class SimulationPreparator:
         if uploaded_days == 0:
             return False
         
-        # Step 5: Train ALL agents together on first 40 days
-        if not self.train_agents(symbol):
-            return False
-        
-        # Step 6: Prepare for testing on remaining days
-        if not self.test_simulation(symbol):
-            return False
-        
-        print(f"\n🎉 PREPARATION COMPLETE FOR {symbol}")
+        print(f"\nPREPARATION COMPLETE FOR {symbol}")
         print("=" * 80)
-        print("✅ Data downloaded and uploaded")
-        print("✅ ALL agents trained together on first 40 days")
-        print("✅ Remaining days reserved for testing")
-        print(f"\nReady to run: python main.py --symbol {symbol} --budget 25000")
+        print("Data downloaded and uploaded")
+        print(f"Ready to run: python main.py --symbol {symbol} --budget 25000")
         
         return True
 
 def main():
     """Main preparation function"""
-    parser = argparse.ArgumentParser(description='Prepare simulation data for any ticker (unified training)')
+    parser = argparse.ArgumentParser(description='Prepare simulation data for any ticker')
     parser.add_argument('symbol', help='Stock symbol to prepare (e.g., AAPL, TSLA, MSFT)')
     parser.add_argument('--force', action='store_true', help='Force re-download even if data exists')
     parser.add_argument('--redis-host', default='trader.wolfx0.com', help='Redis host')
@@ -480,16 +337,16 @@ def main():
     
     # Connect to Redis
     if not prep.connect_redis():
-        print("❌ Failed to connect to Redis")
+        print("Failed to connect to Redis")
         return False
     
     # Prepare the ticker
     success = prep.prepare_ticker(args.symbol, args.force)
     
     if success:
-        print(f"\n✅ {args.symbol} is ready for simulation!")
+        print(f"\n{args.symbol} is ready for simulation!")
     else:
-        print(f"\n❌ Failed to prepare {args.symbol}")
+        print(f"\nFailed to prepare {args.symbol}")
     
     return success
 
