@@ -1,0 +1,18 @@
+{
+  "symbol": "GERN",
+  "strategy_type": "Enhanced_2D_CNN",
+  "final_return": 34906896.551183045,
+  "total_trades": 6923,
+  "high_confidence_trades": 3632,
+  "avg_confidence": 0.6322059631347656,
+  "best_params": {
+    "cnn_filters": 74,
+    "cnn_kernel": 3,
+    "lstm_hidden": 126,
+    "lstm_layers": 1,
+    "dropout": 0.23597162507759764,
+    "learning_rate": 0.0008520694208777855,
+    "batch_size": 44
+  },
+  "timestamp": "2025-07-06T18:24:49.500957"
+}

@@ -1,0 +1,20 @@
+{
+  "symbol": "GERN",
+  "strategy_type": "Fixed_Intraday_CNN_BiLSTM",
+  "final_return": 0.0,
+  "total_trades": 0,
+  "high_confidence_trades": 0,
+  "avg_confidence": 0.8669570684432983,
+  "sharpe_ratio": 0.0,
+  "max_drawdown": 0.0,
+  "best_params": {
+    "cnn_filters": 35,
+    "cnn_kernel": 2,
+    "lstm_hidden": 67,
+    "lstm_layers": 1,
+    "dropout": 0.2156347214957313,
+    "learning_rate": 0.0026191899486535425,
+    "batch_size": 43
+  },
+  "timestamp": "2025-07-06T19:34:42.980020"
+}

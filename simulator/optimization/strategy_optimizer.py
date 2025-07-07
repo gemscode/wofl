@@ -1,665 +1,476 @@
-#!/usr/bin/env python3
-"""
-Simple Hindsight RL Trading Strategy Optimizer - Minimal Monitoring
-"""
-
-import os
-import json
-import pandas as pd
+import argparse
 import numpy as np
-from datetime import datetime
-from pathlib import Path
-import redis
-import sys
-import random
+import torch
+import torch.nn as nn
+import torch.optim as optim
 from collections import deque
-import time
+from data_manager import FixedDataManager
+from pattern_explorer import PatternExplorer
 
-# GPU memory management for Mac M3
-os.environ['PYTORCH_MPS_HIGH_WATERMARK_RATIO'] = '0.6'
-os.environ['PYTORCH_MPS_LOW_WATERMARK_RATIO'] = '0.5'
-os.environ['PYTORCH_ENABLE_MPS_FALLBACK'] = '1'
-
-# GPU acceleration
-try:
-    import torch
-    import torch.nn as nn
-    import torch.optim as optim
-    
-    if torch.backends.mps.is_available():
-        device = torch.device("mps")
-        print("Using Mac M3 GPU acceleration (MPS)")
+def get_device():
+    if hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+        print("✅ Using Mac M-series GPU (MPS)")
+        return torch.device("mps")
     elif torch.cuda.is_available():
-        device = torch.device("cuda")
-        print("Using CUDA GPU acceleration")
+        print("✅ Using NVIDIA GPU (CUDA)")
+        return torch.device("cuda")
     else:
-        device = torch.device("cpu")
-        print("Using CPU")
-except ImportError:
-    print("ERROR: PyTorch not installed")
-    sys.exit(1)
+        print("⚠️  Using CPU only")
+        return torch.device("cpu")
 
-sys.path.append(str(Path(__file__).parent.parent))
-from core.data_manager import DataManager
-
-def clear_gpu_cache():
-    """Clear GPU cache"""
-    if device.type == 'mps':
-        torch.mps.empty_cache()
-    elif device.type == 'cuda':
-        torch.cuda.empty_cache()
-    import gc
-    gc.collect()
-
-class TradingEnvironment:
-    """Base trading environment that works well (from original RL agent)"""
-    
-    def __init__(self, price_data, trading_mode='LONG_ONLY'):
-        self.price_data = torch.tensor(price_data['Close'].values, dtype=torch.float32, device=device)
-        self.trading_mode = trading_mode
+class PatternAwareTradingEnv:
+    def __init__(self, data, explorer, lookback=30, initial_cash=25000, reward_config=None):
+        self.data = data.reset_index(drop=True)
+        self.explorer = explorer
+        self.lookback = lookback
+        self.initial_cash = initial_cash
+        self.reward_config = reward_config or {}
         self.reset()
-    
+
     def reset(self):
-        """Reset environment to initial state"""
-        self.position = 0  # 0 = no position, 1 = long, -1 = short
-        self.cash = 25000.0
-        self.shares = 0
-        self.entry_price = 0
-        self.current_step = 50  # Start after enough data for indicators
-        self.max_steps = len(self.price_data) - 10
-        self.total_return = 0
-        self.trades = 0
+        self.cash = self.initial_cash
+        self.holdings = 0
+        self.position = 0
+        self.current_step = self.lookback
+        self.total_trades = 0
         self.wins = 0
-        
+        self.portfolio_history = []
+        self.returns_history = []
+        self.drawdown_history = []
+        self.peak_value = self.initial_cash
         return self.get_state()
-    
+
     def get_state(self):
-        """Get current state for RL agent"""
-        if self.current_step >= len(self.price_data) - 20:
-            return torch.zeros(15, device=device)
-        
-        # Price features
-        current_price = self.price_data[self.current_step]
-        prices_20 = self.price_data[max(0, self.current_step-20):self.current_step]
-        
-        # Technical indicators
-        sma_5 = torch.mean(prices_20[-5:]) if len(prices_20) >= 5 else current_price
-        sma_10 = torch.mean(prices_20[-10:]) if len(prices_20) >= 10 else current_price
-        sma_20 = torch.mean(prices_20) if len(prices_20) >= 20 else current_price
-        
-        # Momentum indicators
-        momentum_5 = (current_price - prices_20[-5]) / prices_20[-5] if len(prices_20) >= 5 else 0
-        momentum_10 = (current_price - prices_20[-10]) / prices_20[-10] if len(prices_20) >= 10 else 0
-        
-        # Volatility
-        if len(prices_20) > 1:
-            returns = (prices_20[1:] - prices_20[:-1]) / prices_20[:-1]
-            volatility = torch.std(returns)
-        else:
-            volatility = torch.tensor(0.0, device=device)
-        
-        # Position and P&L features
-        position_pnl = 0
-        if self.position != 0 and self.entry_price > 0:
-            if self.position == 1:  # Long
-                position_pnl = (current_price - self.entry_price) / self.entry_price
-            else:  # Short
-                position_pnl = (self.entry_price - current_price) / self.entry_price
-        
-        # Normalize features
-        price_norm = current_price / torch.mean(prices_20) if len(prices_20) > 0 else 1.0
-        
-        state = torch.tensor([
-            price_norm.item(),
-            (sma_5 / current_price).item(),
-            (sma_10 / current_price).item(), 
-            (sma_20 / current_price).item(),
-            momentum_5.item(),
-            momentum_10.item(),
-            volatility.item(),
-            float(self.position),
-            position_pnl,
-            self.cash / 25000.0,  # Normalized cash
-            float(self.shares) / 100.0,  # Normalized shares
-            float(self.trades) / 100.0,  # Normalized trade count
-            float(self.wins) / max(1, self.trades),  # Win rate
-            self.total_return,
-            float(self.current_step) / self.max_steps  # Progress
-        ], device=device)
-        
-        return state
-    
+        window = self.data.iloc[self.current_step-self.lookback:self.current_step]
+        price = window['close'].iloc[-1]
+        sma_5 = window['sma_5'].iloc[-1]
+        sma_10 = window['sma_10'].iloc[-1]
+        sma_20 = window['sma_20'].iloc[-1]
+        rsi_14 = window['rsi_14'].iloc[-1]
+        base_state = np.array([
+            price/100, sma_5/100, sma_10/100, sma_20/100, rsi_14/100,
+            self.position, self.cash/10000, self.holdings/1000
+        ], dtype=np.float32)
+        guidance = self.explorer.generate_guidance(window)
+        return np.concatenate([base_state, guidance]).astype(np.float32)
+
     def step(self, action):
-        """Execute action and return new state, reward, done"""
-        if self.current_step >= self.max_steps:
-            return self.get_state(), 0, True
+        window = self.data.iloc[self.current_step-self.lookback:self.current_step]
+        price = window['close'].iloc[-1]
+        old_portfolio_value = self.cash + self.holdings * price
         
-        current_price = self.price_data[self.current_step].item()
-        reward = 0
+        # Execute trade
+        trade_executed = False
+        if action == 1 and self.position == 0:  # BUY
+            shares = int(self.cash // price)
+            if shares > 0:
+                self.cash -= shares * price
+                self.holdings += shares
+                self.position = 1
+                self.total_trades += 1
+                trade_executed = True
+        elif action == 2 and self.position == 1:  # SELL
+            self.cash += self.holdings * price
+            # Check if this was a winning trade
+            if self.holdings * price > self.holdings * getattr(self, 'entry_price', price):
+                self.wins += 1
+            self.holdings = 0
+            self.position = 0
+            self.total_trades += 1
+            trade_executed = True
         
-        # Action: 0=hold, 1=buy/long, 2=sell/cover, 3=short (if supported)
-        if action == 1:  # Buy/Long
-            if self.position == 0:  # Open long position
-                self.shares = int(self.cash * 0.95 // current_price)
-                if self.shares > 0:
-                    self.cash -= self.shares * current_price
-                    self.position = 1
-                    self.entry_price = current_price
-                    self.trades += 1
-            elif self.position == -1:  # Cover short
-                self.cash -= self.shares * current_price  # Buy to cover
-                pnl = self.shares * (self.entry_price - current_price)
-                self.cash += pnl
-                if pnl > 0:
-                    self.wins += 1
-                    reward = pnl / 1000.0  # Normalize reward
-                else:
-                    reward = pnl / 1000.0
-                self.position = 0
-                self.shares = 0
+        # Calculate portfolio value and metrics
+        portfolio_value = self.cash + self.holdings * price
+        self.portfolio_history.append(portfolio_value)
         
-        elif action == 2:  # Sell/Cover
-            if self.position == 1:  # Close long position
-                proceeds = self.shares * current_price
-                pnl = proceeds - (self.shares * self.entry_price)
-                self.cash += proceeds
-                if pnl > 0:
-                    self.wins += 1
-                    reward = pnl / 1000.0  # Normalize reward
-                else:
-                    reward = pnl / 1000.0
-                self.position = 0
-                self.shares = 0
+        # Calculate return
+        if len(self.portfolio_history) > 1:
+            period_return = (portfolio_value - old_portfolio_value) / old_portfolio_value
+            self.returns_history.append(period_return)
         
-        elif action == 3 and self.trading_mode in ['SHORT_ONLY', 'LONG_SHORT']:  # Short
-            if self.position == 0:  # Open short position
-                self.shares = int(self.cash * 0.95 // current_price)
-                if self.shares > 0:
-                    self.cash += self.shares * current_price  # Receive cash from short
-                    self.position = -1
-                    self.entry_price = current_price
-                    self.trades += 1
+        # Track peak and drawdown
+        if portfolio_value > self.peak_value:
+            self.peak_value = portfolio_value
+        drawdown = (self.peak_value - portfolio_value) / self.peak_value
+        self.drawdown_history.append(drawdown)
         
-        # Calculate total return
-        portfolio_value = self.cash
-        if self.position == 1:  # Long position
-            portfolio_value += self.shares * current_price
-        elif self.position == -1:  # Short position
-            portfolio_value += self.shares * (self.entry_price - current_price)
-        
-        self.total_return = (portfolio_value - 25000) / 25000
-        
-        # Additional rewards for good behavior
-        if self.trades > 0:
-            win_rate = self.wins / self.trades
-            if win_rate > 0.6:
-                reward += 0.1  # Bonus for high win rate
-        
-        if self.total_return > 0.05:  # Bonus for achieving 5%+ return
-            reward += 0.2
+        # Calculate reward based on configuration
+        reward = self._calculate_reward(old_portfolio_value, portfolio_value, trade_executed, drawdown)
         
         self.current_step += 1
-        done = self.current_step >= self.max_steps
+        done = self.current_step >= len(self.data)
         
         return self.get_state(), reward, done
 
-class SimpleHindsightEnvironment(TradingEnvironment):
-    """Simple hindsight learning built on working base environment"""
-    
-    def __init__(self, price_data, trading_mode='LONG_ONLY'):
-        super().__init__(price_data, trading_mode)
-        self.opportunity_tracker = []
-        self.hindsight_penalties = 0
-        self.hindsight_bonuses = 0
-        self.missed_opportunities = deque(maxlen=50)  # Limit memory usage
-    
-    def step(self, action):
-        """Enhanced step with simple hindsight learning"""
-        # Use the original working step function
-        state, reward, done = super().step(action)
+    def _calculate_reward(self, old_value, new_value, trade_executed, drawdown):
+        """Calculate reward based on reward configuration"""
+        reward_type = self.reward_config.get('reward_type', 'default')
         
-        # Add simple hindsight analysis every 50 steps (reduced frequency for performance)
-        if self.current_step % 50 == 0 and self.current_step > 50:
-            hindsight_adjustment = self.simple_hindsight_analysis()
-            reward += hindsight_adjustment
-            
-            if hindsight_adjustment < 0:
-                self.hindsight_penalties += 1
-            elif hindsight_adjustment > 0:
-                self.hindsight_bonuses += 1
-        
-        return state, reward, done
-    
-    def simple_hindsight_analysis(self):
-        """Simple hindsight: check if we missed obvious opportunities"""
-        try:
-            if self.current_step + 15 >= len(self.price_data):
-                return 0.0
-            
-            current_price = self.price_data[self.current_step]
-            
-            # Look ahead 10-15 steps to see what happens
-            future_prices = self.price_data[self.current_step+5:self.current_step+15]
-            if len(future_prices) == 0:
-                return 0.0
-            
-            max_future = torch.max(future_prices)
-            min_future = torch.min(future_prices)
-            
-            # Calculate potential opportunities
-            long_opportunity = (max_future - current_price) / current_price
-            short_opportunity = (current_price - min_future) / current_price
-            
-            hindsight_adjustment = 0.0
-            
-            # Simple hindsight rules
-            if long_opportunity > 0.025:  # 2.5%+ upside available
-                if self.position <= 0:  # We're not long when we should be
-                    hindsight_adjustment -= 0.03  # Small penalty
-                    self.missed_opportunities.append({
-                        'step': self.current_step,
-                        'type': 'missed_long',
-                        'opportunity': long_opportunity.item()
-                    })
-                elif self.position == 1:  # We are long - good!
-                    hindsight_adjustment += 0.02  # Small bonus
-            
-            if short_opportunity > 0.025 and self.trading_mode in ['SHORT_ONLY', 'LONG_SHORT']:  # 2.5%+ downside available
-                if self.position >= 0:  # We're not short when we should be
-                    hindsight_adjustment -= 0.03  # Small penalty
-                    self.missed_opportunities.append({
-                        'step': self.current_step,
-                        'type': 'missed_short',
-                        'opportunity': short_opportunity.item()
-                    })
-                elif self.position == -1:  # We are short - good!
-                    hindsight_adjustment += 0.02  # Small bonus
-            
-            return hindsight_adjustment
-            
-        except Exception as e:
-            return 0.0
-    
-    def get_hindsight_report(self):
-        """Generate simple hindsight report"""
-        if not self.missed_opportunities:
-            return "No significant missed opportunities identified."
-        
-        missed_long = len([op for op in self.missed_opportunities if op['type'] == 'missed_long'])
-        missed_short = len([op for op in self.missed_opportunities if op['type'] == 'missed_short'])
-        
-        avg_missed_long = np.mean([op['opportunity'] for op in self.missed_opportunities if op['type'] == 'missed_long']) if missed_long > 0 else 0
-        avg_missed_short = np.mean([op['opportunity'] for op in self.missed_opportunities if op['type'] == 'missed_short']) if missed_short > 0 else 0
-        
-        report = f"\nHINDSIGHT ANALYSIS:\n"
-        report += f"Missed long opportunities: {missed_long} (avg: {avg_missed_long:.3f})\n"
-        report += f"Missed short opportunities: {missed_short} (avg: {avg_missed_short:.3f})\n"
-        report += f"Hindsight penalties: {self.hindsight_penalties}\n"
-        report += f"Hindsight bonuses: {self.hindsight_bonuses}\n"
-        
-        return report
+        if reward_type == 'sharpe_ratio':
+            return self._sharpe_reward(old_value, new_value, trade_executed)
+        elif reward_type == 'drawdown_penalty':
+            return self._drawdown_penalty_reward(old_value, new_value, drawdown)
+        elif reward_type == 'consistency':
+            return self._consistency_reward(old_value, new_value)
+        elif reward_type == 'risk_adjusted':
+            return self._risk_adjusted_reward(old_value, new_value, drawdown)
+        elif reward_type == 'momentum':
+            return self._momentum_reward(old_value, new_value)
+        elif reward_type == 'profit_factor':
+            return self._profit_factor_reward(old_value, new_value, trade_executed)
+        elif reward_type == 'calmar_ratio':
+            return self._calmar_ratio_reward(old_value, new_value, drawdown)
+        elif reward_type == 'sortino_ratio':
+            return self._sortino_ratio_reward(old_value, new_value)
+        elif reward_type == 'kelly_criterion':
+            return self._kelly_criterion_reward(old_value, new_value, trade_executed)
+        elif reward_type == 'tail_risk':
+            return self._tail_risk_reward(old_value, new_value, drawdown)
+        else:
+            return self._default_reward(old_value, new_value, trade_executed)
 
-class TradingDQN(nn.Module):
-    """Simple DQN that works well (from original)"""
-    
-    def __init__(self, state_size=15, action_size=4, hidden_size=128):
-        super(TradingDQN, self).__init__()
-        self.fc1 = nn.Linear(state_size, hidden_size)
-        self.fc2 = nn.Linear(hidden_size, hidden_size)
-        self.fc3 = nn.Linear(hidden_size, hidden_size)
-        self.fc4 = nn.Linear(hidden_size, action_size)
-        self.dropout = nn.Dropout(0.2)
-        
-    def forward(self, x):
-        x = torch.relu(self.fc1(x))
-        x = self.dropout(x)
-        x = torch.relu(self.fc2(x))
-        x = self.dropout(x)
-        x = torch.relu(self.fc3(x))
-        x = self.fc4(x)
-        return x
+    def _default_reward(self, old_value, new_value, trade_executed):
+        """Default reward function"""
+        reward = 0
+        if trade_executed:
+            reward = 0.01
+        if len(self.portfolio_history) > 1:
+            reward += (new_value - old_value) / 100
+        return reward
 
-class SimpleHindsightRLOptimizer:
-    """Simple hindsight RL optimizer built on working base"""
-    
-    def __init__(self, redis_client):
-        self.redis_client = redis_client
-        self.optimization_results = {}
-        self.results_file = "simple_hindsight_rl_results.json"
+    def _sharpe_reward(self, old_value, new_value, trade_executed):
+        """Sharpe ratio optimized reward"""
+        period_return = (new_value - old_value) / old_value if old_value > 0 else 0
+        risk_free_rate = self.reward_config.get('risk_free_rate', 0.02) / 252  # Daily risk-free rate
+        
+        if len(self.returns_history) > 10:
+            excess_returns = np.array(self.returns_history) - risk_free_rate
+            sharpe = np.mean(excess_returns) / (np.std(excess_returns) + 1e-8)
+            return sharpe * 0.1
+        else:
+            return (period_return - risk_free_rate) * 10
+
+    def _drawdown_penalty_reward(self, old_value, new_value, drawdown):
+        """Heavy drawdown penalty reward"""
+        period_return = (new_value - old_value) / old_value if old_value > 0 else 0
+        max_dd_threshold = self.reward_config.get('max_drawdown_threshold', 0.1)
+        penalty_multiplier = self.reward_config.get('drawdown_penalty_multiplier', 2.0)
+        
+        reward = period_return * 10
+        if drawdown > max_dd_threshold:
+            reward -= (drawdown - max_dd_threshold) * penalty_multiplier * 10
+        
+        return reward
+
+    def _consistency_reward(self, old_value, new_value):
+        """Consistency focused reward"""
+        period_return = (new_value - old_value) / old_value if old_value > 0 else 0
+        volatility_penalty = self.reward_config.get('volatility_penalty', 0.2)
+        
+        if len(self.returns_history) > 5:
+            volatility = np.std(self.returns_history[-5:])
+            consistency_bonus = 1 / (1 + volatility * volatility_penalty)
+            return period_return * 10 * consistency_bonus
+        else:
+            return period_return * 10
+
+    def _risk_adjusted_reward(self, old_value, new_value, drawdown):
+        """Comprehensive risk-adjusted reward"""
+        period_return = (new_value - old_value) / old_value if old_value > 0 else 0
+        risk_free_rate = self.reward_config.get('risk_free_rate', 0.02) / 252
+        var_penalty = self.reward_config.get('var_penalty', 0.15)
+        
+        excess_return = period_return - risk_free_rate
+        risk_penalty = drawdown * var_penalty
+        
+        return (excess_return - risk_penalty) * 10
+
+    def _momentum_reward(self, old_value, new_value):
+        """Momentum enhanced reward"""
+        period_return = (new_value - old_value) / old_value if old_value > 0 else 0
+        momentum_threshold = self.reward_config.get('momentum_threshold', 0.02)
+        trend_bonus = self.reward_config.get('trend_following_bonus', 0.1)
+        
+        if len(self.returns_history) > 3:
+            recent_trend = np.mean(self.returns_history[-3:])
+            if abs(recent_trend) > momentum_threshold:
+                if np.sign(period_return) == np.sign(recent_trend):
+                    return period_return * 10 * (1 + trend_bonus)
+        
+        return period_return * 10
+
+    def _profit_factor_reward(self, old_value, new_value, trade_executed):
+        """Profit factor optimized reward"""
+        period_return = (new_value - old_value) / old_value if old_value > 0 else 0
+        
+        if trade_executed and len(self.returns_history) > 10:
+            positive_returns = [r for r in self.returns_history if r > 0]
+            negative_returns = [r for r in self.returns_history if r < 0]
+            
+            if positive_returns and negative_returns:
+                profit_factor = sum(positive_returns) / abs(sum(negative_returns))
+                min_pf = self.reward_config.get('min_profit_factor', 1.5)
+                if profit_factor > min_pf:
+                    return period_return * 10 * (1 + (profit_factor - min_pf) * 0.1)
+        
+        return period_return * 10
+
+    def _calmar_ratio_reward(self, old_value, new_value, drawdown):
+        """Calmar ratio optimized reward"""
+        period_return = (new_value - old_value) / old_value if old_value > 0 else 0
+        
+        if len(self.portfolio_history) > 50:
+            total_return = (new_value - self.initial_cash) / self.initial_cash
+            max_drawdown = max(self.drawdown_history) if self.drawdown_history else 0.01
+            calmar_ratio = total_return / max_drawdown if max_drawdown > 0 else 0
+            return calmar_ratio * 0.1
+        else:
+            return period_return * 10
+
+    def _sortino_ratio_reward(self, old_value, new_value):
+        """Sortino ratio optimized reward"""
+        period_return = (new_value - old_value) / old_value if old_value > 0 else 0
+        target_return = self.reward_config.get('target_return', 0.0)
+        
+        if len(self.returns_history) > 10:
+            downside_returns = [min(0, r - target_return) for r in self.returns_history]
+            downside_deviation = np.sqrt(np.mean([r**2 for r in downside_returns]))
+            
+            if downside_deviation > 0:
+                excess_return = np.mean(self.returns_history) - target_return
+                sortino_ratio = excess_return / downside_deviation
+                return sortino_ratio * 0.1
+        
+        return period_return * 10
+
+    def _kelly_criterion_reward(self, old_value, new_value, trade_executed):
+        """Kelly criterion based reward"""
+        period_return = (new_value - old_value) / old_value if old_value > 0 else 0
+        
+        if self.total_trades > 10:
+            win_rate = self.wins / self.total_trades
+            avg_win = np.mean([r for r in self.returns_history if r > 0]) if any(r > 0 for r in self.returns_history) else 0
+            avg_loss = abs(np.mean([r for r in self.returns_history if r < 0])) if any(r < 0 for r in self.returns_history) else 0.01
+            
+            if avg_loss > 0:
+                kelly_fraction = (win_rate * avg_win - (1 - win_rate) * avg_loss) / avg_win
+                optimal_position = max(0, min(1, kelly_fraction))
+                return period_return * 10 * optimal_position
+        
+        return period_return * 10
+
+    def _tail_risk_reward(self, old_value, new_value, drawdown):
+        """Tail risk adjusted reward"""
+        period_return = (new_value - old_value) / old_value if old_value > 0 else 0
+        extreme_loss_threshold = self.reward_config.get('extreme_loss_threshold', 0.05)
+        cvar_penalty = self.reward_config.get('cvar_penalty', 2.0)
+        
+        if drawdown > extreme_loss_threshold:
+            return period_return * 10 - (drawdown - extreme_loss_threshold) * cvar_penalty * 10
+        
+        return period_return * 10
+
+    def get_portfolio_return(self):
+        if not self.portfolio_history:
+            return 0
+        return (self.portfolio_history[-1] - self.initial_cash) / self.initial_cash
+
+    def get_sharpe_ratio(self):
+        if len(self.returns_history) < 2:
+            return 0
+        return np.mean(self.returns_history) / (np.std(self.returns_history) + 1e-8)
+
+    def get_max_drawdown(self):
+        return max(self.drawdown_history) if self.drawdown_history else 0
+
+    def get_win_rate(self):
+        return self.wins / max(1, self.total_trades)
+
+class DQNAgent:
+    def __init__(self, state_size, action_size, device, lr=1e-3, epsilon_decay=0.995, 
+                 batch_size=128, epsilon_min=0.05, memory_size=20000, gamma=0.95):
+        self.state_size = state_size
+        self.action_size = action_size
+        self.memory = deque(maxlen=memory_size)
+        self.epsilon = 1.0
+        self.epsilon_min = epsilon_min
+        self.epsilon_decay = epsilon_decay
         self.device = device
+        self.batch_size = batch_size
+        self.gamma = gamma
         
-        # Use proven hyperparameters from working agent
-        self.learning_rate = 0.001
-        self.gamma = 0.95  # Discount factor
-        self.epsilon = 1.0  # Exploration rate
-        self.epsilon_min = 0.01
-        self.epsilon_decay = 0.995
-        self.memory_size = 10000
-        self.batch_size = 32
-        self.target_update = 100
-        
-        self.load_optimization_results()
-    
-    def create_rl_agent(self, action_size):
-        """Create RL agent using proven architecture"""
-        self.q_network = TradingDQN(action_size=action_size).to(self.device)
-        self.target_network = TradingDQN(action_size=action_size).to(self.device)
-        self.optimizer = optim.Adam(self.q_network.parameters(), lr=self.learning_rate)
-        self.memory = deque(maxlen=self.memory_size)
-        
-        # Copy weights to target network
-        self.target_network.load_state_dict(self.q_network.state_dict())
-    
-    def remember(self, state, action, reward, next_state, done):
-        """Store experience in replay memory"""
-        self.memory.append((state, action, reward, next_state, done))
-    
+        self.model = nn.Sequential(
+            nn.Linear(state_size, 128),
+            nn.ReLU(),
+            nn.Linear(128, 64),
+            nn.ReLU(),
+            nn.Linear(64, action_size)
+        ).to(self.device)
+        self.optimizer = optim.Adam(self.model.parameters(), lr=lr)
+
     def act(self, state):
-        """Choose action using epsilon-greedy policy"""
-        if np.random.random() <= self.epsilon:
-            return random.randrange(self.action_size)
-        
-        state = state.unsqueeze(0)
-        q_values = self.q_network(state)
-        return q_values.argmax().item()
-    
-    def replay(self):
-        """Train the model on a batch of experiences"""
+        if np.random.rand() < self.epsilon:
+            return np.random.randint(self.action_size)
+        state_tensor = torch.from_numpy(state).float().unsqueeze(0).to(self.device)
+        with torch.no_grad():
+            q_values = self.model(state_tensor)
+        return torch.argmax(q_values).item()
+
+    def remember(self, state, action, reward, next_state, done):
+        self.memory.append((state, action, reward, next_state, done))
+
+    def replay(self, gamma=None):
+        if gamma is None:
+            gamma = self.gamma
+            
         if len(self.memory) < self.batch_size:
             return
         
-        try:
-            batch = random.sample(self.memory, self.batch_size)
-            states = torch.stack([e[0] for e in batch])
-            actions = torch.tensor([e[1] for e in batch], device=self.device)
-            rewards = torch.tensor([e[2] for e in batch], device=self.device)
-            next_states = torch.stack([e[3] for e in batch])
-            dones = torch.tensor([e[4] for e in batch], device=self.device)
-            
-            current_q_values = self.q_network(states).gather(1, actions.unsqueeze(1))
-            next_q_values = self.target_network(next_states).max(1)[0].detach()
-            target_q_values = rewards + (self.gamma * next_q_values * ~dones)
-            
-            loss = nn.MSELoss()(current_q_values.squeeze(), target_q_values)
-            
-            self.optimizer.zero_grad()
-            loss.backward()
-            self.optimizer.step()
-            
-            if self.epsilon > self.epsilon_min:
-                self.epsilon *= self.epsilon_decay
-                
-        except Exception as e:
-            clear_gpu_cache()
-    
-    def train_rl_agent(self, env, episodes=300):
-        """Train RL agent with simple hindsight learning - minimal output"""
-        print(f"Training simple hindsight RL agent for {episodes} episodes...")
+        batch = np.random.choice(len(self.memory), self.batch_size, replace=False)
+        # Efficient conversion to tensors
+        states = torch.from_numpy(np.array([self.memory[i][0] for i in batch])).float().to(self.device)
+        actions = torch.LongTensor([self.memory[i][1] for i in batch]).to(self.device)
+        rewards = torch.FloatTensor([self.memory[i][2] for i in batch]).to(self.device)
+        next_states = torch.from_numpy(np.array([self.memory[i][3] for i in batch])).float().to(self.device)
+        dones = torch.BoolTensor([self.memory[i][4] for i in batch]).to(self.device)
         
-        best_return = -999
-        best_episode = 0
-        returns_history = []
+        q_values = self.model(states).gather(1, actions.unsqueeze(1)).squeeze()
+        next_q_values = self.model(next_states).max(1)[0].detach()
+        targets = rewards + gamma * next_q_values * (~dones)
         
-        for episode in range(episodes):
-            try:
-                state = env.reset()
-                total_reward = 0
-                steps = 0
-                
-                while True:
-                    action = self.act(state)
-                    next_state, reward, done = env.step(action)
-                    
-                    self.remember(state, action, reward, next_state, done)
-                    state = next_state
-                    total_reward += reward
-                    steps += 1
-                    
-                    if done:
-                        break
-                
-                # Train the network
-                if len(self.memory) > self.batch_size:
-                    self.replay()
-                
-                # Update target network
-                if episode % self.target_update == 0:
-                    self.target_network.load_state_dict(self.q_network.state_dict())
-                
-                # Track performance
-                final_return = env.total_return
-                returns_history.append(final_return)
-                
-                if final_return > best_return:
-                    best_return = final_return
-                    best_episode = episode
-                    print(f"NEW BEST: Episode {episode}, Return: {final_return:.4f}, Trades: {env.trades}, Win Rate: {env.wins/max(1,env.trades):.2%}")
-                
-                # Progress update every 10 episodes
-                if episode % 10 == 0:
-                    avg_return = np.mean(returns_history[-10:]) if len(returns_history) >= 10 else np.mean(returns_history)
-                    print(f"Episode {episode}, Avg Return (last 10): {avg_return:.4f}, Best: {best_return:.4f}, Epsilon: {self.epsilon:.3f}")
-                
-                # Show hindsight report every 50 episodes
-                if episode % 50 == 0 and hasattr(env, 'get_hindsight_report'):
-                    print(env.get_hindsight_report())
-                
-                # Memory management every 10 episodes
-                if episode % 10 == 0:
-                    clear_gpu_cache()
-                    
-            except Exception as e:
-                clear_gpu_cache()
-                continue
+        loss = nn.MSELoss()(q_values, targets)
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
         
-        print(f"\nTraining complete! Best return: {best_return:.4f} at episode {best_episode}")
-        return best_return
-    
-    def optimize_symbol_with_simple_hindsight(self, symbol, trading_modes=['LONG_ONLY', 'SHORT_ONLY', 'LONG_SHORT']):
-        """Optimize symbol using simple hindsight RL"""
-        print(f"\nSIMPLE HINDSIGHT RL OPTIMIZATION FOR {symbol}")
-        print("=" * 60)
-        
-        # Load data
-        config = {'stock_symbol': symbol}
-        data_manager = DataManager(self.redis_client, symbol, config)
-        data_manager.discover_available_days()
-        
-        if len(data_manager.available_days) < 30:
-            print(f"Insufficient data: {len(data_manager.available_days)} days")
-            return None
-        
-        # Split data
-        train_days = data_manager.available_days[:int(len(data_manager.available_days) * 0.7)]
-        test_days = data_manager.available_days[int(len(data_manager.available_days) * 0.7):]
-        
-        print(f"Training days: {len(train_days)}")
-        print(f"Testing days: {len(test_days)}")
-        
-        # Load training data
-        training_data = self.load_symbol_data(data_manager, train_days)
-        if training_data is None or len(training_data) < 100:
-            print(f"Insufficient training data")
-            return None
-        
-        symbol_results = {}
-        
-        # Train simple hindsight RL agent for each trading mode
-        for mode in trading_modes:
-            print(f"\nSimple Hindsight RL Training for {mode} strategy...")
-            
-            # Set action size based on trading mode
-            if mode == 'LONG_ONLY':
-                self.action_size = 3  # hold, buy, sell
-            elif mode == 'SHORT_ONLY':
-                self.action_size = 3  # hold, short, cover
-            else:  # LONG_SHORT
-                self.action_size = 4  # hold, buy, sell, short
-            
-            try:
-                # Create simple hindsight environment and agent
-                env = SimpleHindsightEnvironment(training_data, mode)
-                self.create_rl_agent(self.action_size)
-                
-                # Train agent
-                best_return = self.train_rl_agent(env, episodes=300)
-                
-                # Test on validation data
-                test_data = self.load_symbol_data(data_manager, test_days)
-                if test_data is not None:
-                    test_env = SimpleHindsightEnvironment(test_data, mode)
-                    test_return = self.test_rl_agent(test_env)
-                else:
-                    test_return = -999
-                
-                symbol_results[mode] = {
-                    'train_return': best_return,
-                    'test_return': test_return,
-                    'optimized_date': datetime.now().isoformat(),
-                    'method': 'simple_hindsight_reinforcement_learning'
-                }
-                
-                print(f"{mode} - Train Return: {best_return:.4f}, Test Return: {test_return:.4f}")
-                
-                # Clear memory between modes
-                clear_gpu_cache()
-                
-            except Exception as e:
-                print(f"Failed to optimize {mode}: {e}")
-                symbol_results[mode] = {
-                    'train_return': -999,
-                    'test_return': -999,
-                    'error': str(e)
-                }
-                clear_gpu_cache()
-        
-        # Find best strategy
-        valid_results = {k: v for k, v in symbol_results.items() if v.get('test_return', -999) > -999}
-        if valid_results:
-            best_strategy = max(valid_results.keys(), key=lambda k: valid_results[k]['test_return'])
-        else:
-            best_strategy = list(symbol_results.keys())[0]
-        
-        self.optimization_results[symbol] = {
-            'best_strategy': best_strategy,
-            'strategies': symbol_results,
-            'optimization_date': datetime.now().isoformat(),
-            'method': 'simple_hindsight_reinforcement_learning'
-        }
-        
-        self.save_optimization_results()
-        
-        print(f"\nBEST SIMPLE HINDSIGHT RL STRATEGY: {best_strategy}")
-        print(f"Test Return: {symbol_results[best_strategy].get('test_return', 'N/A')}")
-        
-        return self.optimization_results[symbol]
-    
-    def test_rl_agent(self, env):
-        """Test trained RL agent"""
-        self.epsilon = 0  # No exploration during testing
-        state = env.reset()
-        
-        with torch.no_grad():
-            while True:
-                action = self.act(state)
-                state, _, done = env.step(action)
-                if done:
-                    break
-        
-        print(f"Test completed: Return {env.total_return:.4f}, Trades: {env.trades}, Win Rate: {env.wins/max(1,env.trades):.2%}")
-        if hasattr(env, 'get_hindsight_report'):
-            print(env.get_hindsight_report())
-        
-        return env.total_return
-    
-    def load_symbol_data(self, data_manager, days):
-        """Load symbol data"""
-        all_data = []
-        
-        for day in days:
-            day_data = data_manager.load_day_data(day)
-            if day_data:
-                for entry in day_data:
-                    if 'timestamp' not in entry or 'price' not in entry:
-                        continue
-                    
-                    try:
-                        timestamp = entry['timestamp']
-                        if not isinstance(timestamp, datetime):
-                            continue
-                        
-                        all_data.append({
-                            'timestamp': timestamp,
-                            'Open': float(entry['price']),
-                            'High': float(entry['ask']),
-                            'Low': float(entry['bid']),
-                            'Close': float(entry['price']),
-                            'Volume': int(entry['volume'])
-                        })
-                    except (ValueError, TypeError):
-                        continue
-        
-        if not all_data:
-            return None
-        
-        df = pd.DataFrame(all_data)
-        df.set_index('timestamp', inplace=True)
-        df = df.dropna().drop_duplicates().sort_index()
-        
-        return df
-    
-    def load_optimization_results(self):
-        """Load optimization results"""
-        try:
-            if Path(self.results_file).exists():
-                with open(self.results_file, 'r') as f:
-                    self.optimization_results = json.load(f)
-                print(f"Loaded simple hindsight RL results for {len(self.optimization_results)} symbols")
-        except Exception as e:
-            self.optimization_results = {}
-    
-    def save_optimization_results(self):
-        """Save optimization results"""
-        try:
-            with open(self.results_file, 'w') as f:
-                json.dump(self.optimization_results, f, indent=2)
-            print(f"Saved simple hindsight RL optimization results")
-        except Exception as e:
-            print(f"Failed to save results: {e}")
+        if self.epsilon > self.epsilon_min:
+            self.epsilon *= self.epsilon_decay
 
 def main():
-    """Main simple hindsight RL optimization function"""
-    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--symbol', type=str, required=True)
+    parser.add_argument('--source', type=str, default='alpha')
+    parser.add_argument('--episodes', type=int, default=100)
+    parser.add_argument('--max_steps', type=int, default=1000)
     
-    parser = argparse.ArgumentParser(description='Simple Hindsight RL Strategy Optimizer')
-    parser.add_argument('--symbol', help='Symbol to optimize')
-    parser.add_argument('--episodes', type=int, default=300, help='Training episodes')
+    # Hyperparameter arguments for pipeline integration
+    parser.add_argument('--learning_rate', type=float, default=1e-3)
+    parser.add_argument('--epsilon_decay', type=float, default=0.995)
+    parser.add_argument('--batch_size', type=int, default=128)
+    parser.add_argument('--epsilon_min', type=float, default=0.05)
+    parser.add_argument('--memory_size', type=int, default=20000)
+    parser.add_argument('--gamma', type=float, default=0.95)
+    
+    # Reward function arguments
+    parser.add_argument('--reward_type', type=str, default='default')
+    parser.add_argument('--risk_free_rate', type=float, default=0.02)
+    parser.add_argument('--volatility_penalty', type=float, default=0.2)
+    parser.add_argument('--max_drawdown_threshold', type=float, default=0.1)
+    parser.add_argument('--drawdown_penalty_multiplier', type=float, default=2.0)
     
     args = parser.parse_args()
-    
-    # Redis connection
-    try:
-        with open('.redis_passwd', 'r') as f:
-            password = f.read().strip()
-        
-        redis_client = redis.Redis(
-            host='trader.wolfx0.com',
-            port=6379,
-            password=password,
-            decode_responses=True
-        )
-        redis_client.ping()
-        print("Redis connection successful")
-    except Exception as e:
-        print(f"Redis connection failed: {e}")
+
+    device = get_device()
+
+    symbol = f"S_{args.symbol.upper()}_{args.source.upper()}"
+    print(f"Loading data for symbol: {symbol}")
+    dm = FixedDataManager(symbol)
+    days = dm.available_days
+    if not days:
+        print("No data available for this symbol/source!")
         return
+    split = int(len(days) * 0.7)
+    train_days = days[:split]
+    test_days = days[split:]
+    print("Loading training data...")
+    train_data = dm.load_multiple_days(train_days)
+    print("Loading test data...")
+    test_data = dm.load_multiple_days(test_days)
+    if train_data.empty or test_data.empty:
+        print("No data loaded for training or testing!")
+        return
+
+    # --- Exploration Phase ---
+    print("Starting exploration phase...")
+    explorer = PatternExplorer(train_data)
+    train_data = explorer.preprocess_data()
+    explorer.discover_patterns()
+    explorer.analyze_patterns()
+
+    # --- RL Training ---
+    print("Starting RL training...")
     
-    optimizer = SimpleHindsightRLOptimizer(redis_client)
+    # Build reward configuration from arguments
+    reward_config = {
+        'reward_type': args.reward_type,
+        'risk_free_rate': args.risk_free_rate,
+        'volatility_penalty': args.volatility_penalty,
+        'max_drawdown_threshold': args.max_drawdown_threshold,
+        'drawdown_penalty_multiplier': args.drawdown_penalty_multiplier
+    }
     
-    if args.symbol:
-        optimizer.optimize_symbol_with_simple_hindsight(args.symbol)
-    else:
-        print("Usage: python optimization/strategy_optimizer.py --symbol S_AAPL --episodes 300")
+    env = PatternAwareTradingEnv(train_data, explorer, reward_config=reward_config)
+    state_size = len(env.get_state())
+    action_size = 3
+    
+    # Create agent with pipeline parameters
+    agent = DQNAgent(
+        state_size=state_size, 
+        action_size=action_size, 
+        device=device,
+        lr=args.learning_rate,
+        epsilon_decay=args.epsilon_decay,
+        batch_size=args.batch_size,
+        epsilon_min=args.epsilon_min,
+        memory_size=args.memory_size,
+        gamma=args.gamma
+    )
+    
+    episodes = args.episodes
+    max_steps_per_episode = args.max_steps
+
+    for ep in range(episodes):
+        state = env.reset()
+        total_reward = 0
+        step_count = 0
+        while True:
+            action = agent.act(state)
+            next_state, reward, done = env.step(action)
+            agent.remember(state, action, reward, next_state, done)
+            state = next_state
+            total_reward += reward
+            step_count += 1
+            if step_count % 200 == 0:
+                print(f"Episode {ep+1}, Step {step_count}")
+            if done or step_count >= max_steps_per_episode:
+                break
+        agent.replay()
+        if (ep+1) % 10 == 0:
+            print(f"Episode {ep+1}, Portfolio Return: {env.get_portfolio_return():.2%}, Total Reward: {total_reward:.2f}")
+
+    # --- Test ---
+    print("Evaluating on test set...")
+    test_data = explorer.preprocess_data()
+    test_env = PatternAwareTradingEnv(test_data, explorer, reward_config=reward_config)
+    
+    # Set agent to no exploration for testing
+    agent.epsilon = 0
+    
+    state = test_env.reset()
+    step_count = 0
+    while True:
+        action = agent.act(state)
+        state, reward, done = test_env.step(action)
+        step_count += 1
+        if done or step_count >= max_steps_per_episode:
+            break
+    
+    # Print comprehensive results for pipeline parsing
+    print(f"Test Portfolio Return: {test_env.get_portfolio_return():.2%}")
+    print(f"Test Sharpe Ratio: {test_env.get_sharpe_ratio():.4f}")
+    print(f"Test Max Drawdown: {test_env.get_max_drawdown():.4f}")
+    print(f"Test Win Rate: {test_env.get_win_rate():.2%}")
+    print(f"Total Trades: {test_env.total_trades}")
 
 if __name__ == "__main__":
     main()

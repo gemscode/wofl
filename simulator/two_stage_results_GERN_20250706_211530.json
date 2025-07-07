@@ -1,0 +1,8 @@
+{
+  "symbol": "GERN",
+  "strategy_type": "Two_Stage_Entry_Exit",
+  "final_return": 0.49430413199998585,
+  "total_trades": 6445,
+  "final_positions": 0,
+  "timestamp": "2025-07-06T21:15:30.057763"
+}

@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WolfX Trading Dashboard - Simulation Mode</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        
+        .header {
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid #404040;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            min-height: 60px;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex: 1;
+        }
+        
+        .symbol-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            min-width: 300px;
+        }
+        
+        .symbol-name {
+            font-size: 24px;
+            font-weight: bold;
+            min-width: 150px;
+        }
+        
+        .price-display {
+            font-size: 24px;
+            font-weight: bold;
+            min-width: 100px;
+            text-align: right;
+        }
+        
+        .simulation-mode {
+            background-color: #404040;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: normal;
+            font-size: 12px;
+            color: #cccccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-left: 20px;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-label {
+            font-size: 14px;
+            color: #ffffff;
+            font-weight: 500;
+            min-width: 60px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: 150px;
+        }
+        
+        .connection-status {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .settings-link {
+            background-color: #404040;
+            color: #cccccc;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .settings-link:hover {
+            background-color: #555555;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: 80% 20%;
+            height: calc(100vh - 120px);
+            gap: 10px;
+            padding: 10px;
+        }
+        
+        .charts-container {
+            display: grid;
+            grid-template-rows: 60% 40%;
+            gap: 10px;
+        }
+        
+        .chart-container {
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #404040;
+            position: relative;
+        }
+        
+        .sidebar {
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #404040;
+            overflow-y: auto;
+        }
+        
+        .control-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #404040;
+        }
+        
+        .control-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #00ff88;
+            text-transform: uppercase;
+        }
+        
+        .portfolio-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .metric-compact {
+            background-color: #3d3d3d;
+            border-radius: 4px;
+            padding: 10px;
+            text-align: center;
+            border-left: 3px solid #00ff88;
+        }
+        
+        .metric-compact-title {
+            font-size: 10px;
+            color: #888;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+        }
+        
+        .metric-compact-value {
+            font-size: 14px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        
+        .metric-card {
+            background-color: #3d3d3d;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #00ff88;
+        }
+        
+        .metric-title {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        
+        .metric-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        
+        .dropdown {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 35px;
+            padding: 0 25px 0 8px;
+            background-color: #3d3d3d;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            outline: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: calc(100% - 8px) 50%;
+            background-size: 10px;
+        }
+
+        .header-dropdown {
+            width: 140px;
+            height: 32px;
+            padding: 0 20px 0 8px;
+            font-size: 13px;
+            background-size: 8px;
+            background-position: calc(100% - 6px) 50%;
+            margin-bottom: 0;
+        }
+        
+        .dropdown:hover {
+            background-color: #4d4d4d;
+            border-color: #00ff88;
+        }
+        
+        .dropdown:focus {
+            border-color: #00ff88;
+            box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.2);
+        }
+        
+        .positive { color: #00ff88; }
+        .negative { color: #ff4444; }
+        .neutral { color: #ffaa00; }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-connected { background-color: #00ff88; }
+        .status-disconnected { background-color: #ff4444; }
+        
+        .btn {
+            background-color: #00ff88;
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #00cc6a;
+        }
+
+        .holdings-container {
+            height: 120px;
+            overflow-y: auto;
+            border: 1px solid #404040;
+            border-radius: 4px;
+            padding: 10px;
+            background-color: #3d3d3d;
+        }
+
+        .holding-item {
+            background-color: #2d2d2d;
+            border-radius: 4px;
+            padding: 8px;
+            margin-bottom: 8px;
+            border-left: 3px solid #00ff88;
+        }
+
+        .holding-symbol {
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .holding-details {
+            font-size: 10px;
+            color: #888;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .analysis-item {
+            background-color: #3d3d3d;
+            border-radius: 4px;
+            padding: 10px;
+            text-align: center;
+            border-left: 3px solid #00ff88;
+        }
+
+        .analysis-item-title {
+            font-size: 10px;
+            color: #888;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+        }
+
+        .analysis-item-value {
+            font-size: 14px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .settings-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .settings-content {
+            background-color: #2d2d2d;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #404040;
+            border-radius: 8px;
+            width: 400px;
+            color: white;
+        }
+
+        .settings-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #404040;
+            padding-bottom: 10px;
+        }
+
+        .close-settings {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .close-settings:hover {
+            color: #fff;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #404040;
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .chart-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #888;
+            font-size: 14px;
+            z-index: 10;
+        }
+
+        .parameter-control {
+            background-color: #3d3d3d;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .parameter-label {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+        
+        .parameter-input {
+            width: 100%;
+            padding: 5px;
+            background-color: #2d2d2d;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 3px;
+        }
+
+        /* Trade History Styles */
+        .trade-history-container {
+            height: 150px;
+            overflow-y: auto;
+            border: 1px solid #404040;
+            border-radius: 4px;
+            padding: 10px;
+            background-color: #3d3d3d;
+            margin-top: 15px;
+        }
+
+        .trade-item {
+            background-color: #2d2d2d;
+            border-radius: 4px;
+            padding: 6px;
+            margin-bottom: 6px;
+            border-left: 3px solid #0088ff;
+            font-size: 10px;
+        }
+
+        .trade-item.buy {
+            border-left-color: #00ff88;
+        }
+
+        .trade-item.sell {
+            border-left-color: #ff4444;
+        }
+
+        .trade-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3px;
+        }
+
+        .trade-action {
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .trade-time {
+            color: #888;
+            font-size: 9px;
+        }
+
+        .trade-details {
+            color: #ccc;
+            font-size: 9px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <div class="symbol-info">
+                <span class="symbol-name" id="symbol">Loading...</span>
+                <span class="price-display" id="current-price">$0.00</span>
+                <div class="simulation-mode">Simulation Mode</div>
+            </div>
+            <div class="header-controls">
+                <div class="control-group">
+                    <label class="control-label">Symbol:</label>
+                    <select id="symbol-dropdown" class="dropdown header-dropdown" onchange="changeSymbol()">
+                        <option value="">Loading...</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Source:</label>
+                    <select id="source-dropdown" class="dropdown header-dropdown" onchange="changeSource()">
+                        <option value="yahoo">Yahoo (5min)</option>
+                        <option value="alpha">Alpha (1min)</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Strategy:</label>
+                    <select id="strategy-dropdown" class="dropdown header-dropdown" onchange="changeStrategy()">
+                        <option value="">Loading...</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="settings-link" onclick="openSettings()">Settings</button>
+            <div class="connection-status">
+                <span class="status-indicator" id="connection-indicator"></span>
+                <span id="connection-text">Connecting...</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="dashboard">
+        <!-- Charts Container (80% width) -->
+        <div class="charts-container">
+            <!-- Price Chart -->
+            <div class="chart-container">
+                <div id="price-chart" style="width:100%; height:100%;"></div>
+                <div class="chart-loading" id="price-loading">Waiting for data stream...</div>
+            </div>
+            
+            <!-- Trading Actions Chart -->
+            <div class="chart-container">
+                <div id="actions-chart" style="width:100%; height:100%;"></div>
+                <div class="chart-loading" id="actions-loading">Waiting for trading data...</div>
+            </div>
+        </div>
+        
+        <!-- Sidebar (20% width) -->
+        <div class="sidebar">
+            <!-- Portfolio Overview -->
+            <div class="control-section">
+                <div class="control-title">Portfolio Overview</div>
+                <div class="portfolio-metrics">
+                    <div class="metric-compact">
+                        <div class="metric-compact-title">Value</div>
+                        <div class="metric-compact-value" id="portfolio-value-compact">$25,000</div>
+                    </div>
+                    <div class="metric-compact">
+                        <div class="metric-compact-title">Cash</div>
+                        <div class="metric-compact-value" id="cash-balance-compact">$25,000</div>
+                    </div>
+                    <div class="metric-compact">
+                        <div class="metric-compact-title">Holdings</div>
+                        <div class="metric-compact-value" id="current-holdings-compact">0</div>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <div style="font-size: 12px; color: #888; margin-bottom: 10px; text-transform: uppercase;">Current Holdings</div>
+                    <div class="holdings-container" id="holdings-list">
+                        <div style="text-align: center; color: #888; padding: 20px; font-size: 12px;">
+                            No holdings
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trade History Section -->
+                <div style="margin-bottom: 15px;">
+                    <div style="font-size: 12px; color: #888; margin-bottom: 10px; text-transform: uppercase;">Recent Trades</div>
+                    <div class="trade-history-container" id="trade-history-list">
+                        <div style="text-align: center; color: #888; padding: 20px; font-size: 12px;">
+                            No trades yet
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Agent Analysis -->
+            <div class="control-section">
+                <div class="control-title">Agent Analysis</div>
+                <div class="analysis-grid">
+                    <div class="analysis-item">
+                        <div class="analysis-item-title">Action</div>
+                        <div class="analysis-item-value" id="current-action">HOLD</div>
+                    </div>
+                    <div class="analysis-item">
+                        <div class="analysis-item-title">Confidence</div>
+                        <div class="analysis-item-value" id="confidence">0%</div>
+                    </div>
+                    <div class="analysis-item">
+                        <div class="analysis-item-title">SMA Signal</div>
+                        <div class="analysis-item-value" id="sma-signal">NEUTRAL</div>
+                    </div>
+                    <div class="analysis-item">
+                        <div class="analysis-item-title">Momentum</div>
+                        <div class="analysis-item-value" id="momentum">0.00%</div>
+                    </div>
+                    <div class="analysis-item">
+                        <div class="analysis-item-title">Position</div>
+                        <div class="analysis-item-value" id="position-type">FLAT</div>
+                    </div>
+                    <div class="analysis-item">
+                        <div class="analysis-item-title">Volatility</div>
+                        <div class="analysis-item-value" id="volatility">0.00%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Performance Metrics -->
+            <div class="control-section">
+                <div class="control-title">Performance</div>
+                
+                <div class="metric-card">
+                    <div class="metric-title">Total Return</div>
+                    <div class="metric-value" id="total-return">0.00%</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-title">Total Trades</div>
+                    <div class="metric-value" id="total-trades">0</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-title">Win Rate</div>
+                    <div class="metric-value" id="win-rate">0.00%</div>
+                </div>
+            </div>
+            
+            <!-- Trading Parameters -->
+            <div class="control-section">
+                <div class="control-title">Trading Parameters</div>
+                
+                <div class="parameter-control">
+                    <div class="parameter-label">Momentum Threshold</div>
+                    <input type="range" class="parameter-input" id="momentum-threshold" 
+                           min="0.005" max="0.03" step="0.001" value="0.01" 
+                           onchange="updateParameter('momentum_threshold', this.value)">
+                    <div style="font-size: 10px; color: #888;">
+                        <span id="momentum-threshold-value">0.01</span> (0.005 - 0.03)
+                    </div>
+                </div>
+                
+                <div class="parameter-control">
+                    <div class="parameter-label">Profit Target</div>
+                    <input type="range" class="parameter-input" id="profit-target" 
+                           min="0.02" max="0.1" step="0.01" value="0.05" 
+                           onchange="updateParameter('profit_target', this.value)">
+                    <div style="font-size: 10px; color: #888;">
+                        <span id="profit-target-value">0.05</span> (2% - 10%)
+                    </div>
+                </div>
+                
+                <div class="parameter-control">
+                    <div class="parameter-label">Stop Loss</div>
+                    <input type="range" class="parameter-input" id="stop-loss" 
+                           min="0.01" max="0.05" step="0.005" value="0.025" 
+                           onchange="updateParameter('stop_loss', this.value)">
+                    <div style="font-size: 10px; color: #888;">
+                        <span id="stop-loss-value">0.025</span> (1% - 5%)
+                    </div>
+                </div>
+                
+                <div class="parameter-control">
+                    <div class="parameter-label">Position Size</div>
+                    <input type="range" class="parameter-input" id="position-size" 
+                           min="0.2" max="1.0" step="0.1" value="0.6" 
+                           onchange="updateParameter('position_size', this.value)">
+                    <div style="font-size: 10px; color: #888;">
+                        <span id="position-size-value">0.6</span> (20% - 100%)
+                    </div>
+                </div>
+                
+                <button class="btn" onclick="applyParameters()">Apply Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="settings-modal">
+        <div class="settings-content">
+            <div class="settings-header">
+                <h3>Agent Settings</h3>
+                <button class="close-settings" onclick="closeSettings()">&times;</button>
+            </div>
+            <div class="setting-item">
+                <span class="setting-label">Default Source</span>
+                <select id="default-source" class="dropdown" style="width: 120px;" onchange="updateSetting('defaultSource', this.value)">
+                    <option value="alpha">Alpha Vantage</option>
+                    <option value="yahoo">Yahoo Finance</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <span class="setting-label">Auto Strategy</span>
+                <select id="auto-strategy" class="dropdown" style="width: 120px;" onchange="updateSetting('autoStrategy', this.value)">
+                    <option value="best">Best Performance</option>
+                    <option value="long">Long Only</option>
+                    <option value="short">Short Only</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <span class="setting-label">Risk Level</span>
+                <select id="risk-level" class="dropdown" style="width: 120px;" onchange="updateSetting('riskLevel', this.value)">
+                    <option value="low">Low Risk</option>
+                    <option value="medium">Medium Risk</option>
+                    <option value="high">High Risk</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <span class="setting-label">Update Frequency</span>
+                <span style="color: #888;">1 second</span>
+            </div>
+            <div class="setting-item">
+                <span class="setting-label">Max Data Points</span>
+                <span style="color: #888;">500</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class TradingDashboard {
+            constructor() {
+                this.priceData = [];
+                this.actionData = [];
+                this.timestamps = [];
+                this.maxDataPoints = 500;
+                this.eventSource = null;
+                this.isConnected = false;
+                this.currentSymbol = '';
+                this.currentSource = 'alpha';
+                this.currentStrategy = '';
+                this.availableSymbols = [];
+                this.currentParameters = {};
+                this.optimizationResults = {};
+                this.settings = {
+                    defaultSource: 'alpha',
+                    autoStrategy: 'best',
+                    riskLevel: 'medium'
+                };
+                this.chartsInitialized = false;
+                this.chartUpdateCount = 0;
+                this.priceRange = [1.0, 2.0];
+                this.tradeHistory = [];
+                this.lastHoldings = 0;
+                this.maxHoldings = 0; // Track maximum holdings for scaling
+                
+                console.log('TradingDashboard constructor called');
+                this.initializeCharts();
+                this.loadAvailableSymbols();
+                this.loadOptimizationResults();
+            }
+            
+            initializeCharts() {
+                console.log('Initializing charts for real-time streaming...');
+                
+                try {
+                    if (typeof Plotly === 'undefined') {
+                        console.error('Plotly not loaded yet, retrying...');
+                        setTimeout(() => this.initializeCharts(), 1000);
+                        return;
+                    }
+
+                    const priceLayout = {
+                        title: {
+                            text: 'Stock Price & Trading Signals',
+                            font: { color: '#ffffff', size: 16 }
+                        },
+                        xaxis: { 
+                            title: 'Time', 
+                            color: '#ffffff',
+                            gridcolor: '#404040',
+                            showgrid: true,
+                            type: 'date'
+                        },
+                        yaxis: { 
+                            title: 'Price ($)', 
+                            color: '#ffffff',
+                            gridcolor: '#404040',
+                            showgrid: true,
+                            range: this.priceRange
+                        },
+                        plot_bgcolor: '#1a1a1a',
+                        paper_bgcolor: '#2d2d2d',
+                        font: { color: '#ffffff' },
+                        showlegend: true,
+                        margin: { t: 50, r: 30, b: 50, l: 60 },
+                        autosize: true
+                    };
+                    
+                    const actionsLayout = {
+                        title: {
+                            text: 'Holdings & Trading Actions',
+                            font: { color: '#ffffff', size: 16 }
+                        },
+                        xaxis: { 
+                            title: 'Time', 
+                            color: '#ffffff',
+                            gridcolor: '#404040',
+                            showgrid: true,
+                            type: 'date'
+                        },
+                        yaxis: { 
+                            title: 'Holdings (Shares)', 
+                            color: '#ffffff',
+                            gridcolor: '#404040',
+                            showgrid: true,
+                            range: [0, 10000], // Default range for shares
+                            tickformat: ',d'   // Integer formatting
+                        },
+                        plot_bgcolor: '#1a1a1a',
+                        paper_bgcolor: '#2d2d2d',
+                        font: { color: '#ffffff' },
+                        showlegend: true,
+                        margin: { t: 50, r: 30, b: 50, l: 60 },
+                        autosize: true
+                    };
+                    
+                    const emptyTrace = {
+                        x: [],
+                        y: [],
+                        type: 'scatter',
+                        mode: 'lines+markers',
+                        name: 'Waiting for data...',
+                        line: { color: '#00ff88', width: 2 },
+                        marker: { size: 4 }
+                    };
+                    
+                    const config = {
+                        responsive: true,
+                        displayModeBar: false
+                    };
+                    
+                    Plotly.newPlot('price-chart', [emptyTrace], priceLayout, config);
+                    Plotly.newPlot('actions-chart', [emptyTrace], actionsLayout, config);
+                    
+                    this.chartsInitialized = true;
+                    console.log('Charts initialized for real-time streaming');
+                    
+                } catch (error) {
+                    console.error('Error initializing charts:', error);
+                    document.getElementById('price-loading').innerHTML = 'Chart initialization failed';
+                    document.getElementById('actions-loading').innerHTML = 'Chart initialization failed';
+                }
+            }
+            
+            async loadAvailableSymbols() {
+                try {
+                    console.log('Loading available symbols...');
+                    const response = await fetch('/api/symbols');
+                    if (!response.ok) throw new Error('Failed to fetch symbols');
+                    
+                    const symbols = await response.json();
+                    this.availableSymbols = symbols;
+                    this.updateSymbolDropdown();
+                    
+                    if (symbols.length > 0) {
+                        const preferredSymbol = symbols.find(s => s.includes(this.currentSource.toUpperCase())) || symbols[0];
+                        this.currentSymbol = preferredSymbol;
+                        document.getElementById('symbol-dropdown').value = this.currentSymbol;
+                        document.getElementById('source-dropdown').value = this.currentSource;
+                        this.loadStrategiesForSymbol();
+                        this.connectToStream();
+                    }
+                    console.log(`Loaded ${symbols.length} symbols`);
+                } catch (error) {
+                    console.error('Error loading symbols:', error);
+                    this.availableSymbols = ['S_AAPL_YAHOO', 'S_GERN_ALPHA', 'S_SLS_ALPHA'];
+                    this.updateSymbolDropdown();
+                    this.currentSymbol = this.availableSymbols[0];
+                    this.connectToStream();
+                }
+            }
+
+            async loadOptimizationResults() {
+                try {
+                    const sources = ['yahoo', 'alpha'];
+                    for (const source of sources) {
+                        try {
+                            const response = await fetch(`/api/optimization-results/${source}`);
+                            if (response.ok) {
+                                const results = await response.json();
+                                this.optimizationResults[source] = results;
+                            }
+                        } catch (error) {
+                            console.error(`Error loading ${source} results:`, error);
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error loading optimization results:', error);
+                }
+            }
+
+            loadStrategiesForSymbol() {
+                const strategySelect = document.getElementById('strategy-dropdown');
+                strategySelect.innerHTML = '<option value="">Select Strategy</option>';
+                
+                const sourceResults = this.optimizationResults[this.currentSource];
+                if (sourceResults && sourceResults[this.currentSymbol]) {
+                    const strategies = sourceResults[this.currentSymbol].strategies;
+                    Object.keys(strategies).forEach(strategy => {
+                        const option = document.createElement('option');
+                        option.value = strategy;
+                        option.textContent = strategy.replace('_', ' ');
+                        strategySelect.appendChild(option);
+                    });
+                    
+                    if (this.settings.autoStrategy === 'best' && Object.keys(strategies).length > 0) {
+                        const bestStrategy = sourceResults[this.currentSymbol].best_strategy;
+                        if (bestStrategy) {
+                            strategySelect.value = bestStrategy;
+                            this.currentStrategy = bestStrategy;
+                        }
+                    }
+                }
+            }
+            
+            updateSymbolDropdown() {
+                const dropdown = document.getElementById('symbol-dropdown');
+                dropdown.innerHTML = '';
+                
+                this.availableSymbols.forEach(symbol => {
+                    const option = document.createElement('option');
+                    option.value = symbol;
+                    option.textContent = symbol;
+                    dropdown.appendChild(option);
+                });
+            }
+            
+            setPriceRange(symbol) {
+                if (symbol.includes('GERN')) {
+                    this.priceRange = [1.0, 2.0];
+                } else if (symbol.includes('AAPL')) {
+                    this.priceRange = [140, 160];
+                } else if (symbol.includes('SLS')) {
+                    this.priceRange = [40, 50];
+                } else {
+                    this.priceRange = [1.0, 10.0];
+                }
+            }
+            
+            forceResetHoldingsChart() {
+                try {
+                    console.log('🚨 NUCLEAR RESET: Completely rebuilding holdings chart');
+                    
+                    // Completely destroy the chart
+                    Plotly.purge('actions-chart');
+                    
+                    // Recreate with clean holdings data
+                    const holdingsTrace = {
+                        x: [],
+                        y: [],
+                        type: 'scatter',
+                        mode: 'lines+markers',
+                        name: 'Holdings (Shares)',
+                        line: { color: '#ff6b35', width: 3 },
+                        marker: { size: 8, color: '#ff6b35' }
+                    };
+                    
+                    const layout = {
+                        title: {
+                            text: '🔥 HOLDINGS ONLY - NO VOLUME DATA',
+                            font: { color: '#ff6b35', size: 18 }
+                        },
+                        xaxis: { 
+                            title: 'Time', 
+                            color: '#ffffff',
+                            gridcolor: '#404040',
+                            showgrid: true,
+                            type: 'date'
+                        },
+                        yaxis: { 
+                            title: 'SHARES COUNT (NOT VOLUME)', 
+                            color: '#ff6b35',
+                            gridcolor: '#404040',
+                            showgrid: true,
+                            range: [0, 10000],
+                            tickformat: ',d'
+                        },
+                        plot_bgcolor: '#1a1a1a',
+                        paper_bgcolor: '#2d2d2d',
+                        font: { color: '#ffffff' },
+                        showlegend: true,
+                        margin: { t: 60, r: 30, b: 50, l: 80 },
+                        autosize: true
+                    };
+                    
+                    Plotly.newPlot('actions-chart', [holdingsTrace], layout, {
+                        responsive: true,
+                        displayModeBar: false
+                    });
+                    
+                    console.log('🔥 Holdings chart completely rebuilt');
+                } catch (error) {
+                    console.error('Error in nuclear reset:', error);
+                }
+            }
+            
+            connectToStream() {
+                if (this.eventSource) {
+                    this.eventSource.close();
+                }
+
+                if (!this.currentSymbol) {
+                    console.log('No symbol selected, skipping stream connection');
+                    return;
+                }
+
+                this.setPriceRange(this.currentSymbol);
+
+                this.priceData = [];
+                this.actionData = [];
+                this.timestamps = [];
+                this.chartUpdateCount = 0;
+                this.tradeHistory = [];
+                this.lastHoldings = 0;
+                this.maxHoldings = 0;
+                
+                if (this.chartsInitialized) {
+                    console.log('🔄 Resetting both charts...');
+                    Plotly.purge('price-chart');
+                    this.forceResetHoldingsChart(); // Force clean holdings chart
+                    this.chartsInitialized = false;
+                    this.initializeCharts();
+                }
+
+                const streamUrl = `/stream?symbol=${this.currentSymbol}&source=${this.currentSource}&strategy=${this.currentStrategy || 'LONG_ONLY'}`;
+                console.log('Connecting to stream:', streamUrl);
+                
+                this.eventSource = new EventSource(streamUrl);
+                
+                this.eventSource.onopen = () => {
+                    console.log('Stream connected');
+                    this.isConnected = true;
+                    this.updateConnectionStatus();
+                };
+                
+                this.eventSource.onmessage = (event) => {
+                    try {
+                        const data = JSON.parse(event.data);
+                        if (!data.heartbeat && !data.connected) {
+                            console.log('Received streaming data:', data);
+                            this.updateDashboard(data);
+                        }
+                    } catch (error) {
+                        console.error('Error parsing stream data:', error);
+                    }
+                };
+                
+                this.eventSource.onerror = (error) => {
+                    console.error('Stream error:', error);
+                    this.isConnected = false;
+                    this.updateConnectionStatus();
+                    setTimeout(() => this.connectToStream(), 5000);
+                };
+            }
+            
+            updateConnectionStatus() {
+                const indicator = document.getElementById('connection-indicator');
+                const text = document.getElementById('connection-text');
+                
+                if (this.isConnected) {
+                    indicator.className = 'status-indicator status-connected';
+                    text.textContent = 'Connected';
+                } else {
+                    indicator.className = 'status-indicator status-disconnected';
+                    text.textContent = 'Disconnected';
+                }
+            }
+            
+            updateDashboard(data) {
+                // Emergency fix: Detect trades by holdings changes
+                const holdingsChanged = data.holdings !== this.lastHoldings;
+                let tradeExecuted = data.trade_executed || holdingsChanged;
+                
+                if (holdingsChanged) {
+                    console.log('🚨 TRADE DETECTED: Holdings changed from', this.lastHoldings, 'to', data.holdings);
+                    data.trade_executed = true;
+                    
+                    // Create trade event
+                    const tradeAction = data.holdings > this.lastHoldings ? 'BUY' : 'SELL';
+                    const shares = Math.abs(data.holdings - this.lastHoldings);
+                    
+                    if (!this.tradeHistory) this.tradeHistory = [];
+                    this.tradeHistory.push({
+                        id: this.tradeHistory.length + 1,
+                        timestamp: data.timestamp,
+                        action: tradeAction,
+                        shares: shares,
+                        price: data.price,
+                        value: shares * data.price
+                    });
+                    
+                    console.log('📊 Created trade event:', tradeAction, shares, 'shares at $' + data.price);
+                    tradeExecuted = true;
+                    
+                    // Update max holdings for chart scaling
+                    this.maxHoldings = Math.max(this.maxHoldings, data.holdings);
+                }
+                
+                this.lastHoldings = data.holdings;
+                
+                console.log('🔍 DEBUG - Price:', data.price, 'Holdings:', data.holdings, 'Trade Executed:', tradeExecuted);
+                console.log('🔍 Trade History length:', this.tradeHistory.length, 'trades');
+                
+                const displaySymbol = data.symbol || this.currentSymbol;
+                document.getElementById('symbol').textContent = displaySymbol;
+                document.getElementById('current-price').textContent = `$${(data.price || 0).toFixed(2)}`;
+                
+                const priceElement = document.getElementById('current-price');
+                const change = data.price_change || 0;
+                priceElement.className = `price-display ${change >= 0 ? 'positive' : 'negative'}`;
+                
+                const timestamp = new Date(data.timestamp || new Date());
+                this.timestamps.push(timestamp);
+                this.priceData.push(data.price || 0);
+                
+                if (tradeExecuted) {
+                    this.actionData.push(data.holdings || 0);
+                }
+                
+                if (this.timestamps.length > this.maxDataPoints) {
+                    this.timestamps.shift();
+                    this.priceData.shift();
+                    if (this.actionData.length > 0) {
+                        this.actionData.shift();
+                    }
+                }
+                
+                this.updatePriceChart(data, timestamp);
+                this.updateActionsChart({...data, trade_executed: tradeExecuted}, timestamp);
+                this.updateMetrics(data);
+                this.updateAgentAnalysis(data);
+                this.updateHoldings(data);
+                this.updateTradeHistory(data);
+            }
+            
+            updatePriceChart(data, timestamp) {
+                if (!this.chartsInitialized) return;
+                
+                try {
+                    console.log('🎯 PRICE CHART - Using price value:', data.price);
+                    
+                    if (this.chartUpdateCount === 0) {
+                        document.getElementById('price-loading').style.display = 'none';
+                        
+                        const priceTrace = {
+                            x: [timestamp],
+                            y: [data.price || 0],
+                            type: 'scatter',
+                            mode: 'lines+markers',
+                            name: `${this.currentSymbol} Price`,
+                            line: { color: '#00ff88', width: 2 },
+                            marker: { size: 3 }
+                        };
+                        
+                        Plotly.redraw('price-chart', [priceTrace]);
+                        
+                        Plotly.relayout('price-chart', {
+                            'yaxis.range': this.priceRange,
+                            'yaxis.title': 'Price ($)'
+                        });
+                        
+                        console.log(`✅ Price chart initialized with range: $${this.priceRange[0]}-$${this.priceRange[1]}`);
+                        
+                    } else {
+                        Plotly.extendTraces('price-chart', {
+                            x: [[timestamp]],
+                            y: [[data.price || 0]]
+                        }, [0]);
+                        
+                        Plotly.relayout('price-chart', {
+                            'yaxis.range': this.priceRange
+                        });
+                    }
+                    
+                    this.chartUpdateCount++;
+                    console.log(`📈 Price chart updated #${this.chartUpdateCount} with price: $${data.price}`);
+                } catch (error) {
+                    console.error('Error updating price chart:', error);
+                }
+            }
+            
+            updateActionsChart(data, timestamp) {
+                if (!this.chartsInitialized) return;
+                
+                try {
+                    console.log('📊 ACTIONS CHART - Trade executed:', data.trade_executed, 'Holdings:', data.holdings);
+                    
+                    if (!data.trade_executed) {
+                        console.log('📊 No trade executed, skipping holdings chart update');
+                        return;
+                    }
+                    
+                    if (this.chartUpdateCount === 1) {
+                        document.getElementById('actions-loading').style.display = 'none';
+                        
+                        const holdingsTrace = {
+                            x: [timestamp],
+                            y: [data.holdings || 0],
+                            type: 'scatter',
+                            mode: 'lines+markers',
+                            name: 'Holdings (Shares)',
+                            line: { color: '#0088ff', width: 3 },
+                            marker: { size: 8 }
+                        };
+                        
+                        // CRITICAL FIX: Proper axis configuration for holdings
+                        const actionsLayout = {
+                            title: {
+                                text: 'Holdings & Trading Actions',
+                                font: { color: '#ffffff', size: 16 }
+                            },
+                            xaxis: { 
+                                title: 'Time', 
+                                color: '#ffffff',
+                                gridcolor: '#404040',
+                                showgrid: true,
+                                type: 'date'
+                            },
+                            yaxis: { 
+                                title: 'Holdings (Shares)', 
+                                color: '#ffffff',
+                                gridcolor: '#404040',
+                                showgrid: true,
+                                // FIXED: Set proper range for share counts
+                                range: [0, Math.max(data.holdings * 1.2, 10000)],
+                                tickformat: ',d',  // Integer formatting
+                                dtick: Math.max(Math.floor(data.holdings / 5), 1000)  // Proper tick spacing
+                            },
+                            plot_bgcolor: '#1a1a1a',
+                            paper_bgcolor: '#2d2d2d',
+                            font: { color: '#ffffff' },
+                            showlegend: true,
+                            margin: { t: 50, r: 30, b: 50, l: 60 },
+                            autosize: true
+                        };
+                        
+                        const config = {
+                            responsive: true,
+                            displayModeBar: false
+                        };
+                        
+                        Plotly.newPlot('actions-chart', [holdingsTrace], actionsLayout, config);
+                        console.log('✅ Actions chart RECREATED with proper holdings axis');
+                        
+                    } else if (this.chartUpdateCount > 1) {
+                        Plotly.extendTraces('actions-chart', {
+                            x: [[timestamp]],
+                            y: [[data.holdings || 0]]
+                        }, [0]);
+                        
+                        // Update Y-axis range dynamically
+                        const maxHoldings = Math.max(...this.actionData, data.holdings || 0);
+                        Plotly.relayout('actions-chart', {
+                            'yaxis.range': [0, maxHoldings * 1.2],
+                            'yaxis.dtick': Math.max(Math.floor(maxHoldings / 5), 1000)
+                        });
+                        
+                        console.log(`📊 TRADE EVENT: ${data.action} - Holdings now: ${data.holdings} shares`);
+                    }
+                    
+                } catch (error) {
+                    console.error('Error updating actions chart:', error);
+                }
+            }
+            
+            updateMetrics(data) {
+                document.getElementById('portfolio-value-compact').textContent = `$${(data.portfolio_value || 25000).toLocaleString()}`;
+                document.getElementById('cash-balance-compact').textContent = `$${(data.cash || 25000).toLocaleString()}`;
+                document.getElementById('current-holdings-compact').textContent = data.holdings || 0;
+                
+                const returnPct = ((data.portfolio_value || 25000) - 25000) / 25000 * 100;
+                const returnElement = document.getElementById('total-return');
+                returnElement.textContent = `${returnPct.toFixed(2)}%`;
+                returnElement.className = `metric-value ${returnPct >= 0 ? 'positive' : 'negative'}`;
+                
+                document.getElementById('total-trades').textContent = data.total_trades || 0;
+                document.getElementById('win-rate').textContent = `${((data.win_rate || 0) * 100).toFixed(1)}%`;
+            }
+            
+            updateAgentAnalysis(data) {
+                document.getElementById('current-action').textContent = data.action || 'HOLD';
+                document.getElementById('confidence').textContent = `${Math.round((data.confidence || 0) * 100)}%`;
+                document.getElementById('sma-signal').textContent = data.sma_signal || 'NEUTRAL';
+                document.getElementById('momentum').textContent = `${((data.momentum || 0) * 100).toFixed(2)}%`;
+                document.getElementById('position-type').textContent = data.position_type || 'FLAT';
+                document.getElementById('volatility').textContent = `${((data.volatility || 0) * 100).toFixed(2)}%`;
+            }
+
+            updateHoldings(data) {
+                const holdingsList = document.getElementById('holdings-list');
+                
+                if (!data.holdings || data.holdings === 0) {
+                    holdingsList.innerHTML = '<div style="text-align: center; color: #888; padding: 20px; font-size: 12px;">No holdings</div>';
+                    return;
+                }
+
+                const currentPrice = data.price || 0;
+                const holdings = data.holdings || 0;
+                const value = currentPrice * holdings;
+                const cost = data.cost_basis || currentPrice;
+                const pnl = (currentPrice - cost) * holdings;
+                const pnlPercent = cost > 0 ? ((currentPrice - cost) / cost * 100) : 0;
+
+                holdingsList.innerHTML = `
+                    <div class="holding-item">
+                        <div class="holding-symbol">${data.symbol || this.currentSymbol}</div>
+                        <div class="holding-details">
+                            <div>Shares: ${holdings.toLocaleString()}</div>
+                            <div>Price: $${currentPrice.toFixed(2)}</div>
+                            <div>Value: $${value.toLocaleString()}</div>
+                            <div class="${pnl >= 0 ? 'positive' : 'negative'}">P&L: ${pnl >= 0 ? '+' : ''}$${pnl.toFixed(2)} (${pnlPercent.toFixed(1)}%)</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            updateTradeHistory(data) {
+                const tradeHistoryList = document.getElementById('trade-history-list');
+                
+                console.log('🔍 Trade History Debug - Local history length:', this.tradeHistory.length);
+                
+                if (!this.tradeHistory || this.tradeHistory.length === 0) {
+                    tradeHistoryList.innerHTML = '<div style="text-align: center; color: #888; padding: 20px; font-size: 12px;">No trades yet</div>';
+                    return;
+                }
+
+                // Display recent trades (last 10)
+                const recentTrades = this.tradeHistory.slice(-10).reverse();
+                
+                tradeHistoryList.innerHTML = recentTrades.map(trade => {
+                    const tradeTime = new Date(trade.timestamp);
+                    const timeStr = tradeTime.toLocaleTimeString('en-US', { 
+                        hour12: false, 
+                        hour: '2-digit', 
+                        minute: '2-digit' 
+                    });
+                    
+                    return `
+                        <div class="trade-item ${trade.action.toLowerCase()}">
+                            <div class="trade-header">
+                                <span class="trade-action">${trade.action} ${trade.shares}</span>
+                                <span class="trade-time">${timeStr}</span>
+                            </div>
+                            <div class="trade-details">
+                                $${trade.price.toFixed(2)} × ${trade.shares} = $${trade.value.toFixed(2)}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                console.log('📈 Displayed', recentTrades.length, 'recent trades');
+            }
+        }
+        
+        function changeSymbol() {
+            const dropdown = document.getElementById('symbol-dropdown');
+            window.dashboard.currentSymbol = dropdown.value;
+            
+            if (dropdown.value.includes('_YAHOO')) {
+                window.dashboard.currentSource = 'yahoo';
+                document.getElementById('source-dropdown').value = 'yahoo';
+            } else if (dropdown.value.includes('_ALPHA')) {
+                window.dashboard.currentSource = 'alpha';
+                document.getElementById('source-dropdown').value = 'alpha';
+            }
+            
+            window.dashboard.loadStrategiesForSymbol();
+            window.dashboard.connectToStream();
+        }
+
+        function changeSource() {
+            const dropdown = document.getElementById('source-dropdown');
+            window.dashboard.currentSource = dropdown.value;
+            window.dashboard.loadStrategiesForSymbol();
+            window.dashboard.connectToStream();
+        }
+
+        function changeStrategy() {
+            const dropdown = document.getElementById('strategy-dropdown');
+            window.dashboard.currentStrategy = dropdown.value;
+            window.dashboard.connectToStream();
+        }
+
+        function openSettings() {
+            document.getElementById('settings-modal').style.display = 'block';
+        }
+
+        function closeSettings() {
+            document.getElementById('settings-modal').style.display = 'none';
+        }
+
+        function updateSetting(settingName, value) {
+            window.dashboard.settings[settingName] = value;
+            console.log(`Updated ${settingName} to ${value}`);
+            
+            if (settingName === 'defaultSource') {
+                window.dashboard.currentSource = value;
+                document.getElementById('source-dropdown').value = value;
+                window.dashboard.loadStrategiesForSymbol();
+                window.dashboard.connectToStream();
+            }
+        }
+        
+        function updateParameter(paramName, value) {
+            document.getElementById(`${paramName.replace('_', '-')}-value`).textContent = value;
+            if (!window.dashboard.currentParameters) {
+                window.dashboard.currentParameters = {};
+            }
+            window.dashboard.currentParameters[paramName] = parseFloat(value);
+        }
+        
+        function applyParameters() {
+            if (!window.dashboard.currentParameters || Object.keys(window.dashboard.currentParameters).length === 0) {
+                alert('No parameters to apply');
+                return;
+            }
+            
+            fetch('/api/parameters', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    symbol: window.dashboard.currentSymbol,
+                    parameters: window.dashboard.currentParameters
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Parameters applied successfully');
+                    window.dashboard.currentParameters = {};
+                } else {
+                    alert('Failed to apply parameters: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error applying parameters:', error);
+                alert('Failed to apply parameters');
+            });
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('settings-modal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, initializing real-time trading dashboard...');
+            window.dashboard = new TradingDashboard();
+        });
+    </script>
+</body>
+</html>
+

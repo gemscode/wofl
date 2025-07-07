@@ -1,0 +1,32 @@
+{
+  "symbol": "GERN",
+  "test_period": "2025-05-15 to 2025-05-29",
+  "overall_accuracy": 0.3294593228903487,
+  "signal_performance": {
+    "total_high_conf_signals": 1424,
+    "accuracy": 0.37008426966292135,
+    "buy_signals": 199,
+    "sell_signals": 494,
+    "hold_signals": 731,
+    "signal_distribution": [
+      731,
+      199,
+      494
+    ]
+  },
+  "backtest_results": {
+    "final_return": 0.12373613999999754,
+    "total_trades": 366
+  },
+  "prediction_distribution": [
+    2116,
+    1797,
+    2024
+  ],
+  "confidence_stats": {
+    "min": 0.4167872965335846,
+    "max": 0.5595610737800598,
+    "mean": 0.48263439536094666
+  },
+  "timestamp": "2025-07-06T23:02:28.293763"
+}

@@ -1,0 +1,6594 @@
+{
+  "symbol": "NVDA",
+  "strategy": "LONG_ONLY",
+  "strategy_params": {
+    "train_return": 0.0,
+    "test_return": 0.0
+  },
+  "total_recommendations": 390,
+  "actions_summary": {
+    "BUY": 0,
+    "SELL": 0,
+    "HOLD": 390
+  },
+  "avg_confidence": 0.5,
+  "generated_at": "2025-06-29T15:31:01.278235",
+  "recommendations": [
+    {
+      "timestamp": "2025-06-27T09:30:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.365,
+      "volume": 8331883,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Insufficient price history for analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {}
+    },
+    {
+      "timestamp": "2025-06-27T09:31:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.21,
+      "volume": 2515242,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Insufficient price history for analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {}
+    },
+    {
+      "timestamp": "2025-06-27T09:32:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.19,
+      "volume": 1314206,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Insufficient price history for analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {}
+    },
+    {
+      "timestamp": "2025-06-27T09:33:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.5396,
+      "volume": 1005038,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Insufficient price history for analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {}
+    },
+    {
+      "timestamp": "2025-06-27T09:34:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.36,
+      "volume": 788453,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Insufficient price history for analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {}
+    },
+    {
+      "timestamp": "2025-06-27T09:35:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.1852,
+      "volume": 829299,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Insufficient price history for analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {}
+    },
+    {
+      "timestamp": "2025-06-27T09:36:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.49,
+      "volume": 735421,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Insufficient price history for analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {}
+    },
+    {
+      "timestamp": "2025-06-27T09:37:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.365,
+      "volume": 910966,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Insufficient price history for analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {}
+    },
+    {
+      "timestamp": "2025-06-27T09:38:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.3386,
+      "volume": 559035,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Insufficient price history for analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {}
+    },
+    {
+      "timestamp": "2025-06-27T09:39:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.5,
+      "volume": 654727,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.5,
+        "sma_5": 156.3758,
+        "sma_10": 156.3543,
+        "momentum": 0.002,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:40:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.16,
+      "volume": 843010,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.16,
+        "sma_5": 156.3707,
+        "sma_10": 156.3338,
+        "momentum": -0.0021,
+        "volatility": 0.0014
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:41:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.05,
+      "volume": 697972,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.05,
+        "sma_5": 156.2827,
+        "sma_10": 156.3178,
+        "momentum": -0.002,
+        "volatility": 0.0013
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:42:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.0499,
+      "volume": 591625,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.0499,
+        "sma_5": 156.2197,
+        "sma_10": 156.3038,
+        "momentum": -0.0018,
+        "volatility": 0.0013
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:43:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.97,
+      "volume": 503456,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.97,
+        "sma_5": 156.146,
+        "sma_10": 156.2469,
+        "momentum": -0.0034,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:44:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.7599,
+      "volume": 886761,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.7599,
+        "sma_5": 155.998,
+        "sma_10": 156.1869,
+        "momentum": -0.0026,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:45:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.7103,
+      "volume": 549347,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.7103,
+        "sma_5": 155.908,
+        "sma_10": 156.1394,
+        "momentum": -0.0022,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:46:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.78,
+      "volume": 529575,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.78,
+        "sma_5": 155.854,
+        "sma_10": 156.0684,
+        "momentum": -0.0017,
+        "volatility": 0.0011
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:47:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.6124,
+      "volume": 785200,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.6124,
+        "sma_5": 155.7665,
+        "sma_10": 155.9931,
+        "momentum": -0.0023,
+        "volatility": 0.0011
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:48:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.75,
+      "volume": 470611,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.75,
+        "sma_5": 155.7225,
+        "sma_10": 155.9342,
+        "momentum": -0.0001,
+        "volatility": 0.0011
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:49:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.59,
+      "volume": 570364,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.59,
+        "sma_5": 155.6885,
+        "sma_10": 155.8432,
+        "momentum": -0.0008,
+        "volatility": 0.0011
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:50:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.295,
+      "volume": 857979,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.295,
+        "sma_5": 155.6055,
+        "sma_10": 155.7567,
+        "momentum": -0.0031,
+        "volatility": 0.0011
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:51:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.615,
+      "volume": 743957,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.615,
+        "sma_5": 155.5725,
+        "sma_10": 155.7133,
+        "momentum": 0.0,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:52:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.79,
+      "volume": 839695,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.79,
+        "sma_5": 155.608,
+        "sma_10": 155.6873,
+        "momentum": 0.0003,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:53:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.6996,
+      "volume": 678600,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.6996,
+        "sma_5": 155.5979,
+        "sma_10": 155.6602,
+        "momentum": 0.0007,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:54:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.8798,
+      "volume": 596644,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.8798,
+        "sma_5": 155.6559,
+        "sma_10": 155.6722,
+        "momentum": 0.0038,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:55:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.0648,
+      "volume": 901963,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.0648,
+        "sma_5": 155.8098,
+        "sma_10": 155.7077,
+        "momentum": 0.0029,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:56:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.2016,
+      "volume": 692430,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.2016,
+        "sma_5": 155.9272,
+        "sma_10": 155.7498,
+        "momentum": 0.0026,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:57:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.07,
+      "volume": 496786,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.07,
+        "sma_5": 155.9832,
+        "sma_10": 155.7956,
+        "momentum": 0.0024,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:58:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.1399,
+      "volume": 294254,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.1399,
+        "sma_5": 156.0712,
+        "sma_10": 155.8346,
+        "momentum": 0.0017,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T09:59:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.1332,
+      "volume": 404595,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.1332,
+        "sma_5": 156.1219,
+        "sma_10": 155.8889,
+        "momentum": 0.0004,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:00:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.4011,
+      "volume": 1033570,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.4011,
+        "sma_5": 156.1892,
+        "sma_10": 155.9995,
+        "momentum": 0.0013,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:01:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.38,
+      "volume": 424180,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.38,
+        "sma_5": 156.2248,
+        "sma_10": 156.076,
+        "momentum": 0.002,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:02:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.135,
+      "volume": 506485,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.135,
+        "sma_5": 156.2378,
+        "sma_10": 156.1105,
+        "momentum": -0.0,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:03:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.19,
+      "volume": 466585,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.19,
+        "sma_5": 156.2479,
+        "sma_10": 156.1595,
+        "momentum": 0.0004,
+        "volatility": 0.0012
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:04:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.13,
+      "volume": 462212,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.13,
+        "sma_5": 156.2472,
+        "sma_10": 156.1846,
+        "momentum": -0.0017,
+        "volatility": 0.0011
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:05:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.2311,
+      "volume": 430808,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.2311,
+        "sma_5": 156.2132,
+        "sma_10": 156.2012,
+        "momentum": -0.001,
+        "volatility": 0.0011
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:06:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.235,
+      "volume": 406382,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.235,
+        "sma_5": 156.1842,
+        "sma_10": 156.2045,
+        "momentum": 0.0006,
+        "volatility": 0.0011
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:07:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.275,
+      "volume": 539311,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.275,
+        "sma_5": 156.2122,
+        "sma_10": 156.225,
+        "momentum": 0.0005,
+        "volatility": 0.0011
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:08:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.25,
+      "volume": 704666,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.25,
+        "sma_5": 156.2242,
+        "sma_10": 156.236,
+        "momentum": 0.0008,
+        "volatility": 0.0011
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:09:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.205,
+      "volume": 803737,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.205,
+        "sma_5": 156.2392,
+        "sma_10": 156.2432,
+        "momentum": -0.0002,
+        "volatility": 0.0011
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:10:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.2886,
+      "volume": 976648,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.2886,
+        "sma_5": 156.2507,
+        "sma_10": 156.232,
+        "momentum": 0.0003,
+        "volatility": 0.0011
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:11:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.365,
+      "volume": 578186,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.365,
+        "sma_5": 156.2767,
+        "sma_10": 156.2305,
+        "momentum": 0.0006,
+        "volatility": 0.0011
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:12:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.58,
+      "volume": 549907,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.58,
+        "sma_5": 156.3377,
+        "sma_10": 156.275,
+        "momentum": 0.0021,
+        "volatility": 0.0011
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:13:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.595,
+      "volume": 744287,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.595,
+        "sma_5": 156.4067,
+        "sma_10": 156.3155,
+        "momentum": 0.0025,
+        "volatility": 0.001
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:14:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.6123,
+      "volume": 594102,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.6123,
+        "sma_5": 156.4882,
+        "sma_10": 156.3637,
+        "momentum": 0.0021,
+        "volatility": 0.001
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:15:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.6799,
+      "volume": 417154,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.6799,
+        "sma_5": 156.5664,
+        "sma_10": 156.4086,
+        "momentum": 0.002,
+        "volatility": 0.001
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:16:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.7787,
+      "volume": 602679,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.7787,
+        "sma_5": 156.6492,
+        "sma_10": 156.463,
+        "momentum": 0.0013,
+        "volatility": 0.001
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:17:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.615,
+      "volume": 504279,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.615,
+        "sma_5": 156.6562,
+        "sma_10": 156.497,
+        "momentum": 0.0001,
+        "volatility": 0.001
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:18:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.52,
+      "volume": 511159,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.52,
+        "sma_5": 156.6412,
+        "sma_10": 156.5239,
+        "momentum": -0.0006,
+        "volatility": 0.001
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:19:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.63,
+      "volume": 426758,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.63,
+        "sma_5": 156.6447,
+        "sma_10": 156.5664,
+        "momentum": -0.0003,
+        "volatility": 0.001
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:20:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.865,
+      "volume": 576360,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.865,
+        "sma_5": 156.6817,
+        "sma_10": 156.6241,
+        "momentum": 0.0006,
+        "volatility": 0.001
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:21:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.97,
+      "volume": 593528,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.97,
+        "sma_5": 156.72,
+        "sma_10": 156.6846,
+        "momentum": 0.0023,
+        "volatility": 0.001
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:22:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.1322,
+      "volume": 1986394,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.1322,
+        "sma_5": 156.8234,
+        "sma_10": 156.7398,
+        "momentum": 0.0039,
+        "volatility": 0.001
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:23:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.0399,
+      "volume": 929284,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.0399,
+        "sma_5": 156.9274,
+        "sma_10": 156.7843,
+        "momentum": 0.0026,
+        "volatility": 0.001
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:24:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.055,
+      "volume": 648711,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.055,
+        "sma_5": 157.0124,
+        "sma_10": 156.8286,
+        "momentum": 0.0012,
+        "volatility": 0.001
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:25:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.865,
+      "volume": 716484,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.865,
+        "sma_5": 157.0124,
+        "sma_10": 156.8471,
+        "momentum": -0.0007,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:26:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.1287,
+      "volume": 689873,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.1287,
+        "sma_5": 157.0442,
+        "sma_10": 156.8821,
+        "momentum": -0.0,
+        "volatility": 0.001
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:27:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.05,
+      "volume": 450119,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.05,
+        "sma_5": 157.0277,
+        "sma_10": 156.9256,
+        "momentum": 0.0001,
+        "volatility": 0.001
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:28:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.225,
+      "volume": 847902,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.225,
+        "sma_5": 157.0647,
+        "sma_10": 156.9961,
+        "momentum": 0.0011,
+        "volatility": 0.001
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:29:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.4201,
+      "volume": 810171,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.4201,
+        "sma_5": 157.1378,
+        "sma_10": 157.0751,
+        "momentum": 0.0035,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:30:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.345,
+      "volume": 660274,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.345,
+        "sma_5": 157.2338,
+        "sma_10": 157.1231,
+        "momentum": 0.0014,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:31:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.2914,
+      "volume": 596321,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.2914,
+        "sma_5": 157.2663,
+        "sma_10": 157.1552,
+        "momentum": 0.0015,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:32:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.315,
+      "volume": 480555,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.315,
+        "sma_5": 157.3193,
+        "sma_10": 157.1735,
+        "momentum": 0.0006,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:33:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.05,
+      "volume": 420310,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.05,
+        "sma_5": 157.2843,
+        "sma_10": 157.1745,
+        "momentum": -0.0024,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:34:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.075,
+      "volume": 603708,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.075,
+        "sma_5": 157.2153,
+        "sma_10": 157.1765,
+        "momentum": -0.0017,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:35:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.075,
+      "volume": 458720,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.075,
+        "sma_5": 157.1613,
+        "sma_10": 157.1975,
+        "momentum": -0.0014,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:36:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.21,
+      "volume": 439644,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.21,
+        "sma_5": 157.145,
+        "sma_10": 157.2056,
+        "momentum": -0.0007,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:37:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.3899,
+      "volume": 855856,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.3899,
+        "sma_5": 157.16,
+        "sma_10": 157.2396,
+        "momentum": 0.0022,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:38:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.565,
+      "volume": 974792,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.565,
+        "sma_5": 157.263,
+        "sma_10": 157.2736,
+        "momentum": 0.0031,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:39:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.3348,
+      "volume": 492947,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.3348,
+        "sma_5": 157.3149,
+        "sma_10": 157.2651,
+        "momentum": 0.0017,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:40:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.327,
+      "volume": 467747,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.327,
+        "sma_5": 157.3653,
+        "sma_10": 157.2633,
+        "momentum": 0.0007,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:41:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.51,
+      "volume": 495334,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.51,
+        "sma_5": 157.4253,
+        "sma_10": 157.2852,
+        "momentum": 0.0008,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:42:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.535,
+      "volume": 745392,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.535,
+        "sma_5": 157.4544,
+        "sma_10": 157.3072,
+        "momentum": -0.0002,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:43:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.595,
+      "volume": 403243,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.595,
+        "sma_5": 157.4604,
+        "sma_10": 157.3617,
+        "momentum": 0.0017,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:44:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.6167,
+      "volume": 576514,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.6167,
+        "sma_5": 157.5167,
+        "sma_10": 157.4158,
+        "momentum": 0.0018,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:45:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.5262,
+      "volume": 458025,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.5262,
+        "sma_5": 157.5566,
+        "sma_10": 157.461,
+        "momentum": 0.0001,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:46:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.4001,
+      "volume": 501383,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.4001,
+        "sma_5": 157.5346,
+        "sma_10": 157.48,
+        "momentum": -0.0009,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:47:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.4952,
+      "volume": 378706,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.4952,
+        "sma_5": 157.5266,
+        "sma_10": 157.4905,
+        "momentum": -0.0006,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:48:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.3998,
+      "volume": 347348,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.3998,
+        "sma_5": 157.4876,
+        "sma_10": 157.474,
+        "momentum": -0.0014,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:49:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.5,
+      "volume": 265558,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.5,
+        "sma_5": 157.4643,
+        "sma_10": 157.4905,
+        "momentum": -0.0002,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:50:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.295,
+      "volume": 476164,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.295,
+        "sma_5": 157.418,
+        "sma_10": 157.4873,
+        "momentum": -0.0007,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:51:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.0065,
+      "volume": 721379,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.0065,
+        "sma_5": 157.3393,
+        "sma_10": 157.437,
+        "momentum": -0.0031,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:52:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.1301,
+      "volume": 567122,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.1301,
+        "sma_5": 157.2663,
+        "sma_10": 157.3965,
+        "momentum": -0.0017,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:53:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.23,
+      "volume": 351426,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.23,
+        "sma_5": 157.2323,
+        "sma_10": 157.36,
+        "momentum": -0.0017,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:54:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.2,
+      "volume": 422354,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.2,
+        "sma_5": 157.1723,
+        "sma_10": 157.3183,
+        "momentum": -0.0006,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:55:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.0799,
+      "volume": 407755,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.0799,
+        "sma_5": 157.1293,
+        "sma_10": 157.2737,
+        "momentum": 0.0005,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:56:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.075,
+      "volume": 356730,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.075,
+        "sma_5": 157.143,
+        "sma_10": 157.2411,
+        "momentum": -0.0004,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:57:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.095,
+      "volume": 350640,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.095,
+        "sma_5": 157.136,
+        "sma_10": 157.2011,
+        "momentum": -0.0009,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:58:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.245,
+      "volume": 654238,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.245,
+        "sma_5": 157.139,
+        "sma_10": 157.1856,
+        "momentum": 0.0003,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T10:59:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.16,
+      "volume": 347293,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.16,
+        "sma_5": 157.131,
+        "sma_10": 157.1516,
+        "momentum": 0.0005,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:00:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.855,
+      "volume": 525949,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.855,
+        "sma_5": 157.086,
+        "sma_10": 157.1076,
+        "momentum": -0.0014,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:01:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.91,
+      "volume": 537407,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.91,
+        "sma_5": 157.053,
+        "sma_10": 157.098,
+        "momentum": -0.0012,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:02:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.9099,
+      "volume": 281894,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.9099,
+        "sma_5": 157.016,
+        "sma_10": 157.076,
+        "momentum": -0.0021,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:03:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.03,
+      "volume": 305295,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.03,
+        "sma_5": 156.973,
+        "sma_10": 157.056,
+        "momentum": -0.0008,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:04:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.1179,
+      "volume": 390835,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.1179,
+        "sma_5": 156.9646,
+        "sma_10": 157.0478,
+        "momentum": 0.0017,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:05:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.2346,
+      "volume": 407538,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.2346,
+        "sma_5": 157.0405,
+        "sma_10": 157.0632,
+        "momentum": 0.0021,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:06:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.385,
+      "volume": 491065,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.385,
+        "sma_5": 157.1355,
+        "sma_10": 157.0942,
+        "momentum": 0.003,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:07:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.3956,
+      "volume": 401466,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.3956,
+        "sma_5": 157.2326,
+        "sma_10": 157.1243,
+        "momentum": 0.0023,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:08:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.405,
+      "volume": 408129,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.405,
+        "sma_5": 157.3076,
+        "sma_10": 157.1403,
+        "momentum": 0.0018,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:09:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.44,
+      "volume": 330002,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.44,
+        "sma_5": 157.372,
+        "sma_10": 157.1683,
+        "momentum": 0.0013,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:10:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.4153,
+      "volume": 510701,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.4153,
+        "sma_5": 157.4082,
+        "sma_10": 157.2243,
+        "momentum": 0.0002,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:11:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.47,
+      "volume": 305069,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.47,
+        "sma_5": 157.4252,
+        "sma_10": 157.2803,
+        "momentum": 0.0005,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:12:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.455,
+      "volume": 397943,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.455,
+        "sma_5": 157.4371,
+        "sma_10": 157.3348,
+        "momentum": 0.0003,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:13:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.42,
+      "volume": 342589,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.42,
+        "sma_5": 157.4401,
+        "sma_10": 157.3738,
+        "momentum": -0.0001,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:14:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.38,
+      "volume": 410562,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.38,
+        "sma_5": 157.4281,
+        "sma_10": 157.4001,
+        "momentum": -0.0002,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:15:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.53,
+      "volume": 452127,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.53,
+        "sma_5": 157.451,
+        "sma_10": 157.4296,
+        "momentum": 0.0004,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:16:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.395,
+      "volume": 483262,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.395,
+        "sma_5": 157.436,
+        "sma_10": 157.4306,
+        "momentum": -0.0004,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:17:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.415,
+      "volume": 338444,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.415,
+        "sma_5": 157.428,
+        "sma_10": 157.4325,
+        "momentum": -0.0,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:18:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.4042,
+      "volume": 329050,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.4042,
+        "sma_5": 157.4248,
+        "sma_10": 157.4324,
+        "momentum": 0.0002,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:19:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.4457,
+      "volume": 242993,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.4457,
+        "sma_5": 157.438,
+        "sma_10": 157.433,
+        "momentum": -0.0005,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:20:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.5401,
+      "volume": 329062,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.5401,
+        "sma_5": 157.44,
+        "sma_10": 157.4455,
+        "momentum": 0.0009,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:21:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.62,
+      "volume": 357414,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.62,
+        "sma_5": 157.485,
+        "sma_10": 157.4605,
+        "momentum": 0.0013,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:22:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.915,
+      "volume": 2275954,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.915,
+        "sma_5": 157.585,
+        "sma_10": 157.5065,
+        "momentum": 0.0032,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:23:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.975,
+      "volume": 549176,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.975,
+        "sma_5": 157.6992,
+        "sma_10": 157.562,
+        "momentum": 0.0034,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:24:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.94,
+      "volume": 410381,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.94,
+        "sma_5": 157.798,
+        "sma_10": 157.618,
+        "momentum": 0.0025,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:25:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.935,
+      "volume": 618969,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.935,
+        "sma_5": 157.877,
+        "sma_10": 157.6585,
+        "momentum": 0.002,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:26:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.839,
+      "volume": 354058,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.839,
+        "sma_5": 157.9208,
+        "sma_10": 157.7029,
+        "momentum": -0.0005,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:27:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.83,
+      "volume": 368638,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.83,
+        "sma_5": 157.9038,
+        "sma_10": 157.7444,
+        "momentum": -0.0009,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:28:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.91,
+      "volume": 264958,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.91,
+        "sma_5": 157.8908,
+        "sma_10": 157.795,
+        "momentum": -0.0002,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:29:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.9101,
+      "volume": 295220,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.9101,
+        "sma_5": 157.8848,
+        "sma_10": 157.8414,
+        "momentum": -0.0002,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:30:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.785,
+      "volume": 303257,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.785,
+        "sma_5": 157.8548,
+        "sma_10": 157.8659,
+        "momentum": -0.0003,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:31:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.988,
+      "volume": 344267,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.988,
+        "sma_5": 157.8846,
+        "sma_10": 157.9027,
+        "momentum": 0.001,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:32:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.0587,
+      "volume": 1860360,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.0587,
+        "sma_5": 157.9304,
+        "sma_10": 157.9171,
+        "momentum": 0.0009,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:33:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.1,
+      "volume": 406768,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.1,
+        "sma_5": 157.9684,
+        "sma_10": 157.9296,
+        "momentum": 0.0012,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:34:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.295,
+      "volume": 726483,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.295,
+        "sma_5": 158.0453,
+        "sma_10": 157.9651,
+        "momentum": 0.0032,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:35:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.1599,
+      "volume": 803896,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.1599,
+        "sma_5": 158.1203,
+        "sma_10": 157.9876,
+        "momentum": 0.0011,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:36:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.2,
+      "volume": 444172,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.2,
+        "sma_5": 158.1627,
+        "sma_10": 158.0237,
+        "momentum": 0.0009,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:37:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.34,
+      "volume": 561532,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.34,
+        "sma_5": 158.219,
+        "sma_10": 158.0747,
+        "momentum": 0.0015,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:38:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.3257,
+      "volume": 721984,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.3257,
+        "sma_5": 158.2641,
+        "sma_10": 158.1162,
+        "momentum": 0.0002,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:39:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.405,
+      "volume": 796793,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.405,
+        "sma_5": 158.2861,
+        "sma_10": 158.1657,
+        "momentum": 0.0015,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:40:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.5057,
+      "volume": 664157,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.5057,
+        "sma_5": 158.3553,
+        "sma_10": 158.2378,
+        "momentum": 0.0019,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:41:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.5387,
+      "volume": 448041,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.5387,
+        "sma_5": 158.423,
+        "sma_10": 158.2929,
+        "momentum": 0.0013,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:42:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.455,
+      "volume": 546967,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.455,
+        "sma_5": 158.446,
+        "sma_10": 158.3325,
+        "momentum": 0.0008,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:43:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.4493,
+      "volume": 481482,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.4493,
+        "sma_5": 158.4707,
+        "sma_10": 158.3674,
+        "momentum": 0.0003,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:44:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.665,
+      "volume": 641397,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.665,
+        "sma_5": 158.5227,
+        "sma_10": 158.4044,
+        "momentum": 0.001,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:45:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.55,
+      "volume": 623188,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.55,
+        "sma_5": 158.5316,
+        "sma_10": 158.4434,
+        "momentum": 0.0001,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:46:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.545,
+      "volume": 267076,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.545,
+        "sma_5": 158.5329,
+        "sma_10": 158.4779,
+        "momentum": 0.0006,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:47:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.355,
+      "volume": 414204,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.355,
+        "sma_5": 158.5129,
+        "sma_10": 158.4794,
+        "momentum": -0.0006,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:48:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.47,
+      "volume": 413590,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.47,
+        "sma_5": 158.517,
+        "sma_10": 158.4939,
+        "momentum": -0.0012,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:49:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.565,
+      "volume": 452405,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.565,
+        "sma_5": 158.497,
+        "sma_10": 158.5099,
+        "momentum": 0.0001,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:50:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.4086,
+      "volume": 480568,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.4086,
+        "sma_5": 158.4687,
+        "sma_10": 158.5002,
+        "momentum": -0.0009,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:51:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.325,
+      "volume": 453763,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.325,
+        "sma_5": 158.4247,
+        "sma_10": 158.4788,
+        "momentum": -0.0002,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:52:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.29,
+      "volume": 450491,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.29,
+        "sma_5": 158.4117,
+        "sma_10": 158.4623,
+        "momentum": -0.0011,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:53:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.37,
+      "volume": 390067,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.37,
+        "sma_5": 158.3917,
+        "sma_10": 158.4544,
+        "momentum": -0.0012,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:54:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.48,
+      "volume": 431000,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.48,
+        "sma_5": 158.3747,
+        "sma_10": 158.4359,
+        "momentum": 0.0005,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:55:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.38,
+      "volume": 455197,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.38,
+        "sma_5": 158.369,
+        "sma_10": 158.4189,
+        "momentum": 0.0003,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:56:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.3,
+      "volume": 281460,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.3,
+        "sma_5": 158.364,
+        "sma_10": 158.3944,
+        "momentum": 0.0001,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:57:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.2878,
+      "volume": 242259,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.2878,
+        "sma_5": 158.3636,
+        "sma_10": 158.3876,
+        "momentum": -0.0005,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:58:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.2584,
+      "volume": 405275,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.2584,
+        "sma_5": 158.3412,
+        "sma_10": 158.3665,
+        "momentum": -0.0014,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T11:59:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.2148,
+      "volume": 279737,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.2148,
+        "sma_5": 158.2882,
+        "sma_10": 158.3315,
+        "momentum": -0.001,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:00:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.225,
+      "volume": 332891,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.225,
+        "sma_5": 158.2572,
+        "sma_10": 158.3131,
+        "momentum": -0.0005,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:01:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.21,
+      "volume": 288129,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.21,
+        "sma_5": 158.2392,
+        "sma_10": 158.3016,
+        "momentum": -0.0005,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:02:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.24,
+      "volume": 378979,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.24,
+        "sma_5": 158.2296,
+        "sma_10": 158.2966,
+        "momentum": -0.0001,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:03:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.21,
+      "volume": 244534,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.21,
+        "sma_5": 158.22,
+        "sma_10": 158.2806,
+        "momentum": -0.0,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:04:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.195,
+      "volume": 339370,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.195,
+        "sma_5": 158.216,
+        "sma_10": 158.2521,
+        "momentum": -0.0002,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:05:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.175,
+      "volume": 317655,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.175,
+        "sma_5": 158.206,
+        "sma_10": 158.2316,
+        "momentum": -0.0002,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:06:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.1959,
+      "volume": 246459,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.1959,
+        "sma_5": 158.2032,
+        "sma_10": 158.2212,
+        "momentum": -0.0003,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:07:00-04:00",
+      "symbol": "NVDA",
+      "price": 158.015,
+      "volume": 538880,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 158.015,
+        "sma_5": 158.1582,
+        "sma_10": 158.1939,
+        "momentum": -0.0012,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:08:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.95,
+      "volume": 360724,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.95,
+        "sma_5": 158.1062,
+        "sma_10": 158.1631,
+        "momentum": -0.0015,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:09:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.8985,
+      "volume": 298774,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.8985,
+        "sma_5": 158.0469,
+        "sma_10": 158.1314,
+        "momentum": -0.0017,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:10:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.8653,
+      "volume": 448361,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.8653,
+        "sma_5": 157.9849,
+        "sma_10": 158.0955,
+        "momentum": -0.0021,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:11:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.86,
+      "volume": 262729,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.86,
+        "sma_5": 157.9178,
+        "sma_10": 158.0605,
+        "momentum": -0.001,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:12:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.83,
+      "volume": 460762,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.83,
+        "sma_5": 157.8808,
+        "sma_10": 158.0195,
+        "momentum": -0.0008,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:13:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.85,
+      "volume": 309786,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.85,
+        "sma_5": 157.8608,
+        "sma_10": 157.9835,
+        "momentum": -0.0003,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:14:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.8653,
+      "volume": 399585,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.8653,
+        "sma_5": 157.8541,
+        "sma_10": 157.9505,
+        "momentum": 0.0,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:15:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.835,
+      "volume": 279958,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.835,
+        "sma_5": 157.8481,
+        "sma_10": 157.9165,
+        "momentum": -0.0002,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:16:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.6701,
+      "volume": 426684,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.6701,
+        "sma_5": 157.8101,
+        "sma_10": 157.8639,
+        "momentum": -0.001,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:17:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.715,
+      "volume": 652307,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.715,
+        "sma_5": 157.7871,
+        "sma_10": 157.8339,
+        "momentum": -0.0009,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:18:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.6348,
+      "volume": 274780,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.6348,
+        "sma_5": 157.744,
+        "sma_10": 157.8024,
+        "momentum": -0.0015,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:19:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.5048,
+      "volume": 779018,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.5048,
+        "sma_5": 157.6719,
+        "sma_10": 157.763,
+        "momentum": -0.0021,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:20:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.4685,
+      "volume": 484784,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.4685,
+        "sma_5": 157.5986,
+        "sma_10": 157.7234,
+        "momentum": -0.0013,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:21:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.565,
+      "volume": 432753,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.565,
+        "sma_5": 157.5776,
+        "sma_10": 157.6938,
+        "momentum": -0.001,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:22:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.5552,
+      "volume": 325874,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.5552,
+        "sma_5": 157.5457,
+        "sma_10": 157.6664,
+        "momentum": -0.0005,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:23:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.3652,
+      "volume": 418051,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.3652,
+        "sma_5": 157.4917,
+        "sma_10": 157.6179,
+        "momentum": -0.0009,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:24:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.46,
+      "volume": 472988,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.46,
+        "sma_5": 157.4828,
+        "sma_10": 157.5774,
+        "momentum": -0.0001,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:25:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.6367,
+      "volume": 454257,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.6367,
+        "sma_5": 157.5164,
+        "sma_10": 157.5575,
+        "momentum": 0.0005,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:26:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.645,
+      "volume": 275144,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.645,
+        "sma_5": 157.5324,
+        "sma_10": 157.555,
+        "momentum": 0.0006,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:27:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.6854,
+      "volume": 405804,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.6854,
+        "sma_5": 157.5585,
+        "sma_10": 157.5521,
+        "momentum": 0.002,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:28:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.715,
+      "volume": 268274,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.715,
+        "sma_5": 157.6284,
+        "sma_10": 157.5601,
+        "momentum": 0.0016,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:29:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.69,
+      "volume": 197266,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.69,
+        "sma_5": 157.6744,
+        "sma_10": 157.5786,
+        "momentum": 0.0003,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:30:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.57,
+      "volume": 306669,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.57,
+        "sma_5": 157.6611,
+        "sma_10": 157.5888,
+        "momentum": -0.0005,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:31:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.597,
+      "volume": 170473,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.597,
+        "sma_5": 157.6515,
+        "sma_10": 157.592,
+        "momentum": -0.0006,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:32:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.7001,
+      "volume": 270181,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.7001,
+        "sma_5": 157.6544,
+        "sma_10": 157.6064,
+        "momentum": -0.0001,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:33:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.6683,
+      "volume": 347639,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.6683,
+        "sma_5": 157.6451,
+        "sma_10": 157.6368,
+        "momentum": -0.0001,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:34:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.6386,
+      "volume": 166785,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.6386,
+        "sma_5": 157.6348,
+        "sma_10": 157.6546,
+        "momentum": 0.0004,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:35:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.6498,
+      "volume": 207914,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.6498,
+        "sma_5": 157.6508,
+        "sma_10": 157.6559,
+        "momentum": 0.0003,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:36:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.585,
+      "volume": 188721,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.585,
+        "sma_5": 157.6484,
+        "sma_10": 157.6499,
+        "momentum": -0.0007,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:37:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.575,
+      "volume": 151140,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.575,
+        "sma_5": 157.6233,
+        "sma_10": 157.6389,
+        "momentum": -0.0006,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:38:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.5807,
+      "volume": 161672,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.5807,
+        "sma_5": 157.6058,
+        "sma_10": 157.6254,
+        "momentum": -0.0004,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:39:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.52,
+      "volume": 275553,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.52,
+        "sma_5": 157.5821,
+        "sma_10": 157.6084,
+        "momentum": -0.0008,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:40:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.43,
+      "volume": 344102,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.43,
+        "sma_5": 157.5381,
+        "sma_10": 157.5944,
+        "momentum": -0.001,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:41:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.3,
+      "volume": 543752,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.3,
+        "sma_5": 157.4811,
+        "sma_10": 157.5648,
+        "momentum": -0.0017,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:42:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.345,
+      "volume": 362833,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.345,
+        "sma_5": 157.4351,
+        "sma_10": 157.5292,
+        "momentum": -0.0015,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:43:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.3099,
+      "volume": 243882,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.3099,
+        "sma_5": 157.381,
+        "sma_10": 157.4934,
+        "momentum": -0.0013,
+        "volatility": 0.0004
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:44:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.2846,
+      "volume": 471384,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.2846,
+        "sma_5": 157.3339,
+        "sma_10": 157.458,
+        "momentum": -0.0009,
+        "volatility": 0.0004
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:45:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.1448,
+      "volume": 283001,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.1448,
+        "sma_5": 157.2769,
+        "sma_10": 157.4075,
+        "momentum": -0.001,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:46:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.07,
+      "volume": 524304,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.07,
+        "sma_5": 157.2309,
+        "sma_10": 157.356,
+        "momentum": -0.0017,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:47:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.0584,
+      "volume": 434812,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.0584,
+        "sma_5": 157.1735,
+        "sma_10": 157.3043,
+        "momentum": -0.0016,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:48:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.02,
+      "volume": 597138,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.02,
+        "sma_5": 157.1156,
+        "sma_10": 157.2483,
+        "momentum": -0.0017,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:49:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.22,
+      "volume": 423731,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.22,
+        "sma_5": 157.1026,
+        "sma_10": 157.2183,
+        "momentum": 0.0005,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:50:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.25,
+      "volume": 301167,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.25,
+        "sma_5": 157.1237,
+        "sma_10": 157.2003,
+        "momentum": 0.0011,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:51:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.28,
+      "volume": 317490,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.28,
+        "sma_5": 157.1657,
+        "sma_10": 157.1983,
+        "momentum": 0.0014,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:52:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.245,
+      "volume": 292622,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.245,
+        "sma_5": 157.203,
+        "sma_10": 157.1883,
+        "momentum": 0.0014,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:53:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.125,
+      "volume": 276957,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.125,
+        "sma_5": 157.224,
+        "sma_10": 157.1698,
+        "momentum": -0.0006,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:54:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.2448,
+      "volume": 298146,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.2448,
+        "sma_5": 157.229,
+        "sma_10": 157.1658,
+        "momentum": -0.0,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:55:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.3098,
+      "volume": 230987,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.3098,
+        "sma_5": 157.2409,
+        "sma_10": 157.1823,
+        "momentum": 0.0002,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:56:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.405,
+      "volume": 391471,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.405,
+        "sma_5": 157.2659,
+        "sma_10": 157.2158,
+        "momentum": 0.001,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:57:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.355,
+      "volume": 308890,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.355,
+        "sma_5": 157.2879,
+        "sma_10": 157.2455,
+        "momentum": 0.0015,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:58:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.3385,
+      "volume": 169804,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.3385,
+        "sma_5": 157.3306,
+        "sma_10": 157.2773,
+        "momentum": 0.0006,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T12:59:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.365,
+      "volume": 142628,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.365,
+        "sma_5": 157.3547,
+        "sma_10": 157.2918,
+        "momentum": 0.0004,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:00:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.405,
+      "volume": 189984,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.405,
+        "sma_5": 157.3737,
+        "sma_10": 157.3073,
+        "momentum": 0.0,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:01:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.415,
+      "volume": 325546,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.415,
+        "sma_5": 157.3757,
+        "sma_10": 157.3208,
+        "momentum": 0.0004,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:02:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.415,
+      "volume": 239032,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.415,
+        "sma_5": 157.3877,
+        "sma_10": 157.3378,
+        "momentum": 0.0005,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:03:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.445,
+      "volume": 319029,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.445,
+        "sma_5": 157.409,
+        "sma_10": 157.3698,
+        "momentum": 0.0005,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:04:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.6001,
+      "volume": 383737,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.6001,
+        "sma_5": 157.456,
+        "sma_10": 157.4053,
+        "momentum": 0.0012,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:05:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.5087,
+      "volume": 2340026,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.5087,
+        "sma_5": 157.4768,
+        "sma_10": 157.4252,
+        "momentum": 0.0006,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:06:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.578,
+      "volume": 299287,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.578,
+        "sma_5": 157.5094,
+        "sma_10": 157.4425,
+        "momentum": 0.001,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:07:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.6299,
+      "volume": 293639,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.6299,
+        "sma_5": 157.5523,
+        "sma_10": 157.47,
+        "momentum": 0.0012,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:08:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.64,
+      "volume": 351440,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.64,
+        "sma_5": 157.5913,
+        "sma_10": 157.5002,
+        "momentum": 0.0003,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:09:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.595,
+      "volume": 242579,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.595,
+        "sma_5": 157.5903,
+        "sma_10": 157.5232,
+        "momentum": 0.0005,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:10:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.6513,
+      "volume": 166984,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.6513,
+        "sma_5": 157.6188,
+        "sma_10": 157.5478,
+        "momentum": 0.0005,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:11:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.62,
+      "volume": 130366,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.62,
+        "sma_5": 157.6272,
+        "sma_10": 157.5683,
+        "momentum": -0.0001,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:12:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.6042,
+      "volume": 138727,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.6042,
+        "sma_5": 157.6221,
+        "sma_10": 157.5872,
+        "momentum": -0.0002,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:13:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.6799,
+      "volume": 203445,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.6799,
+        "sma_5": 157.6301,
+        "sma_10": 157.6107,
+        "momentum": 0.0005,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:14:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.69,
+      "volume": 209277,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.69,
+        "sma_5": 157.6491,
+        "sma_10": 157.6197,
+        "momentum": 0.0002,
+        "volatility": 0.0004
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:15:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.67,
+      "volume": 233772,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.67,
+        "sma_5": 157.6528,
+        "sma_10": 157.6358,
+        "momentum": 0.0003,
+        "volatility": 0.0004
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:16:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.685,
+      "volume": 166235,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.685,
+        "sma_5": 157.6658,
+        "sma_10": 157.6465,
+        "momentum": 0.0005,
+        "volatility": 0.0004
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:17:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.7699,
+      "volume": 235368,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.7699,
+        "sma_5": 157.699,
+        "sma_10": 157.6605,
+        "momentum": 0.0006,
+        "volatility": 0.0004
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:18:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.637,
+      "volume": 272801,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.637,
+        "sma_5": 157.6904,
+        "sma_10": 157.6602,
+        "momentum": -0.0003,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:19:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.6987,
+      "volume": 202218,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.6987,
+        "sma_5": 157.6921,
+        "sma_10": 157.6706,
+        "momentum": 0.0002,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:20:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.54,
+      "volume": 387725,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.54,
+        "sma_5": 157.6661,
+        "sma_10": 157.6595,
+        "momentum": -0.0009,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:21:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.5,
+      "volume": 330089,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.5,
+        "sma_5": 157.6291,
+        "sma_10": 157.6475,
+        "momentum": -0.0017,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:22:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.415,
+      "volume": 218703,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.415,
+        "sma_5": 157.5581,
+        "sma_10": 157.6286,
+        "momentum": -0.0014,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:23:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.3058,
+      "volume": 358434,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.3058,
+        "sma_5": 157.4919,
+        "sma_10": 157.5911,
+        "momentum": -0.0025,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:24:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.3354,
+      "volume": 245124,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.3354,
+        "sma_5": 157.4192,
+        "sma_10": 157.5557,
+        "momentum": -0.0013,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:25:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.3586,
+      "volume": 150363,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.3586,
+        "sma_5": 157.383,
+        "sma_10": 157.5245,
+        "momentum": -0.0009,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:26:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.4888,
+      "volume": 245085,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.4888,
+        "sma_5": 157.3807,
+        "sma_10": 157.5049,
+        "momentum": 0.0005,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:27:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.4352,
+      "volume": 200823,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.4352,
+        "sma_5": 157.3848,
+        "sma_10": 157.4714,
+        "momentum": 0.0008,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:28:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.475,
+      "volume": 205563,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.475,
+        "sma_5": 157.4186,
+        "sma_10": 157.4552,
+        "momentum": 0.0009,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:29:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.485,
+      "volume": 219692,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.485,
+        "sma_5": 157.4485,
+        "sma_10": 157.4339,
+        "momentum": 0.0008,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:30:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.4501,
+      "volume": 210192,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.4501,
+        "sma_5": 157.4668,
+        "sma_10": 157.4249,
+        "momentum": -0.0002,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:31:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.475,
+      "volume": 204645,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.475,
+        "sma_5": 157.4641,
+        "sma_10": 157.4224,
+        "momentum": 0.0003,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:32:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.415,
+      "volume": 168330,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.415,
+        "sma_5": 157.46,
+        "sma_10": 157.4224,
+        "momentum": -0.0004,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:33:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.335,
+      "volume": 268363,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.335,
+        "sma_5": 157.432,
+        "sma_10": 157.4253,
+        "momentum": -0.001,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:34:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.27,
+      "volume": 230074,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.27,
+        "sma_5": 157.389,
+        "sma_10": 157.4188,
+        "momentum": -0.0011,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:35:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.245,
+      "volume": 251535,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.245,
+        "sma_5": 157.348,
+        "sma_10": 157.4074,
+        "momentum": -0.0015,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:36:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.2589,
+      "volume": 203349,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.2589,
+        "sma_5": 157.3048,
+        "sma_10": 157.3844,
+        "momentum": -0.001,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:37:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.36,
+      "volume": 231898,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.36,
+        "sma_5": 157.2938,
+        "sma_10": 157.3769,
+        "momentum": 0.0002,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:38:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.385,
+      "volume": 152085,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.385,
+        "sma_5": 157.3038,
+        "sma_10": 157.3679,
+        "momentum": 0.0007,
+        "volatility": 0.0004
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:39:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.455,
+      "volume": 226264,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.455,
+        "sma_5": 157.3408,
+        "sma_10": 157.3649,
+        "momentum": 0.0013,
+        "volatility": 0.0004
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:40:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.525,
+      "volume": 270425,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.525,
+        "sma_5": 157.3968,
+        "sma_10": 157.3724,
+        "momentum": 0.0017,
+        "volatility": 0.0004
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:41:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.5288,
+      "volume": 213381,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.5288,
+        "sma_5": 157.4508,
+        "sma_10": 157.3778,
+        "momentum": 0.0011,
+        "volatility": 0.0004
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:42:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.495,
+      "volume": 192314,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.495,
+        "sma_5": 157.4778,
+        "sma_10": 157.3858,
+        "momentum": 0.0007,
+        "volatility": 0.0004
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:43:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.5101,
+      "volume": 262685,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.5101,
+        "sma_5": 157.5028,
+        "sma_10": 157.4033,
+        "momentum": 0.0003,
+        "volatility": 0.0004
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:44:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.345,
+      "volume": 676677,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.345,
+        "sma_5": 157.4808,
+        "sma_10": 157.4108,
+        "momentum": -0.0011,
+        "volatility": 0.0004
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:45:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.14,
+      "volume": 392957,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.14,
+        "sma_5": 157.4038,
+        "sma_10": 157.4003,
+        "momentum": -0.0025,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:46:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.81,
+      "volume": 912993,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.81,
+        "sma_5": 157.26,
+        "sma_10": 157.3554,
+        "momentum": -0.0043,
+        "volatility": 0.0005
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:47:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.06,
+      "volume": 513362,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.06,
+        "sma_5": 157.173,
+        "sma_10": 157.3254,
+        "momentum": -0.0029,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:48:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.0,
+      "volume": 317041,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.0,
+        "sma_5": 157.071,
+        "sma_10": 157.2869,
+        "momentum": -0.0022,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:49:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.905,
+      "volume": 480206,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.905,
+        "sma_5": 156.983,
+        "sma_10": 157.2319,
+        "momentum": -0.0015,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:50:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.755,
+      "volume": 528417,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.755,
+        "sma_5": 156.906,
+        "sma_10": 157.1549,
+        "momentum": -0.0004,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:51:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.715,
+      "volume": 620485,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.715,
+        "sma_5": 156.887,
+        "sma_10": 157.0735,
+        "momentum": -0.0022,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:52:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.855,
+      "volume": 365415,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.855,
+        "sma_5": 156.846,
+        "sma_10": 157.0095,
+        "momentum": -0.0009,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:53:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.805,
+      "volume": 219879,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.805,
+        "sma_5": 156.807,
+        "sma_10": 156.939,
+        "momentum": -0.0006,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:54:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.815,
+      "volume": 289496,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.815,
+        "sma_5": 156.789,
+        "sma_10": 156.886,
+        "momentum": 0.0004,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:55:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.605,
+      "volume": 444837,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.605,
+        "sma_5": 156.759,
+        "sma_10": 156.8325,
+        "momentum": -0.0007,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:56:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.75,
+      "volume": 392818,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.75,
+        "sma_5": 156.766,
+        "sma_10": 156.8265,
+        "momentum": -0.0007,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:57:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.84,
+      "volume": 381163,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.84,
+        "sma_5": 156.763,
+        "sma_10": 156.8045,
+        "momentum": 0.0002,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:58:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.97,
+      "volume": 310217,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.97,
+        "sma_5": 156.796,
+        "sma_10": 156.8015,
+        "momentum": 0.001,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T13:59:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.035,
+      "volume": 417527,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.035,
+        "sma_5": 156.84,
+        "sma_10": 156.8145,
+        "momentum": 0.0027,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:00:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.115,
+      "volume": 186134,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.115,
+        "sma_5": 156.942,
+        "sma_10": 156.8505,
+        "momentum": 0.0023,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:01:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.185,
+      "volume": 489434,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.185,
+        "sma_5": 157.029,
+        "sma_10": 156.8975,
+        "momentum": 0.0022,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:02:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.245,
+      "volume": 370001,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.245,
+        "sma_5": 157.11,
+        "sma_10": 156.9365,
+        "momentum": 0.0018,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:03:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.16,
+      "volume": 326215,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.16,
+        "sma_5": 157.148,
+        "sma_10": 156.972,
+        "momentum": 0.0008,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:04:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.055,
+      "volume": 306137,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.055,
+        "sma_5": 157.152,
+        "sma_10": 156.996,
+        "momentum": -0.0004,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:05:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.09,
+      "volume": 214830,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.09,
+        "sma_5": 157.147,
+        "sma_10": 157.0445,
+        "momentum": -0.0006,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:06:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.1499,
+      "volume": 190333,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.1499,
+        "sma_5": 157.14,
+        "sma_10": 157.0845,
+        "momentum": -0.0006,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:07:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.185,
+      "volume": 185656,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.185,
+        "sma_5": 157.128,
+        "sma_10": 157.119,
+        "momentum": 0.0002,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:08:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.1601,
+      "volume": 190364,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.1601,
+        "sma_5": 157.128,
+        "sma_10": 157.138,
+        "momentum": 0.0007,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:09:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.12,
+      "volume": 195932,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.12,
+        "sma_5": 157.141,
+        "sma_10": 157.1465,
+        "momentum": 0.0002,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:10:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.215,
+      "volume": 180485,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.215,
+        "sma_5": 157.166,
+        "sma_10": 157.1565,
+        "momentum": 0.0004,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:11:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.18,
+      "volume": 206281,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.18,
+        "sma_5": 157.172,
+        "sma_10": 157.156,
+        "momentum": -0.0,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:12:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.02,
+      "volume": 253732,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.02,
+        "sma_5": 157.139,
+        "sma_10": 157.1335,
+        "momentum": -0.0009,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:13:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.905,
+      "volume": 308478,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.905,
+        "sma_5": 157.088,
+        "sma_10": 157.108,
+        "momentum": -0.0014,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:14:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.005,
+      "volume": 233500,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.005,
+        "sma_5": 157.065,
+        "sma_10": 157.103,
+        "momentum": -0.0013,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:15:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.075,
+      "volume": 277343,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.075,
+        "sma_5": 157.037,
+        "sma_10": 157.1015,
+        "momentum": -0.0007,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:16:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.135,
+      "volume": 194660,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.135,
+        "sma_5": 157.028,
+        "sma_10": 157.1,
+        "momentum": 0.0007,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:17:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.25,
+      "volume": 276173,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.25,
+        "sma_5": 157.074,
+        "sma_10": 157.1065,
+        "momentum": 0.0022,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:18:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.91,
+      "volume": 268623,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.91,
+        "sma_5": 157.075,
+        "sma_10": 157.0815,
+        "momentum": -0.0006,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:19:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.89,
+      "volume": 531886,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.89,
+        "sma_5": 157.052,
+        "sma_10": 157.0585,
+        "momentum": -0.0012,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:20:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.85,
+      "volume": 321333,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.85,
+        "sma_5": 157.007,
+        "sma_10": 157.022,
+        "momentum": -0.0018,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:21:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.7788,
+      "volume": 371861,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.7788,
+        "sma_5": 156.9358,
+        "sma_10": 156.9819,
+        "momentum": -0.003,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:22:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.65,
+      "volume": 356082,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.65,
+        "sma_5": 156.8158,
+        "sma_10": 156.9449,
+        "momentum": -0.0017,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:23:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.8001,
+      "volume": 444335,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.8001,
+        "sma_5": 156.7938,
+        "sma_10": 156.9344,
+        "momentum": -0.0006,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:24:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.779,
+      "volume": 329086,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.779,
+        "sma_5": 156.7716,
+        "sma_10": 156.9118,
+        "momentum": -0.0005,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:25:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.86,
+      "volume": 211848,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.86,
+        "sma_5": 156.7736,
+        "sma_10": 156.8903,
+        "momentum": 0.0005,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:26:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.77,
+      "volume": 237346,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.77,
+        "sma_5": 156.7718,
+        "sma_10": 156.8538,
+        "momentum": 0.0008,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:27:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.61,
+      "volume": 263138,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.61,
+        "sma_5": 156.7638,
+        "sma_10": 156.7898,
+        "momentum": -0.0012,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:28:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.405,
+      "volume": 620572,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.405,
+        "sma_5": 156.6848,
+        "sma_10": 156.7393,
+        "momentum": -0.0024,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:29:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.305,
+      "volume": 518809,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.305,
+        "sma_5": 156.59,
+        "sma_10": 156.6808,
+        "momentum": -0.0035,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:30:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.2801,
+      "volume": 498185,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.2801,
+        "sma_5": 156.474,
+        "sma_10": 156.6238,
+        "momentum": -0.0031,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:31:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.2,
+      "volume": 582738,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.2,
+        "sma_5": 156.36,
+        "sma_10": 156.5659,
+        "momentum": -0.0026,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:32:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.4499,
+      "volume": 606874,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.4499,
+        "sma_5": 156.328,
+        "sma_10": 156.5459,
+        "momentum": 0.0003,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:33:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.29,
+      "volume": 381673,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.29,
+        "sma_5": 156.305,
+        "sma_10": 156.4949,
+        "momentum": -0.0001,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:34:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.42,
+      "volume": 307100,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.42,
+        "sma_5": 156.328,
+        "sma_10": 156.459,
+        "momentum": 0.0009,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:35:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.62,
+      "volume": 495724,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.62,
+        "sma_5": 156.396,
+        "sma_10": 156.435,
+        "momentum": 0.0027,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:36:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.405,
+      "volume": 359053,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.405,
+        "sma_5": 156.437,
+        "sma_10": 156.3985,
+        "momentum": -0.0003,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:37:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.2965,
+      "volume": 295293,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.2965,
+        "sma_5": 156.4063,
+        "sma_10": 156.3671,
+        "momentum": 0.0,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:38:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.07,
+      "volume": 401484,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.07,
+        "sma_5": 156.3623,
+        "sma_10": 156.3336,
+        "momentum": -0.0022,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:39:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.095,
+      "volume": 394594,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.095,
+        "sma_5": 156.2973,
+        "sma_10": 156.3126,
+        "momentum": -0.0034,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:40:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.0,
+      "volume": 791716,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.0,
+        "sma_5": 156.1733,
+        "sma_10": 156.2846,
+        "momentum": -0.0026,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:41:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.9399,
+      "volume": 504834,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.9399,
+        "sma_5": 156.0803,
+        "sma_10": 156.2586,
+        "momentum": -0.0023,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:42:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.6101,
+      "volume": 575972,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.6101,
+        "sma_5": 155.943,
+        "sma_10": 156.1747,
+        "momentum": -0.0029,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:43:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.6901,
+      "volume": 812411,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.6901,
+        "sma_5": 155.867,
+        "sma_10": 156.1147,
+        "momentum": -0.0026,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:44:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.0602,
+      "volume": 728209,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.0602,
+        "sma_5": 155.8601,
+        "sma_10": 156.0787,
+        "momentum": 0.0004,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:45:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.1701,
+      "volume": 549619,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.1701,
+        "sma_5": 155.8941,
+        "sma_10": 156.0337,
+        "momentum": 0.0015,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:46:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.11,
+      "volume": 386317,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.11,
+        "sma_5": 155.9281,
+        "sma_10": 156.0042,
+        "momentum": 0.0032,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:47:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.0677,
+      "volume": 526534,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.0677,
+        "sma_5": 156.0196,
+        "sma_10": 155.9813,
+        "momentum": 0.0024,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:48:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.025,
+      "volume": 316382,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.025,
+        "sma_5": 156.0866,
+        "sma_10": 155.9768,
+        "momentum": -0.0002,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:49:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.8854,
+      "volume": 360921,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.8854,
+        "sma_5": 156.0516,
+        "sma_10": 155.9558,
+        "momentum": -0.0018,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:50:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.8188,
+      "volume": 581818,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.8188,
+        "sma_5": 155.9814,
+        "sma_10": 155.9377,
+        "momentum": -0.0019,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:51:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.83,
+      "volume": 370116,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.83,
+        "sma_5": 155.9254,
+        "sma_10": 155.9267,
+        "momentum": -0.0015,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:52:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.627,
+      "volume": 454647,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.627,
+        "sma_5": 155.8372,
+        "sma_10": 155.9284,
+        "momentum": -0.0026,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:53:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.85,
+      "volume": 483544,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.85,
+        "sma_5": 155.8022,
+        "sma_10": 155.9444,
+        "momentum": -0.0002,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:54:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.725,
+      "volume": 329894,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.725,
+        "sma_5": 155.7702,
+        "sma_10": 155.9109,
+        "momentum": -0.0006,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:55:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.645,
+      "volume": 285806,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.645,
+        "sma_5": 155.7354,
+        "sma_10": 155.8584,
+        "momentum": -0.0012,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:56:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.6254,
+      "volume": 299886,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.6254,
+        "sma_5": 155.6945,
+        "sma_10": 155.8099,
+        "momentum": -0.0,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:57:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.58,
+      "volume": 902008,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.58,
+        "sma_5": 155.6851,
+        "sma_10": 155.7612,
+        "momentum": -0.0017,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:58:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.62,
+      "volume": 461281,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.62,
+        "sma_5": 155.6391,
+        "sma_10": 155.7207,
+        "momentum": -0.0007,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T14:59:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.62,
+      "volume": 260401,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.62,
+        "sma_5": 155.6181,
+        "sma_10": 155.6941,
+        "momentum": -0.0002,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:00:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.76,
+      "volume": 418293,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.76,
+        "sma_5": 155.6411,
+        "sma_10": 155.6882,
+        "momentum": 0.0009,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:01:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.69,
+      "volume": 272566,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.69,
+        "sma_5": 155.654,
+        "sma_10": 155.6742,
+        "momentum": 0.0007,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:02:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.755,
+      "volume": 321735,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.755,
+        "sma_5": 155.689,
+        "sma_10": 155.687,
+        "momentum": 0.0009,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:03:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.9725,
+      "volume": 603189,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.9725,
+        "sma_5": 155.7595,
+        "sma_10": 155.6993,
+        "momentum": 0.0023,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:04:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.075,
+      "volume": 525255,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.075,
+        "sma_5": 155.8505,
+        "sma_10": 155.7343,
+        "momentum": 0.002,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:05:00-04:00",
+      "symbol": "NVDA",
+      "price": 155.98,
+      "volume": 340624,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 155.98,
+        "sma_5": 155.8945,
+        "sma_10": 155.7678,
+        "momentum": 0.0019,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:06:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.19,
+      "volume": 445525,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.19,
+        "sma_5": 155.9945,
+        "sma_10": 155.8243,
+        "momentum": 0.0028,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:07:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.22,
+      "volume": 413458,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.22,
+        "sma_5": 156.0875,
+        "sma_10": 155.8882,
+        "momentum": 0.0016,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:08:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.145,
+      "volume": 263562,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.145,
+        "sma_5": 156.122,
+        "sma_10": 155.9408,
+        "momentum": 0.0004,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:09:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.05,
+      "volume": 317094,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.05,
+        "sma_5": 156.117,
+        "sma_10": 155.9837,
+        "momentum": 0.0004,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:10:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.365,
+      "volume": 417092,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.365,
+        "sma_5": 156.194,
+        "sma_10": 156.0442,
+        "momentum": 0.0011,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:11:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.375,
+      "volume": 404329,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.375,
+        "sma_5": 156.231,
+        "sma_10": 156.1127,
+        "momentum": 0.001,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:12:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.28,
+      "volume": 317876,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.28,
+        "sma_5": 156.243,
+        "sma_10": 156.1652,
+        "momentum": 0.0009,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:13:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.391,
+      "volume": 266515,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.391,
+        "sma_5": 156.2922,
+        "sma_10": 156.2071,
+        "momentum": 0.0022,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:14:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.44,
+      "volume": 216113,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.44,
+        "sma_5": 156.3702,
+        "sma_10": 156.2436,
+        "momentum": 0.0005,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:15:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.57,
+      "volume": 599465,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.57,
+        "sma_5": 156.4112,
+        "sma_10": 156.3026,
+        "momentum": 0.0012,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:16:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.502,
+      "volume": 426229,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.502,
+        "sma_5": 156.4366,
+        "sma_10": 156.3338,
+        "momentum": 0.0014,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:17:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.44,
+      "volume": 319967,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.44,
+        "sma_5": 156.4686,
+        "sma_10": 156.3558,
+        "momentum": 0.0003,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:18:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.42,
+      "volume": 227440,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.42,
+        "sma_5": 156.4744,
+        "sma_10": 156.3833,
+        "momentum": -0.0001,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:19:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.5499,
+      "volume": 334609,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.5499,
+        "sma_5": 156.4964,
+        "sma_10": 156.4333,
+        "momentum": -0.0001,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:20:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.4797,
+      "volume": 215599,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.4797,
+        "sma_5": 156.4783,
+        "sma_10": 156.4448,
+        "momentum": -0.0001,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:21:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.5499,
+      "volume": 247391,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.5499,
+        "sma_5": 156.4879,
+        "sma_10": 156.4622,
+        "momentum": 0.0007,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:22:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.67,
+      "volume": 360710,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.67,
+        "sma_5": 156.5339,
+        "sma_10": 156.5012,
+        "momentum": 0.0016,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:23:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.7187,
+      "volume": 331177,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.7187,
+        "sma_5": 156.5936,
+        "sma_10": 156.534,
+        "momentum": 0.0011,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:24:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.76,
+      "volume": 407027,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.76,
+        "sma_5": 156.6357,
+        "sma_10": 156.566,
+        "momentum": 0.0018,
+        "volatility": 0.0009
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:25:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.765,
+      "volume": 636585,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.765,
+        "sma_5": 156.6927,
+        "sma_10": 156.5855,
+        "momentum": 0.0014,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:26:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.63,
+      "volume": 284296,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.63,
+        "sma_5": 156.7087,
+        "sma_10": 156.5983,
+        "momentum": -0.0003,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:27:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.62,
+      "volume": 247026,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.62,
+        "sma_5": 156.6987,
+        "sma_10": 156.6163,
+        "momentum": -0.0006,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:28:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.455,
+      "volume": 577517,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.455,
+        "sma_5": 156.646,
+        "sma_10": 156.6198,
+        "momentum": -0.0019,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:29:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.47,
+      "volume": 295341,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.47,
+        "sma_5": 156.588,
+        "sma_10": 156.6118,
+        "momentum": -0.0019,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:30:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.6199,
+      "volume": 327545,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.6199,
+        "sma_5": 156.559,
+        "sma_10": 156.6258,
+        "momentum": -0.0001,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:31:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.585,
+      "volume": 307319,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.585,
+        "sma_5": 156.55,
+        "sma_10": 156.6294,
+        "momentum": -0.0002,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:32:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.62,
+      "volume": 151853,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.62,
+        "sma_5": 156.55,
+        "sma_10": 156.6244,
+        "momentum": 0.0011,
+        "volatility": 0.0008
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:33:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.72,
+      "volume": 286823,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.72,
+        "sma_5": 156.603,
+        "sma_10": 156.6245,
+        "momentum": 0.0016,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:34:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.7852,
+      "volume": 374216,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.7852,
+        "sma_5": 156.666,
+        "sma_10": 156.627,
+        "momentum": 0.0011,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:35:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.675,
+      "volume": 369314,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.675,
+        "sma_5": 156.677,
+        "sma_10": 156.618,
+        "momentum": 0.0006,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:36:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.75,
+      "volume": 242802,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.75,
+        "sma_5": 156.71,
+        "sma_10": 156.63,
+        "momentum": 0.0008,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:37:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.7787,
+      "volume": 338911,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.7787,
+        "sma_5": 156.7418,
+        "sma_10": 156.6459,
+        "momentum": 0.0004,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:38:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.73,
+      "volume": 241775,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.73,
+        "sma_5": 156.7438,
+        "sma_10": 156.6734,
+        "momentum": -0.0004,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:39:00-04:00",
+      "symbol": "NVDA",
+      "price": 156.88,
+      "volume": 462121,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 156.88,
+        "sma_5": 156.7627,
+        "sma_10": 156.7144,
+        "momentum": 0.0013,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:40:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.0767,
+      "volume": 702379,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.0767,
+        "sma_5": 156.8431,
+        "sma_10": 156.7601,
+        "momentum": 0.0021,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:41:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.0752,
+      "volume": 513634,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.0752,
+        "sma_5": 156.9081,
+        "sma_10": 156.8091,
+        "momentum": 0.0019,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:42:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.2482,
+      "volume": 532920,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.2482,
+        "sma_5": 157.002,
+        "sma_10": 156.8719,
+        "momentum": 0.0033,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:43:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.27,
+      "volume": 529769,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.27,
+        "sma_5": 157.11,
+        "sma_10": 156.9269,
+        "momentum": 0.0025,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:44:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.41,
+      "volume": 604720,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.41,
+        "sma_5": 157.216,
+        "sma_10": 156.9894,
+        "momentum": 0.0021,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:45:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.35,
+      "volume": 587190,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.35,
+        "sma_5": 157.2707,
+        "sma_10": 157.0569,
+        "momentum": 0.0017,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:46:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.4883,
+      "volume": 544412,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.4883,
+        "sma_5": 157.3533,
+        "sma_10": 157.1307,
+        "momentum": 0.0015,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:47:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.39,
+      "volume": 503449,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.39,
+        "sma_5": 157.3817,
+        "sma_10": 157.1918,
+        "momentum": 0.0008,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:48:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.42,
+      "volume": 467094,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.42,
+        "sma_5": 157.4117,
+        "sma_10": 157.2608,
+        "momentum": 0.0001,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:49:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.4611,
+      "volume": 749652,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.4611,
+        "sma_5": 157.4219,
+        "sma_10": 157.319,
+        "momentum": 0.0007,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:50:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.44,
+      "volume": 980618,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.44,
+        "sma_5": 157.4399,
+        "sma_10": 157.3553,
+        "momentum": -0.0003,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:51:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.305,
+      "volume": 949570,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.305,
+        "sma_5": 157.4032,
+        "sma_10": 157.3783,
+        "momentum": -0.0005,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:52:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.225,
+      "volume": 740307,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.225,
+        "sma_5": 157.3702,
+        "sma_10": 157.3759,
+        "momentum": -0.0012,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:53:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.47,
+      "volume": 801954,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.47,
+        "sma_5": 157.3802,
+        "sma_10": 157.3959,
+        "momentum": 0.0001,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:54:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.625,
+      "volume": 1122113,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.625,
+        "sma_5": 157.413,
+        "sma_10": 157.4174,
+        "momentum": 0.0012,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:55:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.69,
+      "volume": 1152444,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.69,
+        "sma_5": 157.463,
+        "sma_10": 157.4514,
+        "momentum": 0.0024,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:56:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.7348,
+      "volume": 3506072,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.7348,
+        "sma_5": 157.549,
+        "sma_10": 157.4761,
+        "momentum": 0.0032,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:57:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.725,
+      "volume": 1488380,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.725,
+        "sma_5": 157.649,
+        "sma_10": 157.5096,
+        "momentum": 0.0016,
+        "volatility": 0.0007
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:58:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.7,
+      "volume": 1480664,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.7,
+        "sma_5": 157.695,
+        "sma_10": 157.5376,
+        "momentum": 0.0005,
+        "volatility": 0.0006
+      }
+    },
+    {
+      "timestamp": "2025-06-27T15:59:00-04:00",
+      "symbol": "NVDA",
+      "price": 157.75,
+      "volume": 3257487,
+      "action": "HOLD",
+      "confidence": 0.5,
+      "reasoning": "Market analysis",
+      "strategy": "LONG_ONLY",
+      "technical_data": {
+        "price": 157.75,
+        "sma_5": 157.72,
+        "sma_10": 157.5665,
+        "momentum": 0.0004,
+        "volatility": 0.0006
+      }
+    }
+  ]
+}

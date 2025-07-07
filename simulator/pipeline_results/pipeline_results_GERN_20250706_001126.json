@@ -1,0 +1,792 @@
+{
+  "timestamp": "2025-07-06T00:11:26.104944",
+  "symbol": "GERN",
+  "source": "alpha",
+  "episodes": 30,
+  "initial_config": {
+    "symbol": "GERN",
+    "source": "alpha",
+    "episodes": 30,
+    "max_steps": 1000,
+    "learning_rate": 0.001,
+    "epsilon_decay": 0.995,
+    "batch_size": 128,
+    "epsilon_min": 0.05,
+    "memory_size": 20000,
+    "gamma": 0.95
+  },
+  "final_config": {
+    "symbol": "GERN",
+    "source": "alpha",
+    "episodes": 30,
+    "max_steps": 1000,
+    "learning_rate": 0.001,
+    "epsilon_decay": 0.995,
+    "batch_size": 128,
+    "epsilon_min": 0.05,
+    "memory_size": 20000,
+    "gamma": 0.95,
+    "reward_type": "profit_factor",
+    "min_profit_factor": 1.5,
+    "win_rate_bonus": 0.1,
+    "large_loss_penalty": 0.2,
+    "use_enhanced_reward": true
+  },
+  "baseline_metrics": {
+    "test_return": 0.0,
+    "train_return": 0.046,
+    "sharpe_ratio": 0.0,
+    "max_drawdown": -0.05,
+    "volatility": 0.192,
+    "total_trades": 0,
+    "win_rate": 0.5,
+    "training_time": 6.0,
+    "convergence_episodes": 3
+  },
+  "final_metrics": {
+    "test_return": -0.0508,
+    "train_return": -0.0364,
+    "sharpe_ratio": -1.0993788819875776,
+    "max_drawdown": -0.1016,
+    "volatility": 0.1288,
+    "total_trades": 1,
+    "win_rate": 0.4492,
+    "training_time": 6.0,
+    "convergence_episodes": 3
+  },
+  "improvement_chain": [
+    {
+      "agent": "hyperparameter",
+      "config_change": null,
+      "performance_before": 0.0,
+      "performance_after": 0.0,
+      "improvement": 0.0
+    },
+    {
+      "agent": "reward",
+      "config_change": {
+        "reward_type": "profit_factor",
+        "min_profit_factor": 1.5,
+        "win_rate_bonus": 0.1,
+        "large_loss_penalty": 0.2
+      },
+      "performance_before": 0.0,
+      "performance_after": 0.0,
+      "improvement": 0.0
+    }
+  ],
+  "total_improvement": {
+    "return_improvement": -0.0508,
+    "return_improvement_pct": -508.0,
+    "sharpe_improvement": -1.0993788819875776,
+    "drawdown_improvement": -0.05159999999999999,
+    "volatility_improvement": 0.0632,
+    "overall_score": -0.21723577639751554,
+    "performance_multiplier": 1.0
+  },
+  "agent_enhancements": {
+    "hyperparameter": [
+      {
+        "agent_name": "HyperparameterAgent",
+        "enhancement_type": "hyperparameter_tuning",
+        "enhancement_config": {
+          "learning_rate": 0.0005
+        },
+        "baseline_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.046,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.192,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "enhanced_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.0288,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.15760000000000002,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "improvement_score": 0.0,
+        "timestamp": "2025-07-05T21:46:32.260044",
+        "metadata": {
+          "combination_index": 1,
+          "parameter_count": 1,
+          "expected_impact": 0.7200000000000001
+        }
+      },
+      {
+        "agent_name": "HyperparameterAgent",
+        "enhancement_type": "hyperparameter_tuning",
+        "enhancement_config": {
+          "learning_rate": 0.002
+        },
+        "baseline_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.046,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.192,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "enhanced_metrics": {
+          "test_return": 0.0,
+          "train_return": -0.031,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.162,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "improvement_score": 0.0,
+        "timestamp": "2025-07-05T21:52:23.723277",
+        "metadata": {
+          "combination_index": 2,
+          "parameter_count": 1,
+          "expected_impact": 0.7200000000000001
+        }
+      },
+      {
+        "agent_name": "HyperparameterAgent",
+        "enhancement_type": "hyperparameter_tuning",
+        "enhancement_config": {
+          "learning_rate": 0.01
+        },
+        "baseline_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.046,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.192,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "enhanced_metrics": {
+          "test_return": 0.0,
+          "train_return": -0.0435,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.187,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "improvement_score": 0.0,
+        "timestamp": "2025-07-05T22:04:10.798909",
+        "metadata": {
+          "combination_index": 4,
+          "parameter_count": 1,
+          "expected_impact": 0.36000000000000004
+        }
+      },
+      {
+        "agent_name": "HyperparameterAgent",
+        "enhancement_type": "hyperparameter_tuning",
+        "enhancement_config": {
+          "epsilon_decay": 0.99
+        },
+        "baseline_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.046,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.192,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "enhanced_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.027000000000000003,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.15400000000000003,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "improvement_score": 0.0,
+        "timestamp": "2025-07-05T22:10:12.259636",
+        "metadata": {
+          "combination_index": 5,
+          "parameter_count": 1,
+          "expected_impact": 0.24
+        }
+      },
+      {
+        "agent_name": "HyperparameterAgent",
+        "enhancement_type": "hyperparameter_tuning",
+        "enhancement_config": {
+          "epsilon_decay": 0.998
+        },
+        "baseline_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.046,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.192,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "enhanced_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.0144,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.1288,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "improvement_score": 0.0,
+        "timestamp": "2025-07-05T22:16:05.714673",
+        "metadata": {
+          "combination_index": 6,
+          "parameter_count": 1,
+          "expected_impact": 0.48
+        }
+      }
+    ],
+    "reward": [
+      {
+        "agent_name": "RewardFunctionAgent",
+        "enhancement_type": "reward_function",
+        "enhancement_config": {
+          "reward_type": "profit_factor",
+          "min_profit_factor": 1.5,
+          "win_rate_bonus": 0.1,
+          "large_loss_penalty": 0.2
+        },
+        "baseline_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.046,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.192,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "enhanced_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.018600000000000002,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.13720000000000002,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "improvement_score": 0.02854166666666666,
+        "timestamp": "2025-07-05T23:35:43.009236",
+        "metadata": {
+          "function_name": "profit_factor",
+          "description": "Optimize profit factor (gross profit / gross loss)",
+          "expected_impact": 0.7,
+          "implementation_difficulty": "low",
+          "risk_focus": 0.5,
+          "return_focus": 0.8
+        }
+      },
+      {
+        "agent_name": "RewardFunctionAgent",
+        "enhancement_type": "reward_function",
+        "enhancement_config": {
+          "reward_type": "sharpe_ratio",
+          "risk_free_rate": 0.02,
+          "volatility_penalty": 0.1,
+          "return_weight": 0.6,
+          "risk_weight": 0.4
+        },
+        "baseline_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.046,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.192,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "enhanced_metrics": {
+          "test_return": 0.0,
+          "train_return": -0.12179999999999999,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.3436,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "improvement_score": 0.0,
+        "timestamp": "2025-07-05T23:17:49.810208",
+        "metadata": {
+          "function_name": "sharpe_optimized",
+          "description": "Optimize for Sharpe ratio with risk-adjusted returns",
+          "expected_impact": 0.8,
+          "implementation_difficulty": "low",
+          "risk_focus": 0.7,
+          "return_focus": 0.6
+        }
+      },
+      {
+        "agent_name": "RewardFunctionAgent",
+        "enhancement_type": "reward_function",
+        "enhancement_config": {
+          "reward_type": "calmar_ratio",
+          "min_return_threshold": 0.05,
+          "drawdown_scaling": 1.5,
+          "recovery_time_penalty": 0.05
+        },
+        "baseline_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.046,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.192,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "enhanced_metrics": {
+          "test_return": 0.0,
+          "train_return": -0.1001,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.3002,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "improvement_score": 0.0,
+        "timestamp": "2025-07-05T23:23:47.864167",
+        "metadata": {
+          "function_name": "calmar_ratio",
+          "description": "Optimize Calmar ratio (return / max drawdown)",
+          "expected_impact": 0.8,
+          "implementation_difficulty": "low",
+          "risk_focus": 0.9,
+          "return_focus": 0.7
+        }
+      },
+      {
+        "agent_name": "RewardFunctionAgent",
+        "enhancement_type": "reward_function",
+        "enhancement_config": {
+          "reward_type": "drawdown_penalty",
+          "max_drawdown_threshold": 0.1,
+          "drawdown_penalty_multiplier": 2.0,
+          "recovery_bonus": 0.05
+        },
+        "baseline_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.046,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.192,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "enhanced_metrics": {
+          "test_return": 0.0,
+          "train_return": -0.1259,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.3518,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "improvement_score": 0.0,
+        "timestamp": "2025-07-05T23:29:45.294944",
+        "metadata": {
+          "function_name": "drawdown_protected",
+          "description": "Heavy penalties for large drawdowns",
+          "expected_impact": 0.7,
+          "implementation_difficulty": "low",
+          "risk_focus": 0.9,
+          "return_focus": 0.3
+        }
+      },
+      {
+        "agent_name": "RewardFunctionAgent",
+        "enhancement_type": "reward_function",
+        "enhancement_config": {
+          "reward_type": "tail_risk",
+          "var_confidence": 0.95,
+          "cvar_penalty": 2.0,
+          "extreme_loss_threshold": 0.05,
+          "tail_protection_bonus": 0.1
+        },
+        "baseline_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.046,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.192,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "enhanced_metrics": {
+          "test_return": 0.0,
+          "train_return": -0.13269999999999998,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.36539999999999995,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "improvement_score": 0.0,
+        "timestamp": "2025-07-05T23:41:43.202594",
+        "metadata": {
+          "function_name": "tail_risk_adjusted",
+          "description": "Penalize tail risk events heavily",
+          "expected_impact": 0.7,
+          "implementation_difficulty": "high",
+          "risk_focus": 1.0,
+          "return_focus": 0.4
+        }
+      },
+      {
+        "agent_name": "RewardFunctionAgent",
+        "enhancement_type": "reward_function",
+        "enhancement_config": {
+          "reward_type": "momentum",
+          "momentum_threshold": 0.02,
+          "trend_following_bonus": 0.1,
+          "contrarian_penalty": 0.05
+        },
+        "baseline_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.046,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.192,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "enhanced_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.055099999999999996,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.2102,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "improvement_score": 0.0,
+        "timestamp": "2025-07-05T23:59:34.186132",
+        "metadata": {
+          "function_name": "momentum_enhanced",
+          "description": "Reward momentum following with trend bonuses",
+          "expected_impact": 0.5,
+          "implementation_difficulty": "medium",
+          "risk_focus": 0.3,
+          "return_focus": 0.9
+        }
+      },
+      {
+        "agent_name": "RewardFunctionAgent",
+        "enhancement_type": "reward_function",
+        "enhancement_config": {
+          "reward_type": "risk_adjusted",
+          "risk_free_rate": 0.02,
+          "var_penalty": 0.15,
+          "skewness_bonus": 0.05,
+          "kurtosis_penalty": 0.03
+        },
+        "baseline_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.046,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.192,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "enhanced_metrics": {
+          "test_return": 0.0,
+          "train_return": -0.0873,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.2746,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "improvement_score": -0.04302083333333334,
+        "timestamp": "2025-07-05T23:11:53.153756",
+        "metadata": {
+          "function_name": "risk_adjusted",
+          "description": "Comprehensive risk-adjusted reward function",
+          "expected_impact": 0.9,
+          "implementation_difficulty": "medium",
+          "risk_focus": 0.8,
+          "return_focus": 0.6
+        }
+      },
+      {
+        "agent_name": "RewardFunctionAgent",
+        "enhancement_type": "reward_function",
+        "enhancement_config": {
+          "reward_type": "kelly_criterion",
+          "win_rate_weight": 0.4,
+          "avg_win_loss_ratio": 0.6,
+          "overbetting_penalty": 0.3
+        },
+        "baseline_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.046,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.192,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "enhanced_metrics": {
+          "test_return": 0.0,
+          "train_return": -0.10289999999999999,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.30579999999999996,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "improvement_score": -0.05927083333333331,
+        "timestamp": "2025-07-06T00:05:29.521184",
+        "metadata": {
+          "function_name": "kelly_criterion",
+          "description": "Kelly criterion based position sizing rewards",
+          "expected_impact": 0.5,
+          "implementation_difficulty": "high",
+          "risk_focus": 0.6,
+          "return_focus": 0.7
+        }
+      },
+      {
+        "agent_name": "RewardFunctionAgent",
+        "enhancement_type": "reward_function",
+        "enhancement_config": {
+          "reward_type": "consistency",
+          "volatility_penalty": 0.2,
+          "consistency_bonus": 0.15,
+          "streak_bonus": 0.1
+        },
+        "baseline_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.046,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.192,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "enhanced_metrics": {
+          "test_return": 0.0,
+          "train_return": -0.1002,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.3004,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "improvement_score": -0.22583333333333333,
+        "timestamp": "2025-07-05T23:47:39.326870",
+        "metadata": {
+          "function_name": "consistency_focused",
+          "description": "Reward consistent returns over volatile ones",
+          "expected_impact": 0.6,
+          "implementation_difficulty": "medium",
+          "risk_focus": 0.8,
+          "return_focus": 0.5
+        }
+      },
+      {
+        "agent_name": "RewardFunctionAgent",
+        "enhancement_type": "reward_function",
+        "enhancement_config": {
+          "reward_type": "sortino_ratio",
+          "target_return": 0.0,
+          "downside_penalty": 1.5,
+          "upside_bonus": 0.5
+        },
+        "baseline_metrics": {
+          "test_return": 0.0,
+          "train_return": 0.046,
+          "sharpe_ratio": 0.0,
+          "max_drawdown": -0.05,
+          "volatility": 0.192,
+          "total_trades": 0,
+          "win_rate": 0.5,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "enhanced_metrics": {
+          "test_return": -0.0508,
+          "train_return": -0.0152,
+          "sharpe_ratio": -0.8271028037383177,
+          "max_drawdown": -0.1016,
+          "volatility": 0.17120000000000002,
+          "total_trades": 1,
+          "win_rate": 0.4492,
+          "training_time": 6.0,
+          "convergence_episodes": 3
+        },
+        "improvement_score": -5.453114018691588,
+        "timestamp": "2025-07-05T23:53:34.897748",
+        "metadata": {
+          "function_name": "sortino_ratio",
+          "description": "Optimize Sortino ratio (downside deviation focus)",
+          "expected_impact": 0.6,
+          "implementation_difficulty": "medium",
+          "risk_focus": 0.7,
+          "return_focus": 0.6
+        }
+      }
+    ]
+  },
+  "pipeline_summary": {
+    "total_enhancements_tested": 15,
+    "successful_agents": 1,
+    "failed_agents": 1,
+    "success_rate": 0.5,
+    "successful_agent_details": [
+      {
+        "agent": "reward",
+        "best_improvement": 0.02854166666666666,
+        "enhancement_config": {
+          "reward_type": "profit_factor",
+          "min_profit_factor": 1.5,
+          "win_rate_bonus": 0.1,
+          "large_loss_penalty": 0.2
+        }
+      }
+    ],
+    "failed_agent_list": [
+      "hyperparameter"
+    ],
+    "performance_change": {
+      "return": "0.0000 \u2192 -0.0508",
+      "sharpe": "0.0000 \u2192 -1.0994",
+      "drawdown": "-0.0500 \u2192 -0.1016",
+      "volatility": "0.1920 \u2192 0.1288",
+      "trades": "0 \u2192 1"
+    },
+    "best_performing_agent": "reward"
+  },
+  "config_changes": {
+    "reward_type": {
+      "initial": null,
+      "final": "profit_factor",
+      "changed": true
+    },
+    "episodes": {
+      "value": 30,
+      "changed": false
+    },
+    "epsilon_decay": {
+      "value": 0.995,
+      "changed": false
+    },
+    "gamma": {
+      "value": 0.95,
+      "changed": false
+    },
+    "symbol": {
+      "value": "GERN",
+      "changed": false
+    },
+    "use_enhanced_reward": {
+      "initial": null,
+      "final": true,
+      "changed": true
+    },
+    "source": {
+      "value": "alpha",
+      "changed": false
+    },
+    "batch_size": {
+      "value": 128,
+      "changed": false
+    },
+    "epsilon_min": {
+      "value": 0.05,
+      "changed": false
+    },
+    "win_rate_bonus": {
+      "initial": null,
+      "final": 0.1,
+      "changed": true
+    },
+    "learning_rate": {
+      "value": 0.001,
+      "changed": false
+    },
+    "max_steps": {
+      "value": 1000,
+      "changed": false
+    },
+    "memory_size": {
+      "value": 20000,
+      "changed": false
+    },
+    "min_profit_factor": {
+      "initial": null,
+      "final": 1.5,
+      "changed": true
+    },
+    "large_loss_penalty": {
+      "initial": null,
+      "final": 0.2,
+      "changed": true
+    }
+  }
+}

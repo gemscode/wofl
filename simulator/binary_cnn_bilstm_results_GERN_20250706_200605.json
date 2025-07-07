@@ -1,0 +1,19 @@
+{
+  "symbol": "GERN",
+  "strategy_type": "Binary_CNN_BiLSTM",
+  "final_return": -0.3317841960000037,
+  "total_trades": 1701,
+  "trades_per_day": 85.05,
+  "max_drawdown": 0.941292687231082,
+  "avg_confidence": 0.7820714712142944,
+  "best_params": {
+    "cnn_filters": 54,
+    "cnn_kernel": 2,
+    "lstm_hidden": 102,
+    "lstm_layers": 1,
+    "dropout": 0.3515201261332787,
+    "learning_rate": 0.0024971163455067415,
+    "batch_size": 106
+  },
+  "timestamp": "2025-07-06T20:06:05.970516"
+}

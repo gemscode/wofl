@@ -1,0 +1,13 @@
+{
+  "symbol": "GERN",
+  "strategy_type": "2D_CNN",
+  "final_return": 0.0,
+  "total_trades": 0,
+  "avg_confidence": 0.4144444465637207,
+  "best_params": {
+    "dropout": 0.2060004255134782,
+    "learning_rate": 0.004002457066132164,
+    "batch_size": 114
+  },
+  "timestamp": "2025-07-06T18:10:42.501187"
+}
