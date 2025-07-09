@@ -106,7 +106,7 @@ class EntryExitDataPreprocessor:
         return sequence
 
 class RealTimeTradingAgent:
-    def __init__(self, symbol, model_path, stream_name=None, consumer_name=None, redis_host='localhost', output_stream=None):
+    def __init__(self, symbol, model_path, stream_name=None, consumer_name=None, redis_host='trader.wolfx0.com', output_stream=None):
         self.symbol = symbol.upper()
         self.stream_name = stream_name or f"trading_stream_{self.symbol}"
         self.consumer_name = consumer_name or f"agent_{self.symbol}_{int(time.time())}"
@@ -123,20 +123,55 @@ class RealTimeTradingAgent:
         self.model = self._load_model(model_path)
         
         try:
-            self.redis_client = redis.Redis(host=self.redis_host, port=6379, db=0, decode_responses=True)
+            redis_config = {
+                'host': self.redis_host,
+                'port': 6379,
+                'db': 0,
+                'decode_responses': True
+            }
+            
+            if self.redis_host.lower() not in ['localhost', '127.0.0.1', '::1']:
+                try:
+                    with open('.redis_passwd', 'r') as f:
+                        password = f.read().strip()
+                    if password:
+                        redis_config['password'] = password
+                        print(f"Using password authentication for {self.redis_host}")
+                    else:
+                        print(f"Password file is empty for {self.redis_host}")
+                except FileNotFoundError:
+                    print(f"Password file '.redis_passwd' not found for {self.redis_host}")
+                    print("Create the file with: echo 'your_password' > .redis_passwd")
+                    sys.exit(1)
+                except Exception as e:
+                    print(f"Error reading password file: {e}")
+                    sys.exit(1)
+            else:
+                print(f"No authentication required for localhost connection")
+            
+            self.redis_client = redis.Redis(**redis_config)
             self.redis_client.ping()
-            print("Connected to Redis successfully")
+            print(f"Connected to Redis successfully ({self.redis_host})")
+            
+        except redis.AuthenticationError:
+            print(f"Redis authentication failed for {self.redis_host}")
+            print("Check your password in .redis_passwd file")
+            sys.exit(1)
         except redis.ConnectionError:
-            print("Failed to connect to Redis. Make sure Redis is running.")
+            print(f"Failed to connect to Redis at {self.redis_host}")
+            print("Make sure Redis is running and accessible")
+            sys.exit(1)
+        except Exception as e:
+            print(f"Unexpected Redis connection error: {e}")
             sys.exit(1)
         
         self.running = False
-        self.recommendations = []
+        self.recommendations = [] 
         self.last_recommendation_time = None
         
-        signal.signal(signal.SIGINT, self._signal_handler)
+        signal.signal(signal.SIGINT, self._signal_handler) 
         signal.signal(signal.SIGTERM, self._signal_handler)
-    
+ 
     def _get_device(self):
         if hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
             print("Using Mac M-series GPU (MPS)")
