@@ -22,7 +22,6 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'opt
 
 from pattern_explorer import PatternExplorer
 
-# Import model class from your training script
 class EnhancedEntryModel(nn.Module):
     def __init__(self, input_features=8, sequence_length=15, cnn_filters=32, cnn_kernel=2, lstm_hidden=64, lstm_layers=1, dropout=0.2, num_classes=3):
         super(EnhancedEntryModel, self).__init__()

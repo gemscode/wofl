@@ -105,7 +105,7 @@ class TradingDataPublisher:
                 # Prepare market data message
                 market_data = {
                     'symbol': self.symbol,
-                    'timestamp': dt_timestamp.isoformat(),  # Now safe to call isoformat()
+                    'timestamp': dt_timestamp.isoformat(), 
                     'trading_date': trading_date,
                     'open': float(row['open']),
                     'high': float(row['high']),
