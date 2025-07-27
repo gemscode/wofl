@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Trading App</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="app-header">
+            <div class="left-section">
+                <span class="ticker-symbol">GERN - LIVE</span>
+                <button onclick="window.location.href='/'" class="mode-btn">Back to Simulation</button>
+            </div>
+            <div class="right-section">
+                <div class="market-info">
+                    <div class="price-info">
+                        <span class="current-price" id="live-price">$0.00</span>
+                        <span class="price-change" id="live-change">+0.00 (+0.00%)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-area">
+            <div class="chart-area-wrapper">
+                <div id="live-chart-container"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/lightweight-charts@4.1.7/dist/lightweight-charts.standalone.production.js"></script>
+    <script src="/static/live-app.js"></script>
+</body>
+</html>
+

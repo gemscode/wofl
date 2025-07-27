@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Volume Chart</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js Annotation Plugin for lines and labels -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <!-- Chart.js Datalabels Plugin for placing labels on bars -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-item">Holdings: <strong id="holdings">--</strong></div>
+            <div class="header-item">Value: <strong id="value">$---.--</strong></div>
+            <div class="header-item">Balance: <strong id="balance">$----</strong></div>
+            <div class="header-item">Budget: <strong id="budget">$----</strong></div>
+        </header>
+        <main class="content-area">
+            <div class="volume-bar-container">
+                <div class="volume-title">Volume</div>
+                <div class="volume-segments">
+                    <div class="volume-segment"></div>
+                    <div class="volume-segment"></div>
+                    <div class="volume-segment"></div>
+                    <div class="volume-segment"></div>
+                    <div class="volume-segment"></div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="volumeChart"></canvas>
+                <!-- Trend indicator is now an independent HTML element -->
+                <div id="trend-indicator" class="trend-indicator" style="display: none;">
+                    <div id="trend-arrow" class="trend-arrow">▼</div>
+                    <div id="trend-label" class="trend-label">Trend</div>
+                </div>
+            </div>
+        </main>
+        <footer class="empty-footer">
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
+

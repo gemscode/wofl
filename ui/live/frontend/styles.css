@@ -1,0 +1,229 @@
+:root {
+    --bg-color: #0c1e3e;
+    --panel-bg: #008cff;
+    --header-bg: #f0f0f0;
+    --header-text: #000;
+    --title-text: #ff4500;
+    --analysis-bg: #00008b;
+    --analysis-text: #fff;
+    --border-color: #fff;
+    --teal-color: #008080;
+    --blue-color: #0000ff;
+    --red-color: #ff0000;
+    --yellow-color: #ffff00;
+    --green-color: #4caf50;
+}
+
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.dashboard-container {
+    width: 414px; /* iPhone 8 Plus width */
+    height: 736px; /* iPhone 8 Plus height */
+    background-color: var(--panel-bg);
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--border-color);
+    overflow: hidden;
+    position: relative;
+}
+
+.header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    padding: 8px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#ticker-select {
+    padding: 5px;
+    font-weight: bold;
+    border: 1px solid var(--header-text);
+}
+
+.title {
+    color: var(--title-text);
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.account-stats {
+    font-size: 0.8em;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.main-content {
+    display: flex;
+    flex-grow: 1;
+}
+
+.volume-panel {
+    background-color: var(--panel-bg);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 5px;
+    border-right: 2px solid var(--border-color);
+}
+
+.volume-text {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--border-color);
+    transform: rotate(180deg);
+}
+
+.chart-panel {
+    flex-grow: 1;
+    position: relative;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.visual-bars {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.bar {
+    width: 40px;
+    position: relative;
+}
+
+.bar-teal { background-color: var(--teal-color); height: 80%; }
+.bar-blue { background-color: var(--blue-color); height: 30%; }
+.bar-red { background-color: var(--red-color); height: 25%; }
+
+.bar-dotted-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 4px 4px;
+    opacity: 0.5;
+}
+
+.bar-label {
+    position: absolute;
+    top: 5px;
+    font-weight: bold;
+    color: #000;
+}
+
+.bar-sub-label {
+    font-size: 0.8em;
+    color: #000;
+    text-align: center;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.price-markers {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 120px;
+}
+
+.marker {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #000;
+    position: absolute;
+    display: flex;
+    align-items: center;
+}
+
+.marker.sell-marker {
+    right: 0;
+    border-bottom: 2px solid #000;
+}
+
+.marker.buy-marker {
+    left: 0;
+    width: 100px;
+    height: 40px;
+    background-color: var(--yellow-color);
+    justify-content: center;
+}
+.marker.buy-marker::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    width: 0; 
+    height: 0; 
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 20px solid var(--yellow-color);
+}
+
+
+.analysis-panel {
+    background-color: var(--analysis-bg);
+    color: var(--analysis-text);
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    border-top: 2px solid var(--border-color);
+}
+
+.panel-header, .panel-footer {
+    border-top: 2px dashed var(--border-color);
+    border-bottom: 2px dashed var(--border-color);
+    padding: 5px 0;
+    text-align: center;
+}
+
+.panel-content {
+    padding: 10px 0;
+    line-height: 1.4;
+}
+
+.analysis-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.panel-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8em;
+}
+
+

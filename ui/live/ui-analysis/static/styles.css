@@ -1,0 +1,121 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 500px;
+    height: 90vh;
+    max-height: 800px;
+    background-color: #87CEEB;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.app-header {
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: white;
+    font-size: 0.9em;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.app-header .header-item {
+    min-width: 80px;
+    padding: 2px 5px;
+}
+
+.content-area {
+    display: flex;
+    height: 50%;
+    position: relative;
+}
+
+.volume-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #00BFFF;
+    padding: 15px 10px;
+    flex-shrink: 0;
+}
+
+.volume-title {
+    writing-mode: vertical-lr;
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+}
+
+.volume-segments {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    gap: 1px;
+    width: 30px;
+    margin-top: auto;
+}
+
+.volume-segment {
+    width: 100%;
+    height: 10px;
+    background-color: mediumblue;
+}
+
+.chart-container {
+    flex-grow: 1;
+    padding: 10px;
+    position: relative;
+}
+
+/* --- Styling for the HTML-based Trend Indicator --- */
+.trend-indicator {
+    position: absolute;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.trend-arrow {
+    /* 1. This is the fix: Font size reduced to 80% */
+    font-size: 2.4em; 
+}
+
+.trend-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+
+/* --- Analysis Display Styling --- */
+.analysis-footer {
+    height: 50%;
+    background-color: #000; /* Black background for the analysis */
+    color: #00FF00; /* Green text */
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+#analysis-display {
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap; /* Allows text to wrap */
+    margin: 0;
+    font-size: 0.85em;
+    line-height: 1.2;
+}
+

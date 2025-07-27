@@ -1,0 +1,16 @@
+{
+  "symbol": "META",
+  "optimization_date": "2025-07-26T20:47:10.455707",
+  "test_return": 0.01834945993017545,
+  "annual_projection": 0.3123994024647265,
+  "parameters": {
+    "window_minutes": 14,
+    "confidence_threshold": 0.3152851473262039,
+    "base_position_size": 0.1308822262676718,
+    "max_position_size": 0.2,
+    "profit_target": 0.03128680285146398,
+    "stop_loss": 0.016865535417745027,
+    "label_threshold_up": -0.023787591053591496,
+    "label_threshold_down": -0.0018397917114118278
+  }
+}

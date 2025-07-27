@@ -1,0 +1,1077 @@
+{
+  "optimization_config": {
+    "target_annual_return": 0.3,
+    "min_trades_required": 10,
+    "max_drawdown_limit": 0.15,
+    "min_sharpe_ratio": 1.0,
+    "optimization_method": "genetic",
+    "max_iterations": 150,
+    "n_jobs": 4
+  },
+  "best_params": {
+    "label_threshold": [
+      0.005739260953548638,
+      -0.0042626500159726665
+    ],
+    "confidence_threshold": 0.2170813701569565,
+    "position_size": 0.09904239959132972,
+    "profit_target": 0.023489533835536532,
+    "stop_loss": 0.022514959056978357,
+    "window_minutes": 15
+  },
+  "best_score": -1000,
+  "optimization_time": 0.47168993949890137,
+  "total_evaluations": 130,
+  "results_history": [
+    {
+      "params": {
+        "label_threshold": [
+          0.005317751596807796,
+          -0.004633230140297868
+        ],
+        "confidence_threshold": 0.20496313588333032,
+        "position_size": 0.11008263113556917,
+        "profit_target": 0.017887727217862793,
+        "stop_loss": 0.01568410303193509,
+        "window_minutes": 18.888871532521065
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.126806",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.005038508028668831,
+          -0.008364379856936905
+        ],
+        "confidence_threshold": 0.2227047120197359,
+        "position_size": 0.13255266292004705,
+        "profit_target": 0.024910857253255883,
+        "stop_loss": 0.024349224556379775,
+        "window_minutes": 10.472448487851743
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.127239",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006030503119399454,
+          -0.00839261029250639
+        ],
+        "confidence_threshold": 0.21049846336887013,
+        "position_size": 0.14563323893714436,
+        "profit_target": 0.022502875749816034,
+        "stop_loss": 0.02117066146310727,
+        "window_minutes": 13.909987727555956
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.127430",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.005931798550374297,
+          -0.2632601093707372
+        ],
+        "confidence_threshold": 0.19474419510357316,
+        "position_size": 0.16134594227811955,
+        "profit_target": 0.0250138941884462,
+        "stop_loss": 0.018471724109624624,
+        "window_minutes": 11.817006980205827
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.127622",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006008170570345519,
+          0.059021048731289244
+        ],
+        "confidence_threshold": 0.26966801775962734,
+        "position_size": 0.16131575360705064,
+        "profit_target": 0.02507639403183028,
+        "stop_loss": 0.019470043427863997,
+        "window_minutes": 12.824805015302735
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.127813",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006685324621430171,
+          -0.0068374646374499215
+        ],
+        "confidence_threshold": 0.1921446843869427,
+        "position_size": 0.15692208148326175,
+        "profit_target": 0.01571328075034141,
+        "stop_loss": -0.01670597791215564,
+        "window_minutes": 17.876333454893
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.127998",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.005731949495725526,
+          -0.008605291652835287
+        ],
+        "confidence_threshold": 0.1340662358531736,
+        "position_size": 0.15736001482402456,
+        "profit_target": -0.029780736817745446,
+        "stop_loss": 0.01837871255188321,
+        "window_minutes": 13.732575150831153
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.128185",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.005301896549413569,
+          0.05956659986962615
+        ],
+        "confidence_threshold": 0.21375215020297653,
+        "position_size": 0.07580177260335791,
+        "profit_target": 0.027053157554948852,
+        "stop_loss": 0.031005137649598474,
+        "window_minutes": 15.059991116208243
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.128383",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0075555040737692375,
+          0.010182971184363015
+        ],
+        "confidence_threshold": 0.25327044770647417,
+        "position_size": 0.024583394106052887,
+        "profit_target": -0.10389138113545884,
+        "stop_loss": 0.18750418366487862,
+        "window_minutes": 15.0051669430524
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.128563",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0061320382958836225,
+          0.07931101749764702
+        ],
+        "confidence_threshold": 0.23341038976573025,
+        "position_size": 0.0354420716588057,
+        "profit_target": 0.022136523778272046,
+        "stop_loss": 0.14195618016998196,
+        "window_minutes": 13.864531056791975
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.128743",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.00686548513011385,
+          -0.010037429954959409
+        ],
+        "confidence_threshold": 0.2562365073335615,
+        "position_size": 0.11605027393977281,
+        "profit_target": 0.019129582877549952,
+        "stop_loss": -0.030897900879917374,
+        "window_minutes": 14.736657002008684
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.128923",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0053341273183495925,
+          -0.005686254705726455
+        ],
+        "confidence_threshold": 0.24375471770480195,
+        "position_size": 0.09937475919380655,
+        "profit_target": 0.02423049140039773,
+        "stop_loss": 0.04446462359100141,
+        "window_minutes": 15.120046330461868
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.129103",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.005371776541994902,
+          -0.004058593768009797
+        ],
+        "confidence_threshold": 0.2077054396174603,
+        "position_size": 0.07009297819914692,
+        "profit_target": 0.021246259879987465,
+        "stop_loss": 0.016112544653591333,
+        "window_minutes": 16.195793430720048
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.129289",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0032429815587621813,
+          -0.0027993483603290393
+        ],
+        "confidence_threshold": 0.30465222264666797,
+        "position_size": 0.0592549654408749,
+        "profit_target": 0.01825998061910876,
+        "stop_loss": 0.015698957721429825,
+        "window_minutes": 13.864574875926003
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.129471",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.005954738310875383,
+          -0.002695241294328337
+        ],
+        "confidence_threshold": 0.2503696461777064,
+        "position_size": 0.06355643376776611,
+        "profit_target": 0.020620059101917713,
+        "stop_loss": 0.01564241080843262,
+        "window_minutes": 4.367637876482479
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.129618",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.005779005904257863,
+          -0.010115782087173833
+        ],
+        "confidence_threshold": 0.22415131772103863,
+        "position_size": 0.11670164166413718,
+        "profit_target": 0.017361602234988838,
+        "stop_loss": 0.021458901347064165,
+        "window_minutes": 13.346537057897347
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.129764",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006898132695848214,
+          -0.006845598880636626
+        ],
+        "confidence_threshold": 0.20987683690133502,
+        "position_size": 0.11412405210405989,
+        "profit_target": 0.02742751859336684,
+        "stop_loss": 0.011975700888488223,
+        "window_minutes": 15.615240284934536
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.129907",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.005927787635872885,
+          -0.25066881169296606
+        ],
+        "confidence_threshold": 0.19519002467625887,
+        "position_size": 0.1608942604123078,
+        "profit_target": -0.09140264249369542,
+        "stop_loss": 0.018438513508750892,
+        "window_minutes": 13.24160931403643
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.130351",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.005735960410226936,
+          -0.021196589330606433
+        ],
+        "confidence_threshold": 0.19880744370708048,
+        "position_size": 0.05162573376456901,
+        "profit_target": -0.006219828405973633,
+        "stop_loss": 0.018411923152756943,
+        "window_minutes": 12.24315633541324
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.130535",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006290517670166524,
+          -0.010234494420932288
+        ],
+        "confidence_threshold": 0.20553911444915,
+        "position_size": 0.15113128028985734,
+        "profit_target": 0.025919333137953384,
+        "stop_loss": 0.021510879129913875,
+        "window_minutes": 13.92396368818262
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.130723",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.00596283602296203,
+          -0.010290376876063417
+        ],
+        "confidence_threshold": 0.22050226422680405,
+        "position_size": 0.13585709794912937,
+        "profit_target": 0.017596607309350153,
+        "stop_loss": 0.020870634632660822,
+        "window_minutes": 13.59597460589767
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.130910",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006803011453362141,
+          0.08508517037765692
+        ],
+        "confidence_threshold": 0.253205519094701,
+        "position_size": 0.08503498409095436,
+        "profit_target": 0.026837911361535564,
+        "stop_loss": 0.06938869079879752,
+        "window_minutes": 13.677727180657786
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.131091",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006710885969063758,
+          -0.016061065760381334
+        ],
+        "confidence_threshold": 0.2363820557154317,
+        "position_size": 0.12214200847306496,
+        "profit_target": 0.022352952700160238,
+        "stop_loss": 0.09344731351328547,
+        "window_minutes": 12.72802648872423
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.131271",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.005049374615416148,
+          0.06406064311730546
+        ],
+        "confidence_threshold": 0.2557637312035612,
+        "position_size": 0.13869820162256027,
+        "profit_target": 0.025011105287311205,
+        "stop_loss": 0.01908745929714834,
+        "window_minutes": 12.547575829194319
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.131453",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.013175691992591634,
+          -0.013403974242953118
+        ],
+        "confidence_threshold": 0.24847836436211587,
+        "position_size": 0.15517021490453742,
+        "profit_target": 0.024976145997774958,
+        "stop_loss": -0.014701872532192857,
+        "window_minutes": 10.749677673960157
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.131637",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006865316576762633,
+          -0.007139463824207484
+        ],
+        "confidence_threshold": 0.24827284508812952,
+        "position_size": 0.11549238760813407,
+        "profit_target": 0.023985358426844974,
+        "stop_loss": 0.010337543351917961,
+        "window_minutes": 15.095628276653756
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.131821",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006898301249199431,
+          -0.00974356501138855
+        ],
+        "confidence_threshold": 0.217840499146767,
+        "position_size": 0.11468193843569863,
+        "profit_target": 0.022571743044071814,
+        "stop_loss": -0.029259743343347112,
+        "window_minutes": 15.256269010289465
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.132005",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.00615832916493212,
+          -0.009141472831566464
+        ],
+        "confidence_threshold": 0.25159063125158426,
+        "position_size": 0.10890224788520543,
+        "profit_target": 0.0190172199632627,
+        "stop_loss": 0.003656870228609584,
+        "window_minutes": 9.08708367984359
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.132192",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006661894276057113,
+          -0.0035911984177212797
+        ],
+        "confidence_threshold": 0.25501552225968366,
+        "position_size": 0.07070445982233348,
+        "profit_target": 0.020732422016204965,
+        "stop_loss": -0.01891236030009434,
+        "window_minutes": 10.017211198647573
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.132389",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0059490477142149206,
+          -0.03891153702075627
+        ],
+        "confidence_threshold": 0.19750581312440824,
+        "position_size": 0.1551243562824448,
+        "profit_target": 0.023024793895150573,
+        "stop_loss": 0.02002838785681216,
+        "window_minutes": 12.215651336072959
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.132533",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006013253955558831,
+          -0.2327411826424873
+        ],
+        "confidence_threshold": 0.20773684534803502,
+        "position_size": 0.1518548249328191,
+        "profit_target": 0.024491976043111666,
+        "stop_loss": 0.019613997715919734,
+        "window_minutes": 13.511343371688824
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.132678",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006157519313558691,
+          -0.010102872120290006
+        ],
+        "confidence_threshold": 0.21106173444760265,
+        "position_size": 0.13457918182619405,
+        "profit_target": 0.016199099759873024,
+        "stop_loss": 0.013604254183824419,
+        "window_minutes": 16.876338671663603
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.132835",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006306811212129343,
+          -0.006850374604333748
+        ],
+        "confidence_threshold": 0.20523426766037867,
+        "position_size": 0.13904454132120492,
+        "profit_target": 0.016875783225457224,
+        "stop_loss": -0.008851330748915896,
+        "window_minutes": 14.346531841126746
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.133001",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.005976993034586745,
+          -0.008022291783000169
+        ],
+        "confidence_threshold": 0.20945098598197262,
+        "position_size": 0.13624043659165005,
+        "profit_target": 0.02196888839301396,
+        "stop_loss": 0.021581959823227668,
+        "window_minutes": 16.13804003673803
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.133165",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0054252866268076115,
+          -0.004428912277516018
+        ],
+        "confidence_threshold": 0.2087529170043578,
+        "position_size": 0.07948578054464125,
+        "profit_target": 0.02178024723678954,
+        "stop_loss": 0.015701246293470937,
+        "window_minutes": 13.967741121537976
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.133346",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006661894276057113,
+          0.10908026861497093
+        ],
+        "confidence_threshold": 0.25501552225968366,
+        "position_size": 0.12854595073713435,
+        "profit_target": -0.08220586232156155,
+        "stop_loss": -0.11905399401222098,
+        "window_minutes": 10.017211198647573
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.133749",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.005959060099989492,
+          -0.04331863638095276
+        ],
+        "confidence_threshold": 0.18222408912896354,
+        "position_size": 0.15540130482393388,
+        "profit_target": 0.02311400349152585,
+        "stop_loss": 0.01999190841968474,
+        "window_minutes": 12.524088183310132
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.133921",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.00600324156978426,
+          -0.2283340832822908
+        ],
+        "confidence_threshold": 0.20219666867034833,
+        "position_size": 0.15157787639133002,
+        "profit_target": 0.024402766446736397,
+        "stop_loss": 0.01965047715304715,
+        "window_minutes": 12.99927475395712
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.134091",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006157519313558691,
+          -0.010102872120290006
+        ],
+        "confidence_threshold": 0.21106173444760265,
+        "position_size": 0.13457918182619405,
+        "profit_target": 0.016199099759873024,
+        "stop_loss": 0.013604254183824419,
+        "window_minutes": 16.876338671663603
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.134259",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006157519313558691,
+          -0.010102872120290006
+        ],
+        "confidence_threshold": 0.21106173444760265,
+        "position_size": 0.13457918182619405,
+        "profit_target": 0.016199099759873024,
+        "stop_loss": 0.013604254183824419,
+        "window_minutes": 16.876338671663603
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.134442",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.005991809744934185,
+          -0.09529522063356223
+        ],
+        "confidence_threshold": 0.22240769848488734,
+        "position_size": 0.1525210398295685,
+        "profit_target": -0.0900140793047231,
+        "stop_loss": 0.011377468928837385,
+        "window_minutes": 13.202465712357514
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.134616",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0066468638600024575,
+          -0.17143465681978515
+        ],
+        "confidence_threshold": 0.20916438190680323,
+        "position_size": 0.1305152290558043,
+        "profit_target": -0.06632251414413444,
+        "stop_loss": 0.10050835809319897,
+        "window_minutes": 12.898202552461033
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.134786",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.005281216322805841,
+          0.04731956038239962
+        ],
+        "confidence_threshold": 0.2039368058388828,
+        "position_size": 0.13836911054328893,
+        "profit_target": 0.024908454814471303,
+        "stop_loss": 0.019412550213143857,
+        "window_minutes": 12.998888809552763
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.134954",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.07088666196418339,
+          -0.21600009990758148
+        ],
+        "confidence_threshold": 0.25956377071271347,
+        "position_size": 0.15218391601209047,
+        "profit_target": 0.024594626515951568,
+        "stop_loss": 0.01928890679992422,
+        "window_minutes": 13.060030391330379
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.135123",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.1126370576729881,
+          -0.005184644189248854
+        ],
+        "confidence_threshold": 0.5671793054822389,
+        "position_size": 0.1629916669441901,
+        "profit_target": 0.008901836278528981,
+        "stop_loss": -0.01611112697169841,
+        "window_minutes": 10.364503086357194
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.135285",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.002929049901767305,
+          -0.011810528471425543
+        ],
+        "confidence_threshold": 0.24831814125203008,
+        "position_size": 0.1517478055463935,
+        "profit_target": 0.020935970252049727,
+        "stop_loss": -0.01750310586058879,
+        "window_minutes": 10.497013012771243
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.135431",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.00680900193839108,
+          0.08942396630232714
+        ],
+        "confidence_threshold": 0.20709283314024415,
+        "position_size": 0.0978270848490052,
+        "profit_target": -0.17367868487415714,
+        "stop_loss": 0.04518682788240374,
+        "window_minutes": 13.924914162479075
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.135575",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006284527185137584,
+          -0.014573290345602504
+        ],
+        "confidence_threshold": 0.43879153606557475,
+        "position_size": 0.14268171023956233,
+        "profit_target": 0.02589856279739582,
+        "stop_loss": 0.04571274204630765,
+        "window_minutes": 13.676776706361332
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.135719",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0060991827930683045,
+          -0.1796758379383447
+        ],
+        "confidence_threshold": 0.20794596766992246,
+        "position_size": 0.15169601733069107,
+        "profit_target": 0.024838137116799237,
+        "stop_loss": -0.009091417819591975,
+        "window_minutes": 13.780668777006062
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.135884",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.009465897367632455,
+          -0.06329983912507488
+        ],
+        "confidence_threshold": 0.20532999212726258,
+        "position_size": 0.15129008789198536,
+        "profit_target": 0.025573172064265813,
+        "stop_loss": -0.02913163851230055,
+        "window_minutes": 13.764623564509867
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "'EnhancedEnsembleSignalGenerator' object has no attribute '_create_balanced_labels'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:30:16.136049",
+      "meets_target": false
+    }
+  ]
+}

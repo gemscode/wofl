@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading App</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="app-header">
+            <div class="left-section">
+                <span class="ticker-symbol">GERN</span>
+                <span class="header-item">Holdings: <span id="holdings">100</span></span>
+                <span class="header-item">Value: $<span id="value">144.00</span></span>
+                <span class="header-item">Balance: $<span id="balance">20,000</span></span>
+                <span class="header-item">Budget: $<span id="budget">25,000</span></span>
+            </div>
+            <div class="mode-toggle">
+                <button id="simulator-btn" class="mode-btn active">Simulator</button>
+                <button id="live-btn" class="mode-btn" disabled>Live</button>
+            </div>
+            <div class="right-section">
+                <div class="market-info">
+                    <div class="price-info">
+                        <span class="current-price" id="current-price">$0.00</span>
+                        <span class="price-change" id="price-change">+0.00 (+0.00%)</span>
+                    </div>
+                    <div class="market-stats">
+                        <span id="bid-ask">Bid: $0.00 Ask: $0.00</span>
+                        <span id="volume">Vol: 0</span>
+                        <span id="high-low">H: $0.00 L: $0.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-area">
+            <div class="chart-area-wrapper">
+                <div id="chart-container"></div>
+                <div id="debug-info" class="debug-info"></div>
+            </div>
+            <div class="analysis-footer">
+                <div id="analysis-display">Connecting to live analysis...</div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/lightweight-charts@4.1.7/dist/lightweight-charts.standalone.production.js"></script>
+    <script src="/static/app.js"></script>
+</body>
+</html>
+

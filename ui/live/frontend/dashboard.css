@@ -1,0 +1,165 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    height: 100%;
+    overflow: hidden;
+}
+
+.mobile-container {
+    width: 100%;
+    max-width: 428px; /* For a large phone like iPhone 13 Pro Max */
+    height: 100vh;
+    margin: 0 auto;
+    background-color: #cce7ff;
+    display: flex;
+    flex-direction: column;
+    color: #000;
+}
+
+/* Header */
+.dashboard-header {
+    padding: 10px;
+    background-color: #fff;
+    border-bottom: 2px solid #000;
+    display: flex;
+    align-items: center;
+}
+
+.ticker-selector {
+    padding-right: 10px;
+}
+
+#ticker-select {
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 5px;
+    border: 2px solid #000;
+    background-color: #fff;
+}
+
+.header-main h2 {
+    font-size: 1em;
+    color: #d9534f;
+    margin: 0;
+}
+
+.account-info {
+    font-size: 0.7em;
+}
+
+/* Charts Area */
+.charts-area {
+    display: flex;
+    flex-grow: 1;
+}
+
+.volume-panel {
+    width: 25%;
+    background-color: #72b2e8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-right: 2px solid #000;
+    position: relative;
+}
+
+.volume-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 2em;
+    font-weight: bold;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.volume-bars, .price-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    padding-left: 25px; /* Space for vertical label */
+}
+
+.price-panel {
+    width: 75%;
+    padding-left: 0;
+    flex-direction: row;
+}
+
+.bar-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bar {
+    border: 2px solid #000;
+    background-color: #4CAF50;
+    width: 40px;
+}
+
+.bar-price {
+    position: absolute;
+    top: -25px;
+    font-weight: bold;
+}
+
+#volume-high {
+    height: 60%;
+    background-color: #4CAF50;
+    border-style: dotted;
+    border-width: 0 2px 2px 2px;
+}
+
+#price-last-sell {
+    height: 50%;
+    background-color: #4CAF50;
+}
+
+#price-last-buy {
+    height: 30%;
+    background-color: #fdd835;
+}
+
+.trend-arrow {
+    color: #4CAF50;
+    font-size: 3em;
+}
+
+/* Analysis Panel */
+.analysis-panel {
+    background-color: #4a90e2;
+    padding: 10px;
+    color: #fff;
+    border-top: 2px solid #000;
+    max-height: 40%;
+    overflow-y: auto;
+}
+
+.analysis-header {
+    font-weight: bold;
+    border-bottom: 2px dashed #fff;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.analysis-content, .analysis-status {
+    font-family: monospace;
+    font-size: 0.9em;
+    white-space: pre-wrap;
+}
+
+.analysis-status {
+    border-top: 2px dashed #fff;
+    margin-top: 5px;
+    padding-top: 5px;
+}
+

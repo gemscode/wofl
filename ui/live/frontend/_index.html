@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=414, height=736, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>WolfXE Trading UI</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div id="dashboard" class="dashboard-container">
+    <!-- Header Section -->
+    <header class="header">
+      <div class="header-top">
+        <select id="ticker-select">
+          <option value="GERN">GERN</option>
+          <option value="AAPL">AAPL</option>
+          <option value="NVDA">NVDA</option>
+          <option value="TSLA">TSLA</option>
+        </select>
+        <h1 class="title">R&W WolfXE Auto-trader AI Agent</h1>
+      </div>
+      <div id="account-stats" class="account-stats">
+        <span>Holdings: --</span> |
+        <span>Value: $--</span> |
+        <span>Balance: $--</span> |
+        <span>Budget: $--</span>
+      </div>
+    </header>
+
+    <!-- Main Charting Area -->
+    <main class="main-content">
+      <div class="volume-panel">
+        <div class="volume-text">Volume</div>
+      </div>
+      <div class="chart-panel">
+        <!-- Visual Bars -->
+        <div class="visual-bars">
+          <div class="bar-container">
+            <span class="bar-label" id="current-high-label">$--</span>
+            <div class="bar bar-teal">
+              <div class="bar-dotted-overlay"></div>
+            </div>
+            <span class="bar-sub-label">Current vs Historical</span>
+          </div>
+          <div class="bar-container">
+            <div class="bar bar-blue" id="current-price-bar"></div>
+            <span class="bar-sub-label">Current Price</span>
+          </div>
+          <div class="bar-container">
+            <div class="bar bar-red"></div>
+            <span class="bar-sub-label">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzRjYWY1MCIgd2lkdGg9IjE4cHgiIGhlaWdodD0iMThweCI+PHBhdGggZD0iTTAgMGgyNHYyNEgwVjB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTcgMTRsNS01IDUgNWg0di0ySDh2MnoiIHRyYW5zZm9ybT0icm90YXRlKDE4MCAxMiAxMS41KSIvPjwvc3ZnPg==" alt="Up"/>
+              Trend
+            </span>
+          </div>
+        </div>
+        <!-- Price Markers -->
+        <div class="price-markers">
+          <div class="marker sell-marker" id="last-sell-marker" style="top: 30%;">
+            <span>$--</span> Last Sell
+          </div>
+          <div class="marker buy-marker" id="last-buy-marker" style="top: 70%;">
+            Last Buy <span>$--</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Live Analysis Panel -->
+    <footer class="analysis-panel">
+      <div class="panel-header">LIVE TRADING ANALYSIS</div>
+      <div id="analysis-content" class="panel-content">
+        <!-- Dynamic content will be injected here by app.js -->
+      </div>
+      <div class="panel-footer">
+        <span id="status-text">Waiting for analysis...</span>
+        <span id="analysis-counter"></span>
+      </div>
+    </footer>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
+

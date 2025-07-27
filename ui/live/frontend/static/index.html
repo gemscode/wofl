@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=414, height=736, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>WolfXE Trading UI</title>
+  <style>
+    :root {
+      --bg-color: #0c1e3e;
+      --panel-bg: #008cff;
+      --header-bg: #f0f0f0;
+      --header-text: #000;
+      --title-text: #ff4500;
+      --analysis-bg: #00008b;
+      --analysis-text: #fff;
+      --border-color: #fff;
+      --teal-color: #008080;
+      --blue-color: #0000ff;
+      --red-color: #ff0000;
+      --yellow-color: #ffff00;
+      --green-color: #4caf50;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .dashboard-container {
+      width: 414px;
+      height: 736px;
+      background-color: var(--panel-bg);
+      display: flex;
+      flex-direction: column;
+      border: 2px solid var(--border-color);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .header {
+      background-color: var(--header-bg);
+      color: var(--header-text);
+      padding: 8px;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    #ticker-select {
+      padding: 6px 10px;
+      font-weight: bold;
+      font-size: 1em;
+      border-radius: 4px;
+      border: 1px solid var(--header-text);
+    }
+
+    .title {
+      color: var(--title-text);
+      font-weight: bold;
+      font-size: 1.4em;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .account-stats {
+      font-size: 0.9em;
+      margin-top: 5px;
+      text-align: center;
+    }
+
+    .main-content {
+      display: flex;
+      flex-grow: 1;
+    }
+
+    .volume-panel {
+      background-color: var(--panel-bg);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 5px;
+      border-right: 2px solid var(--border-color);
+    }
+
+    .volume-text {
+      font-size: 2em;
+      font-weight: bold;
+      color: var(--border-color);
+      transform: rotate(180deg);
+    }
+
+    .chart-panel {
+      flex-grow: 1;
+      position: relative;
+      padding: 20px;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .visual-bars {
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+      align-items: flex-end;
+    }
+
+    .bar-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    .bar {
+      width: 40px;
+      position: relative;
+      transition: height 0.5s ease;
+    }
+
+    .bar-teal { background-color: var(--teal-color); height: 80%; }
+    .bar-blue { background-color: var(--blue-color); height: 30%; }
+    .bar-red { background-color: var(--red-color); height: 25%; }
+
+    .bar-dotted-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(white 1px, transparent 1px);
+      background-size: 3px 3px;
+      opacity: 0.8;
+    }
+
+    .bar-label {
+      position: absolute;
+      top: 5px;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .bar-sub-label {
+      font-size: 0.8em;
+      color: #000;
+      text-align: center;
+      margin-top: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .price-markers {
+      position: absolute;
+      right: 20px;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 120px;
+    }
+
+    .marker {
+      font-size: 0.9em;
+      font-weight: bold;
+      color: #000;
+      position: absolute;
+      display: flex;
+      align-items: center;
+    }
+
+    .marker.sell-marker {
+      right: 0;
+      border-bottom: 2px solid #000;
+    }
+
+    .marker.buy-marker {
+      left: 0;
+      width: 100px;
+      height: 40px;
+      background-color: var(--yellow-color);
+      justify-content: center;
+    }
+
+    .marker.buy-marker::before {
+      content: '';
+      position: absolute;
+      left: -20px;
+      width: 0; 
+      height: 0; 
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-right: 20px solid var(--yellow-color);
+    }
+
+    .analysis-panel {
+      background-color: var(--analysis-bg);
+      color: var(--analysis-text);
+      padding: 10px 15px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9em;
+      border-top: 2px solid var(--border-color);
+    }
+
+    .panel-header, .panel-footer {
+      border-top: 2px dashed var(--border-color);
+      border-bottom: 2px dashed var(--border-color);
+      padding: 5px 0;
+      text-align: center;
+    }
+
+    .panel-content {
+      padding: 10px 0;
+      line-height: 1.4;
+    }
+
+    .analysis-item {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .panel-footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8em;
+    }
+  </style>
+</head>
+<body>
+  <div id="dashboard" class="dashboard-container">
+  <!-- Header Section -->
+  <header class="header">
+    <div class="header-top">
+      <select id="ticker-select">
+        <option value="GERN">GERN</option>
+        <option value="AAPL">AAPL</option>
+        <option value="NVDA">NVDA</option>
+        <option value="TSLA">TSLA</option>
+      </select>
+      <h1 class="title">R&W WolfXE Auto-trader AI Agent</h1>
+    </div>
+    <div id="account-stats" class="account-stats">
+      <span>Holdings: --</span> |
+      <span>Value: $--</span> |
+      <span>Balance: $--</span> |
+      <span>Budget: $--</span>
+    </div>
+  </header>
+
+  <!-- Main Charting Area -->
+  <main class="main-content">
+    <div class="volume-panel">
+      <div class="volume-text">Volume</div>
+    </div>
+    <div class="chart-panel">
+      <!-- Visual Bars -->
+      <div class="visual-bars">
+        <div class="bar-container">
+          <span class="bar-label" id="current-high-label">$--</span>
+          <div class="bar bar-teal">
+            <div class="bar-dotted-overlay"></div>
+          </div>
+          <span class="bar-sub-label">Current vs Historical</span>
+        </div>
+        <div class="bar-container">
+          <div class="bar bar-blue" id="current-price-bar"></div>
+          <span class="bar-sub-label">Current Price</span>
+        </div>
+        <div class="bar-container">
+          <div class="bar bar-red"></div>
+          <span class="bar-sub-label">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzRjYWY1MCIgd2lkdGg9IjE4cHgiIGhlaWdodD0iMThweCI+PHBhdGggZD0iTTAgMGgyNHYyNEgwVjB6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTcgMTRsNS01IDUgNWg0di0ySDh2MnoiIHRyYW5zZm9ybT0icm90YXRlKDE4MCAxMiAxMS41KSIvPjwvc3ZnPg==" alt="Up"/>
+            Trend
+          </span>
+        </div>
+      </div>
+      <!-- Price Markers -->
+      <div class="price-markers">
+        <div class="marker sell-marker" id="last-sell-marker" style="top: 30%;">
+          <span>$--</span> Last Sell
+        </div>
+        <div class="marker buy-marker" id="last-buy-marker" style="top: 70%;">
+          Last Buy <span>$--</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Live Analysis Panel -->
+  <footer class="analysis-panel">
+    <div class="panel-header">LIVE TRADING ANALYSIS</div>
+    <div id="analysis-content" class="panel-content">
+      <!-- Dynamic content will be injected here by script -->
+    </div>
+    <div class="panel-footer">
+      <span id="status-text">Waiting for analysis...</span>
+      <span id="analysis-counter"></span>
+    </div>
+  </footer>
+</div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const stats = document.getElementById("account-stats");
+      const highLabel = document.getElementById("current-high-label");
+      const currentPriceBar = document.getElementById("current-price-bar");
+      const lastSell = document.getElementById("last-sell-marker");
+      const lastBuy = document.getElementById("last-buy-marker");
+      const analysis = document.getElementById("analysis-content");
+      const status = document.getElementById("status-text");
+      const counter = document.getElementById("analysis-counter");
+
+      let analysisCount = 0;
+
+      function generateMockData() {
+        const currentPrice = (Math.random() * 2 + 1).toFixed(4);
+        const high = (parseFloat(currentPrice) + 0.05).toFixed(4);
+        const sell = (parseFloat(currentPrice) + 0.1).toFixed(2);
+        const buy = (parseFloat(currentPrice) - 0.1).toFixed(2);
+
+        highLabel.textContent = `$${high}`;
+        currentPriceBar.style.height = `${(currentPrice / 2.5) * 100}%`;
+
+        lastSell.style.top = "20%";
+        lastSell.querySelector("span").textContent = `$${sell}`;
+
+        lastBuy.style.top = "70%";
+        lastBuy.querySelector("span").textContent = `$${buy}`;
+
+        stats.innerHTML = `
+          <span>Holdings: 100</span> |
+          <span>Value: $5000</span> |
+          <span>Balance: $20000</span> |
+          <span>Budget: $25000</span>
+        `;
+
+        analysis.innerHTML = `
+          Symbol: GERN<br>
+          Time: ${new Date().toLocaleTimeString()}<br>
+          Current Price: $${currentPrice}<br>
+          High (30-min): $${high} (-1.1%)<br>
+          Low (30-min): ${(parseFloat(currentPrice) - 0.005).toFixed(4)} (+0.4%)<br><br>
+          Recommended Action: HOLD<br>
+          Confidence: LOW (46.1%)<br>
+          Signal Type: MONITOR<br>
+          Guidance: Wait for clearer directional signal<br><br>
+          Prediction Breakdown:<br>
+          HOLD: 98.5%<br>
+          BUY: 0.0%<br>
+          SELL: 1.5%<br><br>
+          Analysis Details:<br>
+          Data Points: 30 (30_minutes)<br>
+          Agent ID: agent_GERN_1752081698
+        `;
+
+        status.textContent = "Analysis complete.";
+        counter.textContent = `Analysis #${++analysisCount} received`;
+      }
+
+      generateMockData();
+      setInterval(generateMockData, 3000);
+    });
+  </script>
+</body>
+</html>
+

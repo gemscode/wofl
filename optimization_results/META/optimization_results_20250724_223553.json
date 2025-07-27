@@ -1,0 +1,1077 @@
+{
+  "optimization_config": {
+    "target_annual_return": 0.3,
+    "min_trades_required": 10,
+    "max_drawdown_limit": 0.15,
+    "min_sharpe_ratio": 1.0,
+    "optimization_method": "genetic",
+    "max_iterations": 150,
+    "n_jobs": 1
+  },
+  "best_params": {
+    "label_threshold": [
+      0.0014633784140682643,
+      -0.0066051924587724785
+    ],
+    "confidence_threshold": 0.058626674072677805,
+    "position_size": 0.11554996487677148,
+    "profit_target": 0.01778132707157487,
+    "stop_loss": 0.005039220346929596,
+    "window_minutes": 10
+  },
+  "best_score": -1000,
+  "optimization_time": 0.026697874069213867,
+  "total_evaluations": 134,
+  "results_history": [
+    {
+      "params": {
+        "label_threshold": [
+          0.004299938205978705,
+          -0.0019522591593173514
+        ],
+        "confidence_threshold": 0.12014054099733698,
+        "position_size": 0.09815336798826185,
+        "profit_target": 0.025319811832818225,
+        "stop_loss": 0.01826320616860555,
+        "window_minutes": 10
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.259283",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.029259637803677796,
+          0.020128292871124526
+        ],
+        "confidence_threshold": 0.1583384773640257,
+        "position_size": 0.06295404090899626,
+        "profit_target": 0.008863708756845936,
+        "stop_loss": 0.005,
+        "window_minutes": 9
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.259584",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.00031774273897210246,
+          0.08562211699798938
+        ],
+        "confidence_threshold": 0.11527405980624025,
+        "position_size": 0.10173454027837042,
+        "profit_target": 0.015484730757685767,
+        "stop_loss": 0.020617639853382313,
+        "window_minutes": 12
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.259724",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.009604493499993028,
+          0.04795655278037334
+        ],
+        "confidence_threshold": 0.2517898907038022,
+        "position_size": 0.032378216340507825,
+        "profit_target": 0.05,
+        "stop_loss": 0.005,
+        "window_minutes": 15
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.259859",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.06277274915187901,
+          0.03311249481114835
+        ],
+        "confidence_threshold": 0.10774013174015432,
+        "position_size": 0.03166622986240587,
+        "profit_target": 0.027614586110191762,
+        "stop_loss": 0.005,
+        "window_minutes": 15
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.259993",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.01396638022092726,
+          -0.0020081121797597035
+        ],
+        "confidence_threshold": 0.12496784696332955,
+        "position_size": 0.05250560901104889,
+        "profit_target": 0.02258989713196278,
+        "stop_loss": 0.02075389792457134,
+        "window_minutes": 8
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.260137",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0027342643317318375,
+          -0.00251978661291636
+        ],
+        "confidence_threshold": 0.15191666034471626,
+        "position_size": 0.09759320155013448,
+        "profit_target": 0.021018290528277618,
+        "stop_loss": 0.019841222564097906,
+        "window_minutes": 17
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.260281",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0027024811762690784,
+          -0.0006131287228191184
+        ],
+        "confidence_threshold": 0.13649686832799748,
+        "position_size": 0.08347028462935992,
+        "profit_target": 0.005,
+        "stop_loss": 0.005,
+        "window_minutes": 6
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.260416",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0020568272887278105,
+          0.0008489705234123906
+        ],
+        "confidence_threshold": 0.10789337383735818,
+        "position_size": 0.08168253262243969,
+        "profit_target": 0.005,
+        "stop_loss": 0.005,
+        "window_minutes": 8
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.260553",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0042163777642149165,
+          -0.016128112632730538
+        ],
+        "confidence_threshold": 0.13558099392353115,
+        "position_size": 0.06946169140437838,
+        "profit_target": 0.029731612807603097,
+        "stop_loss": 0.013917000541262164,
+        "window_minutes": 8
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.260687",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0032428022587266867,
+          0.046263814322972906
+        ],
+        "confidence_threshold": 0.1353135201158373,
+        "position_size": 0.08289764021320395,
+        "profit_target": 0.05,
+        "stop_loss": 0.005,
+        "window_minutes": 8
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.260820",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.033434194951324346,
+          0.10826943123469403
+        ],
+        "confidence_threshold": 0.22876438972404137,
+        "position_size": 0.1134015044525049,
+        "profit_target": 0.0243534256579694,
+        "stop_loss": 0.005,
+        "window_minutes": 12
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.260952",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.020115253849393083,
+          0.09981180692310862
+        ],
+        "confidence_threshold": 0.11823326586447418,
+        "position_size": 0.10727343385671984,
+        "profit_target": 0.018259290833995738,
+        "stop_loss": 0.005,
+        "window_minutes": 12
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.261084",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.004276008906373311,
+          0.00644874688448946
+        ],
+        "confidence_threshold": 0.12019719309192498,
+        "position_size": 0.10493980442210664,
+        "profit_target": 0.005,
+        "stop_loss": 0.005,
+        "window_minutes": 16
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.261217",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0039906366694257124,
+          -0.002971759293138031
+        ],
+        "confidence_threshold": 0.14399090065611206,
+        "position_size": 0.05982647404000747,
+        "profit_target": 0.026400150449299862,
+        "stop_loss": 0.023792499667989377,
+        "window_minutes": 11
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.261351",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.004249882936509488,
+          -0.0040874365150748585
+        ],
+        "confidence_threshold": 0.12846589868247502,
+        "position_size": 0.07285534595930343,
+        "profit_target": 0.026887646057948647,
+        "stop_loss": 0.012142724610911267,
+        "window_minutes": 12
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.261497",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0018811977567713902,
+          -0.0025724380840688884
+        ],
+        "confidence_threshold": 0.1433673079200401,
+        "position_size": 0.05764560611865994,
+        "profit_target": 0.022430445084327944,
+        "stop_loss": 0.01718324142901802,
+        "window_minutes": 16
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.261631",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0018811977567713902,
+          -0.0025724380840688884
+        ],
+        "confidence_threshold": 0.1433673079200401,
+        "position_size": 0.05764560611865994,
+        "profit_target": 0.022430445084327944,
+        "stop_loss": 0.01718324142901802,
+        "window_minutes": 16
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.261763",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.10930456613969117,
+          0.18608907435210933
+        ],
+        "confidence_threshold": 0.05163215501112432,
+        "position_size": 0.01,
+        "profit_target": 0.017412154989968134,
+        "stop_loss": 0.019656288592456158,
+        "window_minutes": 15
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.261896",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0029934522839213415,
+          0.002067288509204413
+        ],
+        "confidence_threshold": 0.10461889921777615,
+        "position_size": 0.09815271317239598,
+        "profit_target": 0.025191667056935423,
+        "stop_loss": 0.01957960367175595,
+        "window_minutes": 9
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.262029",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.017360948759629055,
+          0.026304017636283032
+        ],
+        "confidence_threshold": 0.10734785131186116,
+        "position_size": 0.08233855187933076,
+        "profit_target": 0.02782426273221909,
+        "stop_loss": 0.008056169712869286,
+        "window_minutes": 11
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.262308",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.04241834810832862,
+          0.00887576568406973
+        ],
+        "confidence_threshold": 0.10501117964606929,
+        "position_size": 0.04748039115547108,
+        "profit_target": 0.024981990434908095,
+        "stop_loss": 0.009591103963440636,
+        "window_minutes": 12
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.262459",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.06277274915187901,
+          0.03311249481114835
+        ],
+        "confidence_threshold": 0.10774013174015432,
+        "position_size": 0.03166622986240587,
+        "profit_target": 0.027614586110191762,
+        "stop_loss": 0.03,
+        "window_minutes": 15
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.262595",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0020568272887278105,
+          0.0008489705234123906
+        ],
+        "confidence_threshold": 0.10789337383735818,
+        "position_size": 0.08168253262243969,
+        "profit_target": 0.005,
+        "stop_loss": 0.005,
+        "window_minutes": 8
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.262731",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0020568272887278105,
+          0.0008489705234123906
+        ],
+        "confidence_threshold": 0.10789337383735818,
+        "position_size": 0.08168253262243969,
+        "profit_target": 0.005,
+        "stop_loss": 0.005,
+        "window_minutes": 8
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.262867",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.003479412523257567,
+          -0.00015904518829597822
+        ],
+        "confidence_threshold": 0.12823685922176317,
+        "position_size": 0.0815333099537087,
+        "profit_target": 0.024320085191591196,
+        "stop_loss": 0.005,
+        "window_minutes": 12
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.263008",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0028272977019797316,
+          -0.00307942080336649
+        ],
+        "confidence_threshold": 0.10812241329807,
+        "position_size": 0.07300456862803442,
+        "profit_target": 0.005,
+        "stop_loss": 0.005,
+        "window_minutes": 8
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.263139",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.022329693895464336,
+          0.08562211699798938
+        ],
+        "confidence_threshold": 0.11527405980624025,
+        "position_size": 0.09036625222940799,
+        "profit_target": 0.015484730757685767,
+        "stop_loss": 0.020617639853382313,
+        "window_minutes": 12
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.263267",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0011306833765346428,
+          0.09075200082280654
+        ],
+        "confidence_threshold": 0.05,
+        "position_size": 0.10280021297464678,
+        "profit_target": 0.005,
+        "stop_loss": 0.03,
+        "window_minutes": 15
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.263402",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0028275827908665657,
+          0.001318863059672287
+        ],
+        "confidence_threshold": 0.12049966531562906,
+        "position_size": 0.10387413172583028,
+        "profit_target": 0.016492704452121414,
+        "stop_loss": 0.005,
+        "window_minutes": 13
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.263537",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0032009303512011552,
+          0.011592019550878976
+        ],
+        "confidence_threshold": 0.1266080603408871,
+        "position_size": 0.08261055365754821,
+        "profit_target": 0.04471693871479482,
+        "stop_loss": 0.005,
+        "window_minutes": 8
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.263670",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.003035324191446873,
+          0.036739083281298344
+        ],
+        "confidence_threshold": 0.11332435899272633,
+        "position_size": 0.09843979972805171,
+        "profit_target": 0.05,
+        "stop_loss": 0.007708226561477684,
+        "window_minutes": 9
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.263805",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.004249882936509488,
+          -0.0040874365150748585
+        ],
+        "confidence_threshold": 0.12846589868247502,
+        "position_size": 0.07285534595930343,
+        "profit_target": 0.026887646057948647,
+        "stop_loss": 0.005,
+        "window_minutes": 12
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.263941",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.003091711588632213,
+          0.016011925183001596
+        ],
+        "confidence_threshold": 0.11513948081106144,
+        "position_size": 0.0954912828003341,
+        "profit_target": 0.028166105843098303,
+        "stop_loss": 0.005,
+        "window_minutes": 12
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.264238",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.003423025126072227,
+          0.020568112910000772
+        ],
+        "confidence_threshold": 0.12642173740342805,
+        "position_size": 0.0844818268814263,
+        "profit_target": 0.04740798895382511,
+        "stop_loss": 0.005558393855646692,
+        "window_minutes": 9
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.264374",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.017513355538070298,
+          -0.020013419848607508
+        ],
+        "confidence_threshold": 0.11057941603530226,
+        "position_size": 0.06052846804682019,
+        "profit_target": 0.020084626793387426,
+        "stop_loss": 0.0177460440373869,
+        "window_minutes": 14
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.264510",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.05795641079448498,
+          0.0900794413774825
+        ],
+        "confidence_threshold": 0.1124347755110923,
+        "position_size": 0.06150401404499367,
+        "profit_target": 0.0230146900744901,
+        "stop_loss": 0.005,
+        "window_minutes": 12
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.264644",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.003479412523257567,
+          -0.048782637301886915
+        ],
+        "confidence_threshold": 0.12823685922176317,
+        "position_size": 0.1117921720928002,
+        "profit_target": 0.024320085191591196,
+        "stop_loss": 0.005,
+        "window_minutes": 12
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.264778",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.039549634159773375,
+          0.01295888731774949
+        ],
+        "confidence_threshold": 0.12660421009900635,
+        "position_size": 0.04741434450711436,
+        "profit_target": 0.02780875045625754,
+        "stop_loss": 0.005,
+        "window_minutes": 14
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.264913",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.03718949521303289,
+          0.018145495313639154
+        ],
+        "confidence_threshold": 0.10610376860447752,
+        "position_size": 0.036757494366340404,
+        "profit_target": 0.022395732785896995,
+        "stop_loss": 0.01730699833941378,
+        "window_minutes": 9
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.265048",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.006587612134955354,
+          0.05921068881869992
+        ],
+        "confidence_threshold": 0.1150406085243482,
+        "position_size": 0.09778026167920816,
+        "profit_target": 0.026181932568957872,
+        "stop_loss": 0.01845264635645327,
+        "window_minutes": 11
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.265180",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.020042019966487686,
+          0.024459169019972114
+        ],
+        "confidence_threshold": 0.12037399227922903,
+        "position_size": 0.09073935853846168,
+        "profit_target": 0.01462261002154612,
+        "stop_loss": 0.020428199665534594,
+        "window_minutes": 10
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.265312",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.003082091027773475,
+          0.01779438619899921
+        ],
+        "confidence_threshold": 0.12491186813367257,
+        "position_size": 0.07257735270211409,
+        "profit_target": 0.02739591065940452,
+        "stop_loss": 0.03,
+        "window_minutes": 11
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.265458",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.05544077518759605,
+          0.01123067209707428
+        ],
+        "confidence_threshold": 0.11129416228895676,
+        "position_size": 0.03194422311959522,
+        "profit_target": 0.027106321508735882,
+        "stop_loss": 0.005,
+        "window_minutes": 15
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.265590",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.0015068321344883008,
+          -0.001610699764731284
+        ],
+        "confidence_threshold": 0.1166648052664684,
+        "position_size": 0.071957668459099,
+        "profit_target": 0.015417737677082058,
+        "stop_loss": 0.02351744348986861,
+        "window_minutes": 8
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.265722",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.01040272079771115,
+          0.00045155810838397114
+        ],
+        "confidence_threshold": 0.11619641553421933,
+        "position_size": 0.06223047317438957,
+        "profit_target": 0.008958159049874945,
+        "stop_loss": 0.005,
+        "window_minutes": 8
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.265856",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0027485941472657352,
+          0.00737807051998108
+        ],
+        "confidence_threshold": 0.14529050213389372,
+        "position_size": 0.057060574071449356,
+        "profit_target": 0.033774191339889015,
+        "stop_loss": 0.005,
+        "window_minutes": 9
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.265997",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          0.0031866005356672574,
+          0.0016941624179815367
+        ],
+        "confidence_threshold": 0.13323421855170964,
+        "position_size": 0.0905575373566268,
+        "profit_target": 0.03196103790318342,
+        "stop_loss": 0.005,
+        "window_minutes": 16
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.266130",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.052525294462962877,
+          0.028800830606193043
+        ],
+        "confidence_threshold": 0.1077260093645538,
+        "position_size": 0.04989338168083048,
+        "profit_target": 0.025378902457858232,
+        "stop_loss": 0.03,
+        "window_minutes": 8
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.266263",
+      "meets_target": false
+    },
+    {
+      "params": {
+        "label_threshold": [
+          -0.007420156986936407,
+          0.0012322434015888148
+        ],
+        "confidence_threshold": 0.10813653567367051,
+        "position_size": 0.05477741680960981,
+        "profit_target": 0.006589244113685205,
+        "stop_loss": 0.03,
+        "window_minutes": 15
+      },
+      "backtest_results": {
+        "total_return": -1,
+        "total_trades": 0,
+        "error": "EnhancedAdvancedTradingSystem.train_system() got an unexpected keyword argument 'days'"
+      },
+      "score": -1000,
+      "timestamp": "2025-07-24T22:35:53.266395",
+      "meets_target": false
+    }
+  ]
+}
